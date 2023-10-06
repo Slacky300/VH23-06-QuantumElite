@@ -40,9 +40,6 @@ function App() {
       <Route path='/patient' element={<Pdash/>} />
       <Route path='/patient/order' element={<UserOrder/>} />
       <Route path='/patient/appointment' element={<Appointment/>} />
-
-      
-
       </Routes>
       <Toaster />
     </Router>
