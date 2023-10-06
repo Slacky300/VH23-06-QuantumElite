@@ -3,37 +3,57 @@ import toast from 'react-hot-toast';
 
 
 const MedicalStore = () => {
+  const [pincode, setPincode] = useState(null);
+
   const [long, setLong] = useState("");
   const [lat, setLat] = useState("");
 
-  const handleSubmit = async (e) => {
+  const fetchData = async () => {
+    const lat = 19.385591;
+    const lng = 72.829019;
+    const apiKey = 'e06abc40ab1a2cb7d082646670f051b7'; // Replace with your actual API key
+
     try {
-      console.log(lat);
-      console.log(long);
-      const payload = {
-        // userId: auth?.user._id,
-        lat,
-        long,
-      };
-      console.log(payload);
-      const res = await fetch(
-        "https://womensecbackend.onrender.com/api/v1/emergency/emergencypressed",
-        {
-          method: "POST",
-          body: JSON.stringify(payload),
-          headers: { "Content-type": "application/json" },
-        }
-      );
-      if (res.status === 200) {
-        toast.success("SOS SENT SUCCESSFULLY");
-      } else {
-        toast.error("SOS FAILED");
-      }
-    } catch (e) {
-      console.log(e);
-      toast.error("Something went wrong");
+      const response = await fetch(`https://apis.mapmyindia.com/advancedmaps/v1/${apiKey}/rev_geocode?lat=${lat}&lng=${lng}`);
+      const data = await response.json();
+      setPincode(data.results[0].pincode);
+    } catch (error) {
+      console.error('Error fetching data:', error);
     }
   };
+
+
+  // const handleSubmit = async (e) => {
+  //   try {
+  //     console.log(lat);
+  //     console.log(long);
+  //     const payload = {
+  //       // userId: auth?.user._id,
+  //       lat,
+  //       long,
+  //     };
+  //     console.log(payload);
+
+  //     // https://apis.mapmyindia.com/advancedmaps/v1/e06abc40ab1a2cb7d082646670f051b7/rev_geocode?lat=19.385591&lng=72.829019
+
+  //     const res = await fetch(
+  //       "https://womensecbackend.onrender.com/api/v1/emergency/emergencypressed",
+  //       {
+  //         method: "POST",
+  //         body: JSON.stringify(payload),
+  //         headers: { "Content-type": "application/json" },
+  //       }
+  //     );
+  //     if (res.status === 200) {
+  //       toast.success("Search SUCCESSFULL");
+  //     } else {
+  //       toast.error("Search Failed");
+  //     }
+  //   } catch (e) {
+  //     console.log(e);
+  //     toast.error("Something went wrong");
+  //   }
+  // };
   useEffect(() => getLocation(), []);
 
   const showPosition = async (position) => {
@@ -64,9 +84,13 @@ const MedicalStore = () => {
           <div className="container">
             <div className="row text-center">
               <h5 className="text-center" style={{ color: "#3d86e8" }}>
-                Our Medical for your Safety
+                Tele-Medical
               </h5>
               <h1 className="text-center mb-5">Medical Store</h1>
+              
+              
+      {pincode && <p>Pincode: {pincode}</p>}
+
               <div className="container">
                 <div className="row align-items-center">
                   <div className="col">
@@ -82,7 +106,7 @@ const MedicalStore = () => {
                     </button>
                   </div>
                   <div className="col-auto">
-                    <button type="button" onClick={handleSubmit} className="btn btn-success">
+                    <button type="button" onClick={fetchData}  className="btn btn-success">
                       Find Shops Near Me
                     </button>
                   </div>
