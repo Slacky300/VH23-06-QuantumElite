@@ -15,29 +15,45 @@ import Doctor from './pages/Doctor';
 import Admin from './pages/Admin';
 import Vadmin from './pages/Vadmin';
 import Navbar from './Components/Navbar/Navbar';
-import Video from './pages/Video';
+import { getLoggedinUser } from './redux/Auth/authActions';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import PrivateRoutes from './utils/PrivateRoutes';
 
 function App() {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getLoggedinUser())
+  }, [])
+
+
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/*' element={<NotFound />} />
-        <Route path='/contact' element={<ContactUs />} />
-        <Route path='/videoCall' element={<Video />} />
+        <Route element={<PrivateRoutes />}>
+          <Route path='/' element={<Home />} />
+
+          <Route path='/contact' element={<ContactUs />} />
+
+          <Route path='/doctorregister' element={<DoctorRegister />} />
+          <Route path='/patientregister' element={<PatientRegister />} />
+          <Route path='/vendorregister' element={<VendorRegister />} />
+          <Route path='/patient' element={<Pdash />} />
+          <Route path='/patient/order' element={<UserOrder />} />
+          <Route path='/patient/appointment' element={<Appointment />} />
+          <Route path='/doctor' element={<Doctor />} />
+        </Route>
+
+        <Route path='/doctorregister' element={<DoctorRegister />} />
+        <Route path='/patientregister' element={<PatientRegister />} />
+        <Route path='/vendorregister' element={<VendorRegister />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/doctorregister' element={<DoctorRegister />} />
-        <Route path='/patientregister' element={<PatientRegister />} />
-        <Route path='/vendorregister' element={<VendorRegister />} />
-        <Route path='/patient' element={<Pdash />} />
-        <Route path='/patient/order' element={<UserOrder />} />
-        <Route path='/patient/appointment' element={<Appointment />} />
-        <Route path='/doctor' element={<Doctor />} />
-        <Route path='/doctorregister' element={<DoctorRegister />} />
-        <Route path='/patientregister' element={<PatientRegister />} />
-        <Route path='/vendorregister' element={<VendorRegister />} />
         <Route path='/admin' element={<Admin />} />
         <Route path='/vadmin' element={<Vadmin />} />
+        <Route path='/*' element={<NotFound />} />
+
+
       </Routes>
       <Toaster />
     </Router>

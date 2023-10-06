@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { registerAsDoctor, registerAsVendor, registerAsPatient, loginUser } from './authActions'
+import { registerAsDoctor, registerAsVendor, registerAsPatient, loginUser, getLoggedinUser } from './authActions'
 
 const initialState = {
     user: null,
@@ -67,6 +67,18 @@ export const authSlice = createSlice({
             state.isLoading = false
         })
 
+        builder.addCase(getLoggedinUser.pending, (state, action) => {
+            state.isLoading = true
+        })
+
+        builder.addCase(getLoggedinUser.fulfilled, (state, action) => {
+            state.isLoading = false
+            state.user = action.payload?.user
+        })
+
+        builder.addCase(getLoggedinUser.rejected, (state, action) => {
+            state.isLoading = false
+        })
     }
 })
 

@@ -1,7 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-const host = 'https://telemedix-backend.onrender.com';
+const host = process.env.REACT_APP_API_HOST;
+
+const token = localStorage.getItem('token')
 
 export const registerAsPatient = createAsyncThunk(
     'auth/registerAsPatient',
@@ -87,9 +89,12 @@ export const loginUser = createAsyncThunk(
             const response = await axios.post(`${host}/api/v1/auth/login`, { email, password });
             if (response.status === 200) {
                 toast.success("Logged In Successfully")
+                localStorage.setItem('token', response.data.token)
                 return response.data;
             } else {
+
                 toast.error("Something went wrong")
+
             }
         } catch (err) {
             toast.error(err?.response?.data?.message);
@@ -98,3 +103,28 @@ export const loginUser = createAsyncThunk(
     }
 )
 
+
+
+export const getLoggedinUser = createAsyncThunk(
+    'auth/getLoggedinUser',
+    async (_, { rejectWithValue, dispatch }) => {
+        try {
+            const response = await axios.get(`${host}/api/v1/auth/get-logged-in-user`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            if (response.status === 200) {
+                toast.success("Logged In Successfully")
+
+                return response.data;
+            } else {
+                toast.error("Something went wrong")
+                return rejectWithValue('something went wrong')
+            }
+        } catch (err) {
+            toast.error(err?.response?.data?.message);
+            console.log(err.message)
+        }
+    }
+)
