@@ -68,7 +68,7 @@ const registerUser = async (req, res) => {
                 return res.status(400).json({ message: "User already exists" })
             }
             const newPatient = new Patient({
-                fullName, email, password: hashedPassword
+                fullName, email, password: hashedPassword,phone
             })
             await newPatient.save()
             return res.status(200).json({ message: "Patient registered successfully", user: newPatient })
@@ -97,7 +97,7 @@ const registerUser = async (req, res) => {
                 return res.status(400).json({ message: "User already exists" })
             }
             const newDoctor = new Doctor({
-                fullName, email, password: hashedPassword,
+                fullName, email, password: hashedPassword, phone,
                 certification
             })
             await newDoctor.save()
@@ -124,7 +124,7 @@ const registerUser = async (req, res) => {
                 return res.status(400).json({ message: "User already exists" })
             }
             const newVendor = new Vendor({
-                fullName, email, password: hashedPassword,
+                fullName, email, password: hashedPassword,phone,
                 certification, gstNo
             })
             await newVendor.save()

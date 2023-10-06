@@ -28,14 +28,6 @@ const getAvailableAptTime = async (req, res) => {
 const addAppointment = async (req, res) => {
 
     const {patientId, doctorId, date, time, description} = req.body;
-    const existing_appointment = await Appointment.find({doctorId: doctorId});
-    if(existing_appointment){
-        for(const x of existing_appointment){
-            if(x.date === date && x.time === time){
-                res.status(409).json({message: "Appointment already exists"})
-            }
-        }
-    }
     const newAppointment = await Appointment.create({
         patientId: patientId,
         doctorId: doctorId,
@@ -43,8 +35,6 @@ const addAppointment = async (req, res) => {
         time: time,
         description: description
     });
-    const existing_doctor = await Doctor.findById(doctorId);
-    existing_doctor.availableTimeSlots.push(date+time);
 
     res.status(200).json({message: "Appointment added successfully", newAppointment});
 }
