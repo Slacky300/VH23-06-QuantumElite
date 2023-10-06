@@ -101,6 +101,20 @@ h3 {
   transition: 0.7s !important;
 }
 
+.learn-more-btn-logout {
+  background-color: #d11a2a !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: whitesmoke !important;
+  padding: 12px 29px !important;
+  border-radius: 10px !important;
+  border: 2px solid #d11a2a !important;
+  box-shadow: 0 10px 20px rgb(0 0 0 / 10%) !important;
+  display: inline-block !important;
+  text-decoration: none !important;
+  transition: 0.7s !important;
+}
+
 .brand_wrapper {
   padding: 100px 0;
 }
@@ -130,4 +144,15 @@ h3 {
   transform: scale(1.2);
   position: relative;
   z-index: 2;
+}
+
+.modal-content {
+  border-radius: 50px;
+}
+
+.cardStyle {
+  border-radius: 0px 110px 0px 110px;
+  -moz-border-radius: 0px 110px 0px 110px;
+  -webkit-border-radius: 0px 110px 0px 110px;
+  border: 14px outset #3d86e8;
 }

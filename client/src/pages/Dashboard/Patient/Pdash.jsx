@@ -10,8 +10,7 @@ const Pdash = () => {
           <div className="col-md-3">
             <UserMenu />
           </div>
-          <div className="col-md-9 mt-4">
-            <h3 className="text-center">Welcome,USER NAME</h3>
+          <div className="col-md-9">
             <Pdetails />
           </div>
         </div>
