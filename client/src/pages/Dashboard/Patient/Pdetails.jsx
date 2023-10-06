@@ -33,9 +33,13 @@ const Pdetails = () => {
                           <div className="col-sm-3">
                             <p className="mb-0">Full Name</p>
                           </div>
+
                           <div className="col-sm-9">
-                            <p className="text-muted mb-0">Johnatan Smith</p>
+                          <input value="s" type="email"
+                          //  onChange={(e) => setuname(e.target.value)}
+                            id="form3Example1c" className="form-control text-muted mb-0" required />
                           </div>
+
                         </div>
                         <hr />
                         <div className="row">
@@ -43,9 +47,7 @@ const Pdetails = () => {
                             <p className="mb-0">Email</p>
                           </div>
                           <div className="col-sm-9">
-                            <p className="text-muted mb-0">
-                              example@example.com
-                            </p>
+                          <input value="s" type="email" id="form3Example1c" className="form-control text-muted mb-0" required />
                           </div>
                         </div>
                         <hr />
@@ -54,7 +56,7 @@ const Pdetails = () => {
                             <p className="mb-0">Phone</p>
                           </div>
                           <div className="col-sm-9">
-                            <p className="text-muted mb-0">(097) 234-5678</p>
+                          <input value="s" type="email" id="form3Example1c" className="form-control text-muted mb-0" required />
                           </div>
                         </div>
                         <hr />
@@ -65,9 +67,7 @@ const Pdetails = () => {
                             <p className="mb-0">Address</p>
                           </div>
                           <div className="col-sm-9">
-                            <p className="text-muted mb-0">
-                              Bay Area, San Francisco, CA
-                            </p>
+                          <input value="s" type="email" id="form3Example1c" className="form-control text-muted mb-0" required />
                           </div>
                         </div>
                       </div>
