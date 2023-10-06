@@ -15,12 +15,9 @@ const Appointment = ({ doctorID }) => {
   const dispatch = useDispatch();
 
   const currentDate = new Date();
-  const [address,setAddress] = useState('');
   const [selectedDate, setSelectedDate] = useState(currentDate);
   const [patientId, setPatientId] = useState('');
-
   const [description, setDescription] = useState('');
-  const [address, setAddress] = useState('');
   const [time, setTime] = useState('')
   const user = useSelector((state) => state?.auth?.user)
 

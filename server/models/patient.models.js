@@ -47,6 +47,13 @@ const PatientSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Prescription'
     }],
+    isVerified: {
+        type: Boolean,
+        default: false
+    },
+    verificationToken: {
+        type: String
+    },
 
 })
 
