@@ -17,7 +17,7 @@ const Vadmin = () => {
         task_id: '74f4c926-250c-43ca-9c53-453e87ceacd1',
         group_id: '8e16424a-58fc-4ba4-ab20-5bc8e7c3c41e',
         data: {
-          gstin: ''
+          gstin: '27PGWPS7766E1Z1'
         }
       }
     };
@@ -33,7 +33,7 @@ const Vadmin = () => {
 
 
   const handleVerify = () => {
-    // checkGSTIN()
+    checkGSTIN()
   }
 
 

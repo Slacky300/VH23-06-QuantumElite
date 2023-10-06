@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast';
 import './App.css';
 import NotFound from './Components/Errors/404';
-import Home from './pages/Home'
+import Home from './pages/Home';
 import Login from './pages/Auth/Login';
 import DoctorRegister from './pages/Auth/DoctorRegister';
 import ContactUs from './Components/ContactUs';
@@ -20,6 +20,10 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import PrivateRoutes from './utils/PrivateRoutes';
 import Navbar from './Components/Navbar/Navbar';
+import Vdash from './pages/VenderDash/Vdash';
+import { useState } from 'react';
+import DocDash from './pages/Dashboard/Doctor/DocDash';
+import CallHistory from './pages/Dashboard/Doctor/CallHistory';
 
 function App() {
   const dispatch = useDispatch()
@@ -51,6 +55,12 @@ function App() {
         <Route path='/admin' element={<Admin />} />
         <Route path='/vadmin' element={<Vadmin />} />
         <Route path='/*' element={<NotFound />} />
+        <Route path='/callhistory' element={<CallHistory />} />
+        <Route path='/doctordash' element={<DocDash />} />
+
+
+
+
       </Routes>
       <Toaster />
     </Router>
