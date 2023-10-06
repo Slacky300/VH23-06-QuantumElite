@@ -4,7 +4,11 @@ import { Link, useNavigate } from 'react-router-dom'
 import register from '../../images/vendor.png'
 import axios from 'axios'
 import toast from 'react-hot-toast';
+
+// const host = process.env.REACT_APP_API_HOST
+
 const host = 'https://telemedix-backend.onrender.com'
+
 
 const VendorRegister = () => {
     const navigate = useNavigate()
@@ -53,7 +57,9 @@ const VendorRegister = () => {
         }
         try {
             const res = await axios.post(`${host}/api/v1/auth/register`,
+
                 { fullName, userType: 'vendor', email, phone, password, gstNo, pincode, certification }, {
+
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -113,11 +119,13 @@ const VendorRegister = () => {
                             <div class="input-group d-flex flex-row align-items-center mb-3">
                                 <div class="form-outline flex-fill mb-0">
                                     <input type="file" onChange={(e) => setcertification(e.target.files[0])} class="form-control form-control-lg border-dark fs-6" placeholder="Certifiacte" required />
+
                                 </div>
                             </div>
                             <div class="input-group d-flex flex-row align-items-center mb-3">
                                 <div class="form-outline flex-fill mb-0">
                                     <input type="number" value={gstNo} onChange={(e) => setgstNo(e.target.value)} class="form-control form-control-lg border-dark fs-6" placeholder="GST" required />
+
                                 </div>
                             </div>
                             <div class="input-group d-flex flex-row align-items-center mb-3">

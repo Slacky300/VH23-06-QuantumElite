@@ -4,7 +4,11 @@ import { Link, useNavigate } from 'react-router-dom'
 import register from '../../images/doctorLogin.png'
 import axios from 'axios'
 import toast from 'react-hot-toast';
+
+// const host = process.env.REACT_APP_API_HOST
+
 const host = 'https://telemedix-backend.onrender.com'
+
 
 const Register = () => {
     const navigate = useNavigate()
