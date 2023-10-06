@@ -1,8 +1,19 @@
-const {Medicine} = require("../models/medicine.model");
-const {Patient} = require("../models/patient.model");
+const {Medicine} = require("../models/medicine.models");
+const {Patient} = require("../models/patient.models");
 const {Vendor} = require("../models/vendor.models");
 
 
+const AWS = require('aws-sdk')
+
+
+
+AWS.config.update({
+    accessKeyId: process.env.AWS_ACCESS_KEY,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    region: 'ap-south-1'
+});
+
+const s3 = new AWS.S3();
 
 const getPurchasedMedicine = (req, res) => {
 
@@ -74,10 +85,12 @@ const addMedicine = async (req, res) => {
             quantity: quantity,
             price: price,
             description: description,
-            medImg: medImg
+            
         });
+
         const vendorId = req.user.id;
         newMedicine.vendorId = vendorId;
+        newMedicine.medImg.url = medImg;
         await newMedicine.save();
         const vendor = await Vendor.findById(vendorId);
         if(!vendor){
