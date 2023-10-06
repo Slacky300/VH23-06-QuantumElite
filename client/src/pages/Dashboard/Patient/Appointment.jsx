@@ -1,8 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import UserMenu from './UserMenu'
 import { GiCancel } from 'react-icons/gi'
+import { getAllotmentByPatient } from '../../../redux/Appointment/appointmentActions'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const UserProfile = () => {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const allotmentByUserID = useSelector((state) => state?.appointment?.allotmentByUser)
+
+    const handleConnectVideo = (id) => {
+        navigate(`/room/${id}/`)
+        window.location.reload()
+    }
+
+    useEffect(() => {
+        dispatch(getAllotmentByPatient())
+    }, [])
+
 
     return (
         <div className='container marginStyle'>
@@ -29,25 +45,24 @@ const UserProfile = () => {
                                                     </tr>
                                                 </thead>
                                                 <tbody className='text-center'>
-                                                    <tr>
-                                                        <td>
+                                                    {allotmentByUserID?.map((allotment, index) => (
+                                                        <tr key={index}>
+                                                            <td>{index + 1}</td>
+                                                            <td>
+                                                                <p className="fw-normal mb-1">{allotment?.doctorId?.fullName}</p>
+                                                            </td>
+                                                            <td>
+                                                                <p className="fw-normal mb-1">{new Date(allotment?.date).toLocaleDateString()}</p>
+                                                            </td>
+                                                            <td>{allotment?.time}</td>
+                                                            <td>
+                                                                <button disabled={allotment?.status !== 'approved'} className='btn btn-primary' onClick={() => handleConnectVideo(allotment?.videoCallId)}>
 
-                                                            1
-                                                        </td>
-                                                        <td>
-                                                            <p className="fw-normal mb-1">sadadada</p>
-                                                        </td>
-                                                        <td>
-                                                            12/12/24
-                                                        </td>
-                                                        <td>
-                                                            10:00 AM
-                                                        </td>
-                                                        <td>
-                                                            <button className='btn btn-danger'><GiCancel size={25} /></button>
-                                                        </td>
-                                                    </tr>
-
+                                                                    Connect
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    ))}
                                                 </tbody>
                                             </table>
 

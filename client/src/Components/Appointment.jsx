@@ -28,7 +28,7 @@ const Appointment = ({ doctorID }) => {
     e.preventDefault();
 
     dispatch(addAppointment({
-      patientId: user._id,
+      patientId: user?._id,
       doctorId: doctorID,
       date: selectedDate,
       description: description,
@@ -93,7 +93,7 @@ const Appointment = ({ doctorID }) => {
                     <textarea
                       rows={3}
                       type="text"
-
+                      value={description}
                       onChange={(e) => setDescription(e.target.value)}
                       class="form-control form-control-lg border-dark fs-6"
                       placeholder="Describe the issue"
