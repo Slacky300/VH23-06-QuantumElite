@@ -76,10 +76,10 @@ const getAllDoctors = async (req, res) => {
 const editDoctorDetails = async (req, res) => {
     try{
         const doctorId = req.params.doctorId;
-        const {fullName, phone, location, pincode} = req.body;
-        let photo;
-        photo = req.file;
+        const {fullName, phone, location, pincode,speciality} = req.body;
+        
         const existing_doctor = await Doctor.findById(doctorId);
+        console.log(fullName, phone, location, pincode,speciality);
         if(!existing_doctor){
             res.status(404).json({message: "Doctor not found"})
         }
@@ -87,6 +87,7 @@ const editDoctorDetails = async (req, res) => {
         existing_doctor.phone = phone;
         existing_doctor.location = location;
         existing_doctor.pincode = pincode;
+        existing_doctor.speciality = speciality;
         if(req.file) {
             const params = {
                 Bucket: process.env.AWS_BUCKET_NAME,

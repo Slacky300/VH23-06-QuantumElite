@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Route,Routes} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast';
 import './App.css';
 import NotFound from './Components/Errors/404';
@@ -16,7 +16,12 @@ import Admin from './pages/Admin';
 import Vadmin from './pages/Vadmin';
 import Navbar from './Components/Navbar/Navbar';
 
+import Navbar from './Components/Navbar/Navbar';
+
 function App() {
+
+
+
   return (
     <Router>
       <Navbar/>
@@ -42,10 +47,10 @@ function App() {
       </Routes>
       <Toaster />
     </Router>
-  
+
   )
-  ;
-  
+    ;
+
 }
 
 export default App;

@@ -5,7 +5,9 @@ import login from '../../images/login.png'
 import axios from 'axios'
 import toast from 'react-hot-toast';
 import { useState } from 'react'
-import { useAuth } from '../../context/auth'
+import { loginUser } from '../../redux/Auth/authActions'
+import { useDispatch } from 'react-redux'
+
 // <<<<<<< Aditya
 // const host = process.env.REACT_APP_API_HOST
 // =======
@@ -13,10 +15,11 @@ const host = 'https://telemedix-backend.onrender.com'
 // >>>>>>> meet_dev
 
 const Login = () => {
+    const dispatch = useDispatch()
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [auth, setAuth] = useAuth()
+
     const navigate = useNavigate()
 
     const validateEmail = (email) => {
@@ -38,27 +41,15 @@ const Login = () => {
             toast.error('Password is required');
             return false;
         }
-        try {
 
-            const res = await axios.post(`${host}/api/v1/auth/login`, {
 
-                email, password
-            });
+        //use redux dispatch
+        const response = await dispatch(loginUser({ email, password }))
+        if (response.meta.requestStatus === "fulfilled") {
+            navigate('/');
 
-            if (res.status === 200) {
-                toast.success('Login Successfully')
-                console.log(res.data)
-                setAuth({
-                    ...auth,
-                    user: res.data.vendor,
-                    token: res.data.token
-                })
+    
 
-                localStorage.setItem('auth', JSON.stringify(res.data.token))
-                navigate('/')
-            }
-        } catch (err) {
-            toast.error('Invalid Email or Password');
         }
     }
 
@@ -108,4 +99,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Login;
