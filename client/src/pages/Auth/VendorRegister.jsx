@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import '../../styles/auth.css'
 import { Link, useNavigate } from 'react-router-dom'
-import register from '../../images/register.png'
+import register from '../../images/vendor.png'
 import axios from 'axios'
 import toast from 'react-hot-toast';
-const host = process.env.REACT_APP_API_HOST
+
+// const host = process.env.REACT_APP_API_HOST
+
+const host = 'https://telemedix-backend.onrender.com'
+
 
 const VendorRegister = () => {
     const navigate = useNavigate()
@@ -13,6 +17,7 @@ const VendorRegister = () => {
     const [phone, setPhone] = useState('')
     const [password, setPassword] = useState('')
     const [pincode, setPincode] = useState('')
+    const [gstNo, setgstNo] = useState('')
     const [certification, setcertification] = useState('')
 
     const validateEmail = (email) => {
@@ -42,13 +47,19 @@ const VendorRegister = () => {
             toast.error('Password is required');
             return false;
         }
+        if (!gstNo.trim()) {
+            toast.error('GST Number is required');
+            return false;
+        }
         if (!pincode.trim()) {
             toast.error('PinCode is required');
             return false;
         }
         try {
             const res = await axios.post(`${host}/api/v1/auth/register`,
-                { fullName, userType: 'vendor', email, phone, password, pincode, certification }, {
+
+                { fullName, userType: 'vendor', email, phone, password, gstNo, pincode, certification }, {
+
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -76,7 +87,7 @@ const VendorRegister = () => {
                 <div class="row border rounded-5 p-3 bg-white shadow box-area reverseCol">
                     <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box">
                         <div class="featured-image mb-3 animateImg">
-                            <img src={register} class="img-fluid" width={500} className='mt-5' />
+                            <img src={register} class="img-fluid" className='m-5' />
                         </div>
                     </div>
                     <div class="col-md-6 right-box">
@@ -108,6 +119,13 @@ const VendorRegister = () => {
                             <div class="input-group d-flex flex-row align-items-center mb-3">
                                 <div class="form-outline flex-fill mb-0">
                                     <input type="file" onChange={(e) => setcertification(e.target.files[0])} class="form-control form-control-lg border-dark fs-6" placeholder="Certifiacte" required />
+
+                                </div>
+                            </div>
+                            <div class="input-group d-flex flex-row align-items-center mb-3">
+                                <div class="form-outline flex-fill mb-0">
+                                    <input type="number" value={gstNo} onChange={(e) => setgstNo(e.target.value)} class="form-control form-control-lg border-dark fs-6" placeholder="GST" required />
+
                                 </div>
                             </div>
                             <div class="input-group d-flex flex-row align-items-center mb-3">

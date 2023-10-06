@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import '../../styles/auth.css'
 import { Link, useNavigate } from 'react-router-dom'
-import register from '../../images/register.png'
+import register from '../../images/doctorLogin.png'
 import axios from 'axios'
 import toast from 'react-hot-toast';
-const host = process.env.REACT_APP_API_HOST
+
+// const host = process.env.REACT_APP_API_HOST
+
+const host = 'https://telemedix-backend.onrender.com'
+
 
 const Register = () => {
     const navigate = useNavigate()
@@ -85,7 +89,7 @@ const Register = () => {
                 <div class="row border rounded-5 p-3 bg-white shadow box-area reverseCol">
                     <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box">
                         <div class="featured-image mb-3 animateImg">
-                            <img src={register} class="img-fluid" width={500} className='mt-5' />
+                            <img src={register} class="img-fluid" className='m-5' />
                         </div>
                     </div>
                     <div class="col-md-6 right-box">

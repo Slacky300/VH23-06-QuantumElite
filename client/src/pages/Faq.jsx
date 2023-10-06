@@ -41,12 +41,12 @@ const Faq = () => {
                                 <div className="accordion-item">
                                     <h2 className="accordion-header" id="headingThree">
                                         <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                            3. How many cars are currently available at carwale?
+                                            3. How many Doctors are available on platform??
                                         </button>
                                     </h2>
                                     <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                         <div className="accordion-body">
-                                            We offer an extensive selection of top-tier car brands available in bulk quantities. You can effortlessly find the car you desire by either using the search bar or by navigating to the 'Cars' section in our menu.                                        </div>
+                                            100 Plus Professional doctors </div>
                                     </div>
                                 </div>
                                 <div className="accordion-item">
@@ -57,19 +57,19 @@ const Faq = () => {
                                     </h2>
                                     <div id="collapseFour" className="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                                         <div className="accordion-body">
-                                            Yes. If you're in need of a quick check or procedure, we encourage you to take advantage of our express  we can take care of it for you quickly and accurately.
+                                            With help of video call system and various vendors on app
                                         </div>
                                     </div>
                                 </div>
                                 <div className="accordion-item">
                                     <h2 className="accordion-header" id="headingFive">
                                         <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                            5. How many brands are available at carwale?
+                                            5. How many Vendors are available at TELEMEDIX?
                                         </button>
                                     </h2>
                                     <div id="collapseFive" className="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
                                         <div className="accordion-body">
-                                            We offer a wide array of premium car brands and accessories for your exploration. You can access these options by navigating to the 'Brands' section.
+                                           500 and counting
                                         </div>
                                     </div>
                                 </div>

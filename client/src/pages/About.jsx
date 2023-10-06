@@ -15,14 +15,14 @@ const About = () => {
                 <img src={about2} class="img-fluid" />
               </div>
               <div class="col-lg-5 col-md-12 text-sec mb-lg-0 mb-5 mt-2">
-                <h2>We make everything by hand with the best possible ingredients.</h2>
+                <h2>We take everything Seriously with the best possible Service.</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et purus a odio finibus bibendum in sit
                   amet leo. Mauris feugiat erat tellus.Far far away, behind the word mountains, far from the countries
                   Vokalia and Consonantia, there live the blind texts.</p>
                 <ul class="list-unstyled py-3">
-                  <li>Etiam sed dolor ac diam volutpat.</li>
-                  <li>Erat volutpat aliquet imperdiet.</li>
-                  <li>purus a odio finibus bibendum.</li>
+                  <li>Video call.</li>
+                  <li>PRESCIPTION and chat</li>
+                  <li>Set up your store.</li>
                 </ul>
                 <button class="learn-more-btn btn-header mt-4">Learn More</button>
               </div>
@@ -37,8 +37,7 @@ const About = () => {
             <div class="row">
               <div class="col-sm-12">
                 <div class="text-content">
-                  <h2>When a man's stomach is full it makes no
-                    difference whether he is rich or poor.</h2>
+                  <h2>Explore Our Professional Doctors</h2>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et purus a odio
                     finibus bibendum in sit amet leo. Mauris feugiat erat tellus.</p>
                   <button class="learn-more-btn btn-header mt-3">Read More</button>
