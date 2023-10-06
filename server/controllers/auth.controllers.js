@@ -21,11 +21,11 @@ const getLoggedinUser = async (req, res) => {
     try {
         const user = req.user.id;
         let existing_user;
-        existing_user = await Patient.findById(user);
+        existing_user = await Patient.findById(user).select('-password')
         if (!existing_user) {
-            existing_user = await Doctor.findById(user);
+            existing_user = await Doctor.findById(user).select('-password');
             if (!existing_user) {
-                existing_user = await Vendor.findById(user);
+                existing_user = await Vendor.findById(user).select('-password');
                 if (!existing_user) {
                     return res.status(404).json({ message: "User not found" })
                 }
@@ -42,6 +42,7 @@ const getLoggedinUser = async (req, res) => {
         return res.status(500).json({ message: error.message })
     }
 }
+
 
 
 const registerUser = async (req, res) => {
