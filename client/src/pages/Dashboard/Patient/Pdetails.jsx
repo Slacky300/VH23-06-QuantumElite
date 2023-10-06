@@ -9,20 +9,21 @@ const Pdetails = () => {
                 <div className="container">
                     <h1 className="text-start">My Profile</h1>
 
-                    <div className="row">
-                        <div className="col-lg-4">
-                            <div className="card mb-4">
-                                <div className="card-body text-center">
-                                    <img
-                                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-                                        alt="avatar"
-                                        className="rounded-circle img-fluid"
-                                        style={{ width: 150 }}
-                                    />
-                                    <h5 className="my-3">Patient Name</h5>
-                                    <p className="text-muted mb-1">Full Stack Developer</p>
-                                </div>
-                            </div>
+          <div className="row">
+            <div className="col-lg-4">
+              <div className="card mb-4">
+                <div className="card-body text-center">
+                  <img
+                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                    alt="avatar"
+                    className="rounded-circle img-fluid"
+                    style={{ width: 150 }}
+                  />
+                  <h5 className="my-3">Patient Name</h5>
+                  <p className="text-muted mb-1">Full Stack Developer</p>
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary">EDIT PROFILE</button>
 
                         </div>
                         <div className="col-lg-8">
@@ -72,15 +73,13 @@ const Pdetails = () => {
                                 </div>
                             </div>
 
-                            <button type="button" class="btn btn-primary">EDIT PROFILE</button>
 
-                        </div>
-                        <h1 className="text-center mt-3">My Doctors</h1>
-                    </div>
-                </div>
-            </section>
+            </div>
+          </div>
         </div>
-    )
+      </section>
+    </div>
+  )
 }
 
 export default Pdetails
