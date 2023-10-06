@@ -14,7 +14,7 @@ const UserOrder = () => {
                             <div className="container-fluid">
                                 <h1 className="text-start">My Orders</h1>
                                 <div className="row">
-                                    <div className="col-md-9 ">
+                                    <div className="col-md-12 ">
                                         <div className="table-responsive">
                                             <table className="table table-bordered">
                                                 <thead className="table-dark text-center">
@@ -35,7 +35,7 @@ const UserOrder = () => {
                                                         </td>
                                                         <td>12/12/24</td>
                                                         <td>10:00 AM</td>
-                                                        <td>rs 120</td>
+                                                        <td>₹120</td>
                                                         <td>
                                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                                 Bill details

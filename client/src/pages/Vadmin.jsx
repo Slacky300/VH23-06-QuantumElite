@@ -36,8 +36,6 @@ const Vadmin = () => {
     checkGSTIN()
   }
 
-
-  // 
   return (
     <div>
       <div className="abc" >

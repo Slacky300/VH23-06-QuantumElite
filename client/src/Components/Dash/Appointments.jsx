@@ -3,9 +3,9 @@ import React from "react";
 const Appointments = () => {
   return (
     <div className="mt-3">
-        <h2>UPCOMING APPOINTMENTS</h2>
+      <h2>UPCOMING APPOINTMENTS</h2>
       <div>
-      <div className="px-4">
+        <div className="px-4">
           <table class="table align-middle mb-0 bg-white ">
             <thead class="bg-light">
               <tr>
@@ -13,7 +13,6 @@ const Appointments = () => {
                 <th>Date</th>
                 <th>Time</th>
                 <th>Status</th>
-              
                 <th>Actions</th>
                 <th>Details</th>
               </tr>
@@ -44,7 +43,7 @@ const Appointments = () => {
                   <p><button type="button" class="btn btn-primary">Accept</button></p>
                   <p><button type="button" class="btn btn-danger">Reject</button></p>
                 </td>
-                
+
                 <td>
                   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >Connect</button>
 
@@ -58,19 +57,16 @@ const Appointments = () => {
         </div>
       </div>
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      
-      <div class="modal-body">
-        <h5>Patient Details: </h5>
-        <p className="mt-5">Patient name:</p>
-        <p className="mt-5">Problem:</p>
-
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <h5>Patient Details: </h5>
+              <p className="mt-5">Patient name:</p>
+              <p className="mt-5">Problem:</p>
+            </div>
+          </div>
+        </div>
       </div>
-      
-    </div>
-  </div>
-</div>
     </div>
   );
 };
