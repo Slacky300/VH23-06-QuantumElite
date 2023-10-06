@@ -1,10 +1,12 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
 import authReducer from './redux/Auth/authSlice'
+import doctorReducer from './redux/Doctors/doctorSlice'
 
 
 const store = configureStore({
     reducer: {
-        auth: authReducer
+        auth: authReducer,
+        doctors: doctorReducer
 
     },
     middleware: getDefaultMiddleware({
