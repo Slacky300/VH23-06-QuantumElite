@@ -24,6 +24,7 @@ import Vdash from './pages/VenderDash/Vdash';
 import { useState } from 'react';
 import DocDash from './pages/Dashboard/Doctor/DocDash';
 import CallHistory from './pages/Dashboard/Doctor/CallHistory';
+import MeetingPage from './Noti/MeetingPage';
 
 function App() {
   const dispatch = useDispatch()
@@ -35,7 +36,7 @@ function App() {
 
   return (
     <Router>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
       <Route path='/' element={<Home />} />
         <Route element={<PrivateRoutes />}>
@@ -59,6 +60,7 @@ function App() {
         <Route path='/callhistory' element={<CallHistory />} />
         <Route path='/doctordash' element={<DocDash />} />
         <Route path='/vdash' element={<Vdash />} />
+        <Route path='/meeting' element={ <MeetingPage />}/>
 
 
 
