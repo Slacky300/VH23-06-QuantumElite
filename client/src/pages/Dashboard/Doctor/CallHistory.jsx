@@ -1,21 +1,29 @@
 import React from 'react'
 import "../../../styles/Admin.css"
+import UserMenu from './UserMenu'
 
 const CallHistory = () => {
   return (
     <div className='abc'>
         <div >
-      <div className="px-4">
+        <div className="container marginStyle">
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-md-3">
+            <UserMenu />
+          </div>
+          <div className="col-md-9">
+          <div className="px-4">
           <table class="table align-middle mb-0 bg-white ">
             <thead class="bg-light" >
               <tr>
                 <th>Name</th>
                 <th>Date</th>
+                
                 <th>Time</th>
-                <th>Status</th>
               
-                <th>Actions</th>
-                <th>Details</th>
+                
+                <th>Prescription</th>
               </tr>
             </thead>
             <tbody>
@@ -40,17 +48,11 @@ const CallHistory = () => {
                 <td>
                   <p class="fw-normal mb-1">5 PM</p>
                 </td>
-                <td>
-                  <p><button type="button" class="btn btn-primary">Accept</button></p>
-                  <p><button type="button" class="btn btn-danger">Reject</button></p>
-                </td>
+               
+                
                 
                 <td>
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >Connect</button>
-
-                </td>
-                <td>
-                  <button type="button" class="btn btn-info text-white" data-bs-toggle="modal" data-bs-target="#exampleModal"> Patient details</button>
+                  <button type="button" class="btn btn-info text-white" data-bs-toggle="modal" data-bs-target="#exampleModal"> SEND PRESCRIPTION</button>
                 </td>
               </tr>
             </tbody>
@@ -70,6 +72,15 @@ const CallHistory = () => {
       
     </div>
   </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+     
 </div>
     </div>
   )
