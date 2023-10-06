@@ -5,11 +5,7 @@ import NotFound from './Components/Errors/404';
 import Home from './pages/Home'
 import Login from './pages/Auth/Login';
 import DoctorRegister from './pages/Auth/DoctorRegister';
-import Emergency from './pages/Emergency';
-import Incident from './pages/IncidentReport'
-import CloseFile from './pages/CloseFile'
 import ContactUs from './Components/ContactUs';
-import ChatScreen from './pages/ChatScreen'
 import PatientRegister from './pages/Auth/PatientRegister';
 import VendorRegister from './pages/Auth/VendorRegister';
 import Pdash from './pages/Dashboard/Patient/Pdash';
@@ -34,10 +30,6 @@ function App() {
       <Route path='/doctorregister' element={<DoctorRegister/>} />
       <Route path='/patientregister' element={<PatientRegister/>} />
       <Route path='/vendorregister' element={<VendorRegister/>} />
-      <Route path='/emergency' element={<Emergency/>} />
-      <Route path='/incident' element={<Incident/>} />
-      <Route path='/closedreport' element={<CloseFile/>} />
-      <Route path='/chat' element={<ChatScreen/>} />
       <Route path='/patient' element={<Pdash/>} />
       <Route path='/patient/order' element={<UserOrder/>} />
       <Route path='/patient/appointment' element={<Appointment/>} />
