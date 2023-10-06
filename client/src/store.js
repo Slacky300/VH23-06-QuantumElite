@@ -4,6 +4,7 @@ import authReducer from './redux/Auth/authSlice'
 import doctorReducer from './redux/Doctors/doctorSlice'
 
 import appointmentReducer from './redux/Appointment/appointmentSlice'
+import medicineReducer from './redux/Medicine/MedicineSlice'
 
 
 const store = configureStore({
@@ -12,7 +13,8 @@ const store = configureStore({
 
         doctors: doctorReducer,
 
-        appointment: appointmentReducer
+        appointment: appointmentReducer,
+        medicine: medicineReducer
 
 
     },
