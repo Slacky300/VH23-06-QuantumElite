@@ -1,8 +1,12 @@
 import React from 'react'
-
+import {FcSalesPerformance} from "react-icons/fc"
 const Stats = () => {
   return (
-    <div>hi</div>
+   <div>
+    
+  
+  </div>
+
   )
 }
 

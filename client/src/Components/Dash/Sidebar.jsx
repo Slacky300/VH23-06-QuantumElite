@@ -2,23 +2,10 @@ import React from "react";
 import "../../styles/Sidebar.css";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { useAuth } from "../../context/auth";
 import { RiAdminLine } from 'react-icons/ri'
 
 const Sidebar = () => {
-  const [auth, setAuth] = useAuth();
-  const navigate = useNavigate()
-
-  const handleSubmit = () => {
-    setAuth({
-      ...auth,
-      user: null,
-      token: "",
-    });
-    localStorage.removeItem("auth");
-    toast.success("Logged Out Successfully");
-    navigate('/login')
-  };
+  
 
   return (
     <div style={{ zIndex: '999' }}>

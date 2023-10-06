@@ -58,6 +58,8 @@ function App() {
 
         <Route path='/callhistory' element={<CallHistory />} />
         <Route path='/doctordash' element={<DocDash />} />
+        <Route path='/vdash' element={<Vdash />} />
+
 
 
 
