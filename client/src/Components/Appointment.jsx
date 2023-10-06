@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import axios from 'axios'
+
 import toast from 'react-hot-toast'
 import reports from '../images/report.png'
 import Navbar from './Navbar/Navbar'
@@ -15,7 +16,6 @@ const Appointment = ({ doctorID }) => {
   const dispatch = useDispatch();
 
   const currentDate = new Date();
-  const [address,setAddress] = useState('');
   const [selectedDate, setSelectedDate] = useState(currentDate);
   const [patientId, setPatientId] = useState('');
 
@@ -107,7 +107,7 @@ const Appointment = ({ doctorID }) => {
                   <div class="form-outline flex-fill mb-0 ">
                     <button
                       className="btn text-white btn-lg btn-block"
-                     
+                      onClick={handleSubmit}
                       style={{ width: "100%", backgroundColor: "#3d86e8" }}
                       type="submit"
                     >
