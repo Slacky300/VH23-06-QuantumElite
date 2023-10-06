@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import register from '../../images/doctorLogin.png'
 import axios from 'axios'
 import toast from 'react-hot-toast';
+import { registerAsDoctor } from '../../redux/Auth/authActions'
+import { useDispatch } from 'react-redux'
 
 // const host = process.env.REACT_APP_API_HOST
 
@@ -11,6 +13,7 @@ const host = 'https://telemedix-backend.onrender.com'
 
 
 const Register = () => {
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     const [fullName, setfullName] = useState('')
     const [email, setEmail] = useState('')
@@ -51,34 +54,14 @@ const Register = () => {
             toast.error('PinCode is required');
             return false;
         }
-        try {
-            const res = await axios.post(`${host}/api/v1/auth/register`,
-                { fullName, userType: 'doctor', email, phone, password, pincode, certification }, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
 
-            if (res.status === 200) {
-                toast.success('Register Successfully')
-                navigate('/login')
-            }
-            if (res.status == 400) {
-                toast.error('Email Already Exist! Please Login')
-            }
-            console.log(
-                fullName,
-                email,
-                phone,
-                password,
-                pincode,
-                certification
-
-            )
-        } catch (err) {
-            toast.error("Error While Register");
-            console.log(err)
+        if (!certification) {
+            toast.error('Certificate is required');
+            return false;
         }
+
+        //use redux dispatch
+        dispatch(registerAsDoctor({ fullName, userType: 'doctor', email, phone, password, pincode, certification }))
     }
     useEffect(() => {
         window.scrollTo(0, 0)
