@@ -24,26 +24,28 @@ function App() {
 
   return (
     <Router>
-      <Navbar/>
-      <Routes> 
-      <Route path='/' element={<Home />} />
-      <Route path='/*' element={<NotFound/>} />
-      <Route path='/contact' element={<ContactUs/>} />
-      <Route path='/doctor' element={<Doctor/>} />
 
-      {/* auth */}
-      <Route path='/login' element={<Login/>} />
-      <Route path='/doctorregister' element={<DoctorRegister/>} />
-      <Route path='/patientregister' element={<PatientRegister/>} />
-      <Route path='/vendorregister' element={<VendorRegister/>} />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/*' element={<NotFound />} />
+        <Route path='/contact' element={<ContactUs />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/doctorregister' element={<DoctorRegister />} />
+        <Route path='/patientregister' element={<PatientRegister />} />
+        <Route path='/vendorregister' element={<VendorRegister />} />
+        <Route path='/patient' element={<Pdash />} />
+        <Route path='/patient/order' element={<UserOrder />} />
+        <Route path='/patient/appointment' element={<Appointment />} />
+        <Route path='/doctor' element={<Doctor />} />
+        <Route path='/doctorregister' element={<DoctorRegister />} />
+        <Route path='/patientregister' element={<PatientRegister />} />
+        <Route path='/vendorregister' element={<VendorRegister />} />
 
-      {/* User Dashboard */}
-      <Route path='/patient' element={<Pdash/>} />
-      <Route path='/patient/order' element={<UserOrder/>} />
-      <Route path='/patient/appointment' element={<Appointment/>} />
+        <Route path='/admin' element={<Admin />} />
+        <Route path='/vadmin' element={<Vadmin />} />
 
-      <Route path='/admin' element={<Admin/>} />
-      <Route path='/vadmin' element={<Vadmin/>} />
+
+
       </Routes>
       <Toaster />
     </Router>
