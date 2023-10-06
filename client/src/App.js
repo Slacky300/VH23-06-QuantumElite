@@ -25,6 +25,7 @@ import { useState } from 'react';
 import DocDash from './pages/Dashboard/Doctor/DocDash';
 import CallHistory from './pages/Dashboard/Doctor/CallHistory';
 import MeetingPage from './Noti/MeetingPage';
+import VideoLibrary from './pages/VideoLibrary';
 
 function App() {
   const dispatch = useDispatch()
@@ -61,6 +62,8 @@ function App() {
         <Route path='/doctordash' element={<DocDash />} />
         <Route path='/vdash' element={<Vdash />} />
         <Route path='/meeting' element={ <MeetingPage />}/>
+        <Route path='/videolibrary' element={ <VideoLibrary />}/>
+
 
 
 
