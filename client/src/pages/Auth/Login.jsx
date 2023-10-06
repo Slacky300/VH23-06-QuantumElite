@@ -6,6 +6,7 @@ import axios from 'axios'
 import toast from 'react-hot-toast';
 import { useState } from 'react'
 import { useAuth } from '../../context/auth'
+const host = process.env.REACT_APP_API_HOST
 
 const Login = () => {
 
@@ -34,18 +35,19 @@ const Login = () => {
             return false;
         }
         try {
-            const res = await axios.post('https://womensecbackend.onrender.com/api/v1/users/login', {
+            const res = await axios.post(`http://localhost:4000/api/v1/auth/login`, {
                 email, password
             });
 
             if (res.status === 200) {
                 toast.success('Login Successfully')
+                console.log(res.data)
                 setAuth({
                     ...auth,
-                    user: res.data.user,
+                    user: res.data.vendor,
                     token: res.data.token
                 })
-                localStorage.setItem('auth', JSON.stringify(res.data))
+                localStorage.setItem('auth', JSON.stringify(res.data.token))
                 navigate('/')
             }
         } catch (err) {
