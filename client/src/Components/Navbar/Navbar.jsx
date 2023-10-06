@@ -3,10 +3,13 @@ import { BiMenuAltRight } from 'react-icons/bi'
 import logo from '../../images/logo.png'
 import { Link } from "react-router-dom"
 import '../../styles/navbar.css'
+import { UseSelector, useSelector } from 'react-redux/es/hooks/useSelector'
+import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
-
+  const navigate = useNavigate();
   const [color, setcolor] = useState(false)
+  const user = useSelector((state) => state?.auth?.user)
 
   const changeColor = () => {
     if (window.scrollY >= 90) {
@@ -18,6 +21,10 @@ const Navbar = () => {
 
   window.addEventListener('scroll', changeColor)
 
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    navigate('/login')
+  }
 
   useEffect(() => {
     const navBar = document.querySelectorAll(".nav-link");
@@ -69,23 +76,32 @@ const Navbar = () => {
                   </Link>
                 </ul>
 
-                <ul className='mt-2 text-center'>
-                  <Link to='/login' style={{ textDecoration: 'none' }} className="nav-item text-center">
-                    <a className="nav-link learn-more-btn btn-extra-header" aria-current="page">Login</a>
-                  </Link>
-                  <Link to='/patientregister' style={{ textDecoration: 'none' }} className="nav-item text-center">
-                    <a className="nav-link learn-more-btn" aria-current="page">Register</a>
-                  </Link>
-                </ul>
 
-                {/* <ul className='mt-2 text-center'>
-                                    <Link style={{ textDecoration: 'none' }} className="nav-item text-center">
-                                        <a className="nav-link learn-more-btn" aria-current="page">Dashboard</a>
-                                    </Link>
-                                    <Link to='/login' style={{ textDecoration: 'none' }} className="nav-item text-center">
-                                        <a className="nav-link learn-more-btn-logout" aria-current="page">Logout</a>
-                                    </Link>
-                                </ul> */}
+                {
+                  user ?
+
+                    (
+                      <ul className='mt-2 text-center'>
+                        <Link style={{ textDecoration: 'none' }} className="nav-item text-center">
+                          <a className="nav-link learn-more-btn" aria-current="page">Dashboard</a>
+                        </Link>
+                        <Link onClick={handleLogout} style={{ textDecoration: 'none' }} className="nav-item text-center">
+                          <a className="nav-link learn-more-btn-logout" aria-current="page" onClick={handleLogout}>Logout</a>
+                        </Link>
+                      </ul>)
+
+                    : (
+                      <ul className='mt-2 text-center'>
+                        <Link to='/login' style={{ textDecoration: 'none' }} className="nav-item text-center">
+                          <a className="nav-link learn-more-btn btn-extra-header" aria-current="page">Login</a>
+                        </Link>
+                        <Link to='/patientregister' style={{ textDecoration: 'none' }} className="nav-item text-center">
+                          <a className="nav-link learn-more-btn" aria-current="page">Register</a>
+                        </Link>
+                      </ul>
+
+                    )
+                }
 
               </div>
             </div>
