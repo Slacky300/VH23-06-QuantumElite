@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
@@ -7,42 +7,37 @@ import Navbar from './Navbar/Navbar'
 import Footer from './Footer/Footer'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { addAppointment } from '../redux/Appointment/appointmentActions'
+import { useDispatch, useSelector } from 'react-redux'
 
-const Report = () => {
-  const [report, setReport] = useState('')
-  const [pincodeOfIncident, setpincodeOfIncident] = useState('')
-  const [address, setAddress] = useState('')
+const Appointment = ({ doctorID }) => {
 
-  const [selectedDate, setSelectedDate] = useState(null);
+  const dispatch = useDispatch();
 
   const currentDate = new Date();
+  const [address,setAddress] = useState('');
+  const [selectedDate, setSelectedDate] = useState(currentDate);
+  const [patientId, setPatientId] = useState('');
 
-  const handleSubmit = async (e) => {
+  const [description, setDescription] = useState('');
+  const [address, setAddress] = useState('');
+  const [time, setTime] = useState('')
+  const user = useSelector((state) => state?.auth?.user)
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!report.trim()) {
-      toast.error('Report is Required !')
-      return false
-    }
-    if (!pincodeOfIncident.trim()) {
-      toast.error('PinCode is Required !')
-      return false
-    }
-    if (!address.trim()) {
-      toast.error('Address is Required !')
-      return false
-    }
-    try {
-      const res = await axios.post('https://womensecbackend.onrender.com/api/v1/incidents',
-        { report, pincodeOfIncident, address });
+    dispatch(addAppointment({
+      patientId: user._id,
+      doctorId: doctorID,
+      date: selectedDate,
+      description: description,
+      time: time
 
-      if (res.status === 201) {
-        toast.success('Incident Reported Successfully')
-      }
-    } catch (err) {
-      toast.error('Error in Sending Report')
-    }
+    }))
   }
+
+
   return (
     <>
       <>
@@ -55,7 +50,7 @@ const Report = () => {
             >
               <div class="row align-items-center">
                 <div class="header-text mb-2">
-                  <h2>Appointment</h2>
+                  <h2>Appointment </h2>
                   <p>We us your Incident, we will take action against it !</p>
                 </div>
                 <label htmlFor="exampleFormControlSelect1">
@@ -79,12 +74,14 @@ const Report = () => {
                   <select
                     className="form-control border-dark"
                     id="exampleFormControlSelect1"
+                    value={time}
+                    onChange={(e) => setTime(e.target.value)}
                   >
-                    <option>10 AM</option>
-                    <option>11 AM</option>
-                    <option>2 PM</option>
-                    <option>4 PM</option>
-                    <option>5 PM</option>
+                    <option value='10'>10 AM</option>
+                    <option value='11'>11 AM</option>
+                    <option value='2'> 2 PM</option>
+                    <option value='4'>4 PM</option>
+                    <option value='5'>5 PM</option>
                   </select>
                 </div>
 
@@ -96,8 +93,8 @@ const Report = () => {
                     <textarea
                       rows={3}
                       type="text"
-                      value={address}
-                      onChange={(e) => setAddress(e.target.value)}
+
+                      onChange={(e) => setDescription(e.target.value)}
                       class="form-control form-control-lg border-dark fs-6"
                       placeholder="Describe the issue"
                       required
@@ -110,7 +107,7 @@ const Report = () => {
                   <div class="form-outline flex-fill mb-0 ">
                     <button
                       className="btn text-white btn-lg btn-block"
-                      onClick={handleSubmit}
+                     
                       style={{ width: "100%", backgroundColor: "#3d86e8" }}
                       type="submit"
                     >
@@ -127,4 +124,4 @@ const Report = () => {
   )
 }
 
-export default Report
+export default Appointment

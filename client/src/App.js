@@ -24,6 +24,7 @@ import Vdash from './pages/VenderDash/Vdash';
 import { useState } from 'react';
 import DocDash from './pages/Dashboard/Doctor/DocDash';
 import CallHistory from './pages/Dashboard/Doctor/CallHistory';
+import MeetingPage from './Noti/MeetingPage';
 import VideoLibrary from './pages/VideoLibrary';
 
 function App() {
@@ -38,11 +39,13 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-      <Route path='/' element={<Home />} />
+        <Route path='/' element={<Home />} />
         <Route element={<PrivateRoutes />}>
           <Route path='/contact' element={<ContactUs />} />
           <Route path='/patient' element={<Pdash />} />
           <Route path='/patient/order' element={<UserOrder />} />
+          <Route path='/vendor' element={<Vdash />} />
+
           <Route path='/patient/appointment' element={<Appointment />} />
           <Route path='/doctor' element={<Doctor />} />
           <Route path='/video' element={<Video />} />
@@ -57,7 +60,21 @@ function App() {
         <Route path='/vendorregister' element={<VendorRegister />} />
         <Route path='/login' element={<Login />} />
         <Route path='/*' element={<NotFound />} />
-        <Route path='/videolibrary' element={<VideoLibrary />} />
+
+        <Route path='/callhistory' element={<CallHistory />} />
+        <Route path='/doctordash' element={<DocDash />} />
+        <Route path='/vdash' element={<Vdash />} />
+
+        <Route path='/meeting' element={ <MeetingPage />}/>
+        <Route path='/videolibrary' element={ <VideoLibrary />}/>
+
+
+
+
+
+
+
+
       </Routes>
       <Toaster />
     </Router>

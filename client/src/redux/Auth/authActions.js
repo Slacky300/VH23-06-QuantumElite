@@ -115,8 +115,6 @@ export const getLoggedinUser = createAsyncThunk(
                 }
             });
             if (response.status === 200) {
-                toast.success("Logged In Successfully")
-
                 return response.data;
             } else {
                 toast.error("Something went wrong")

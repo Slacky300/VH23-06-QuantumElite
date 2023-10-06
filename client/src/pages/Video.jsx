@@ -29,7 +29,7 @@ const Home = () => {
                 </div>
                 <div class="input-group d-flex  align-items-center mb-3">
                   <div class="form-outline flex-fill mb-0">
-                    <input value={roomCode} onChange={(e) => setRoomCode(e.target.value)} type="email" class="form-control form-control-lg border-dark  fs-6" placeholder="Enter the room code" required />
+                    <input value={roomCode} onChange={(e) => setRoomCode(e.target.value)} type="text" class="form-control form-control-lg border-dark  fs-6" placeholder="Enter the room code" required />
                   </div>
                 </div>
                 <div class="d-flex flex-row align-items-center mt-4 ">

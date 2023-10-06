@@ -25,6 +25,7 @@ const Navbar = () => {
     localStorage.removeItem('token')
     window.location.reload()
     navigate('/login')
+    window.location.reload()
   }
 
   useEffect(() => {

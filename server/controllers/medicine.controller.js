@@ -54,4 +54,22 @@ const purchaseMedicine = async (req, res) => {
 
 
 
-module.exports = {getPurchasedMedicine, purchaseMedicine}
+const addMedicine = async (req, res) => {
+
+    try{
+        const {medicineName, quantity, price} = req.body;
+        const newMedicine = await Medicine.create({
+            medicineName: medicineName,
+            quantity: quantity,
+            price: price,
+        });
+        res.status(200).json({message: "Medicine added successfully", newMedicine})
+    }catch(e){
+        console.log(e);
+        res.status(500).json({message: "Internal Server Error"})
+    }
+}
+
+
+
+module.exports = {getPurchasedMedicine, purchaseMedicine, addMedicine}

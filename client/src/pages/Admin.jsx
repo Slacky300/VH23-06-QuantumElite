@@ -81,48 +81,48 @@ const Admin = () => {
     <div className="abc" >
       <div>
 
-        <div class="row px-5 justify-center align-item-center">
-          <form onSubmit={handleSubmit}>
-            <div class="col-md-4">
-              <div class="form-outline">
-                <label class="form-label" for="form12">
-                  Registration_number
-                </label>
-                <input type="text" id="form12" value={FormData.registration_number} class="form-control" name="registration_number" onChange={onChange} />
-              </div>
-            </div>
+      <div class="row px-5 justify-content-center align-items-center">
+  <form onSubmit={handleSubmit} class="row g-3">
+    <div class="col-md-3">
+      <div class="form-outline">
+        <label class="form-label" for="form12">
+          Registration_number
+        </label>
+        <input type="text" id="form12" value={FormData.registration_number} class="form-control" name="registration_number" onChange={onChange} />
+      </div>
+    </div>
 
-            <div class="col-md-4">
-              <div class="form-outline">
-                <label class="form-label" for="form12">
-                  year_of_registration
-                </label>
-                <input type="text" value={FormData.year_of_registration} id="form12" class="form-control" name="year_of_registration" onChange={onChange} />
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="form-outline">
-                <label class="form-label" for="form12">
-                  council_name
-                </label>
-                <input type="text" id="form12" value={FormData.council_name} class="form-control" name="council_name" onChange={onChange} />
+    <div class="col-md-3">
+      <div class="form-outline">
+        <label class="form-label" for="form12">
+          year_of_registration
+        </label>
+        <input type="text" value={FormData.year_of_registration} id="form12" class="form-control" name="year_of_registration" onChange={onChange} />
+      </div>
+    </div>
+    
+    <div class="col-md-3">
+      <div class="form-outline">
+        <label class="form-label" for="form12">
+          council_name
+        </label>
+        <input type="text" id="form12" value={FormData.council_name} class="form-control" name="council_name" onChange={onChange} />
+      </div>
+    </div>
+    
+    <div class="col-md-3 d-flex align-items-end">
+      <button className="btn btn-primary" type="submit">VERIFY</button>
+    </div>
+  </form>
+</div>
 
-              </div>
-              <button className="btn btn-primary my-2" type="submit">VERIFY</button>
-            </div>
-          </form>
-
-        </div>
-        <center>
-
-
-        </center>
+        
       </div>
 
 
 
 
-      <div className="px-4">
+      <div className="px-3 mt-5">
         <table class="table align-middle mb-0 bg-white ">
           <thead class="bg-light">
             <tr>
@@ -162,7 +162,7 @@ const Admin = () => {
               <td>Senior</td>
               <td>
                 <button type="button" class="btn btn-link btn-sm btn-rounded">
-                  Edit
+                  Certificate
                 </button>
               </td>
             </tr>

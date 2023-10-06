@@ -77,6 +77,10 @@ const DoctorSchema = mongoose.Schema({
         type: String,
         default: "doctor"
     },
+    fee:{
+        type: Number
+
+    },
 }, {
     timestamps: true
 })
