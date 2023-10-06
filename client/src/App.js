@@ -5,7 +5,7 @@ import NotFound from './Components/Errors/404';
 import Home from './pages/Home'
 import Profile from './pages/Profile';
 import Login from './pages/Auth/Login';
-import Register from './pages/Auth/Register';
+import DoctorRegister from './pages/Auth/DoctorRegister';
 import Emergency from './pages/Emergency';
 import Report from './pages/Report';
 import Dashboard from './pages/Dashboard';
@@ -13,6 +13,8 @@ import Incident from './pages/IncidentReport'
 import CloseFile from './pages/CloseFile'
 import ContactUs from './Components/ContactUs';
 import ChatScreen from './pages/ChatScreen'
+import PatientRegister from './pages/Auth/PatientRegister';
+import VendorRegister from './pages/Auth/VendorRegister';
 
 function App() {
   return (
@@ -23,7 +25,9 @@ function App() {
       <Route path='/dashboard/profile' element={<Profile/>} />
       <Route path='/contact' element={<ContactUs/>} />
       <Route path='/login' element={<Login/>} />
-      <Route path='/register' element={<Register/>} />
+      <Route path='/doctorregister' element={<DoctorRegister/>} />
+      <Route path='/patientregister' element={<PatientRegister/>} />
+      <Route path='/vendorregister' element={<VendorRegister/>} />
       <Route path='/report' element={<Report/>} />
       <Route path='/emergency' element={<Emergency/>} />
       <Route path='/dashboard' element={<Dashboard/>} />

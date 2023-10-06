@@ -88,7 +88,7 @@ const Login = () => {
                             </div>
                             <div class="d-flex flex-row align-items-center my-3 ">
                                 <div class="form-outline flex-fill mb-0 " >
-                                    <Link to='/register' class="btn btn-outline-dark btn-lg btn-block" style={{ width: '100%' }} type="button">Register</Link>
+                                    <Link to='/doctorregister' class="btn btn-outline-dark btn-lg btn-block" style={{ width: '100%' }} type="button">Register</Link>
                                 </div>
                             </div>
                         </div>
