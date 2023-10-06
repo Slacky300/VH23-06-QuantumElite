@@ -19,11 +19,14 @@ import Doctor from './pages/Doctor';
 import Register from './pages/Auth/DoctorRegister';
 import Admin from './pages/Admin';
 import Vadmin from './pages/Vadmin';
+import Navbar from './Components/Navbar/Navbar';
 
 function App() {
   return (
     <Router>
+      <Navbar/>
       <Routes> 
+        
       <Route path='/' element={<Home />} />
       <Route path='/*' element={<NotFound/>} />
       <Route path='/contact' element={<ContactUs/>} />
