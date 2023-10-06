@@ -71,6 +71,11 @@ const Navbar = () => {
                       <a className="nav-link " aria-current="page">Doctor</a>
                     </li>
                   </Link>
+                  <Link to='/medical' style={{ textDecoration: 'none' }}>
+                    <li className="nav-item">
+                      <a className="nav-link " aria-current="page">Medical</a>
+                    </li>
+                  </Link>
                   <Link to='/video' style={{ textDecoration: 'none' }}>
                     <li className="nav-item">
                       <a className="nav-link " aria-current="page">Video</a>
