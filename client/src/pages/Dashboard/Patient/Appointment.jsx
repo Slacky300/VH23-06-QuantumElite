@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import UserMenu from './UserMenu'
+import { GiCancel } from 'react-icons/gi'
 
 const UserProfile = () => {
 
@@ -11,13 +12,11 @@ const UserProfile = () => {
                         <UserMenu />
                     </div>
                     <div className='col-md-9 '>
-                        <h3 className='text-center'>Appointment Details</h3>
-                        <div className='container '>
+                        <div className="col-md-12">
                             <div className='container-fluid'>
+                                <h1 className="text-start">Appointment Details</h1>
                                 <div className='row'>
-
                                     <div className='col-md-9 '>
-
                                         <div className="table-responsive">
                                             <table className="table table-bordered">
                                                 <thead className="table-dark text-center">
@@ -30,7 +29,6 @@ const UserProfile = () => {
                                                     </tr>
                                                 </thead>
                                                 <tbody className='text-center'>
-
                                                     <tr>
                                                         <td>
 
@@ -46,7 +44,7 @@ const UserProfile = () => {
                                                             10:00 AM
                                                         </td>
                                                         <td>
-                                                            CANCEL BTN
+                                                            <button className='btn btn-danger'><GiCancel size={25} /></button>
                                                         </td>
                                                     </tr>
 
@@ -57,7 +55,7 @@ const UserProfile = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div >
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 const { Patient } = require('../models/patient.models')
-const {Doctor} = require('../models/doctor.models')
-const {Appointment} = require('../models/appointment.models');
-const {Medicine} = require('../models/medicine.models');
+const { Doctor } = require('../models/doctor.models')
+const { Appointment } = require('../models/appointment.models');
+const { Medicine } = require('../models/medicine.models');
 const AWS = require('aws-sdk')
 
 require('dotenv').config();
@@ -19,14 +19,14 @@ const getPatients = async (req, res) => {
 
     const doctorId = req.params.doctorId;
     const existing_doctor = await Doctor.findById(doctorId);
-    if(!existing_doctor){
-        res.status(404).json({message: "Doctor not found"})
+    if (!existing_doctor) {
+        res.status(404).json({ message: "Doctor not found" })
     }
     const patient_data = [];
-    for(const x of existing_doctor.patients){
+    for (const x of existing_doctor.patients) {
         const patient = await Patient.findById(x.patient);
-        if(!patient){
-            res.status(404).json({message: "Patient not found"})
+        if (!patient) {
+            res.status(404).json({ message: "Patient not found" })
         }
         patient_data.push({
             patientId: patient._id,
@@ -48,11 +48,11 @@ const getAllDoctors = async (req, res) => {
     try {
         // const doctors = await Doctor.find({doctorVerified: true});
         const doctors = await Doctor.find();
-        if(!doctors){
-            res.status(404).json({message: "No doctors found"})
+        if (!doctors) {
+            res.status(404).json({ message: "No doctors found" })
         }
         const data = [];
-        for(const x of doctors){
+        for (const x of doctors) {
             data.push({
                 doctorId: x._id,
                 fullName: x.fullName,
@@ -68,27 +68,27 @@ const getAllDoctors = async (req, res) => {
         res.status(200).json(data)
     } catch (error) {
         console.log(error);
-        res.status(500).json({message: "Internal Server Error"})
+        res.status(500).json({ message: "Internal Server Error" })
     }
 
 }
 
 const editDoctorDetails = async (req, res) => {
-    try{
+    try {
         const doctorId = req.params.doctorId;
-        const {fullName, phone, location, pincode,speciality} = req.body;
-        
+        const { fullName, phone, location, pincode, speciality } = req.body;
+
         const existing_doctor = await Doctor.findById(doctorId);
-        console.log(fullName, phone, location, pincode,speciality);
-        if(!existing_doctor){
-            res.status(404).json({message: "Doctor not found"})
+        console.log(fullName, phone, location, pincode, speciality);
+        if (!existing_doctor) {
+            res.status(404).json({ message: "Doctor not found" })
         }
         existing_doctor.fullName = fullName;
         existing_doctor.phone = phone;
         existing_doctor.location = location;
         existing_doctor.pincode = pincode;
         existing_doctor.speciality = speciality;
-        if(req.file) {
+        if (req.file) {
             const params = {
                 Bucket: process.env.AWS_BUCKET_NAME,
                 Key: `${Date.now()}-${req.file.originalname}`,
@@ -99,28 +99,44 @@ const editDoctorDetails = async (req, res) => {
             existing_doctor.photo = data.Location;
         }
         await existing_doctor.save();
-        res.status(200).json({message: "Doctor details updated successfully"});
-    }catch(error){
+        res.status(200).json({ message: "Doctor details updated successfully" });
+    } catch (error) {
         console.log(error);
-        res.status(500).json({message: "Internal Server Error"})
+        res.status(500).json({ message: "Internal Server Error" })
     }
 }
 
-const getDoctorDetails = async (req, res) => { 
-    try{
+const getDoctorDetails = async (req, res) => {
+    try {
         const doctorId = req.params.doctorId;
-        if(!doctorId){
-            res.status(404).json({message: "Doctor not found"})
+        if (!doctorId) {
+            res.status(404).json({ message: "Doctor not found" })
         }
         const doctor = await Doctor.findById(doctorId);
-        if(!doctor){
-            res.status(404).json({message: "Doctor not found"})
+        if (!doctor) {
+            res.status(404).json({ message: "Doctor not found" })
         }
         res.status(200).json(doctor)
-    }catch(error){
+    } catch (error) {
         console.log(error);
-        res.status(500).json({message: "Internal Server Error"})
+        res.status(500).json({ message: "Internal Server Error" })
     }
 }
 
-module.exports = {getPatients,getAllDoctors,getDoctorDetails,editDoctorDetails}
+
+const getAllAppt = async (req, res) => {
+    const doctorId = req.params.doctorId;
+    const existing_doctor = await Doctor.findById(doctorId);
+    if (!existing_doctor) {
+        res.status(404).json({ message: "Doctor not found" })
+    }
+    const appointments = await Appointment.find({ doctorId: doctorId }).populate('patientId')
+    if (!appointments) {
+        res.status(404).json({ message: "No appointments found" })
+    }
+
+    res.status(200).json(appointments)
+}
+
+
+module.exports = { getPatients, getAllDoctors, getDoctorDetails, editDoctorDetails, getAllAppt }

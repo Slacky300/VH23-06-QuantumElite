@@ -7,7 +7,7 @@ const {verifyJWT} = require("../middlewares/verifyJWT");
 
 
 router.route('/add-appointment').post(verifyJWT,addAppointment);
-router.route('/accept-or-reject-apt').put(verifyJWT,acceptOrRejectApt);
+router.route('/accept-or-reject-apt').patch(verifyJWT,acceptOrRejectApt);
 router.route('/get-available-apt-time/:id').get(verifyJWT,getAvailableAptTime);
 
 
