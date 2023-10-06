@@ -130,29 +130,9 @@ const getAllAppt = async (req, res) => {
     if (!existing_doctor) {
         res.status(404).json({ message: "Doctor not found" })
     }
-    const appts = [];
     const appointments = await Appointment.find({ doctorId: doctorId }).populate('patientId')
     if (!appointments) {
         res.status(404).json({ message: "No appointments found" })
-    }
-    for (const x of appointments) {
-        const patient = await Patient.findById(x.patientId);
-        if (!patient) {
-            res.status(404).json({ message: "Patient not found" })
-        }
-        appts.push({
-            appointmentId: x._id,
-            patientId: x.patientId,
-            patientName: patient.fullName,
-            patientEmail: patient.email,
-            patientPhone: patient.phone,
-            date: x.date,
-            time: x.time,
-            description: x.description,
-            status: x.status
-        })
-
-
     }
 
     res.status(200).json(appointments)
