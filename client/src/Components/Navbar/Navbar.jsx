@@ -88,7 +88,7 @@ const Navbar = () => {
                                         <Link to='/login' style={{ textDecoration: 'none' }} className="nav-item text-center">
                                             <a className="nav-link learn-more-btn btn-extra-header" aria-current="page">Login</a>
                                         </Link>
-                                        <Link to='/register' style={{ textDecoration: 'none' }} className="nav-item text-center">
+                                        <Link to='/patientregister' style={{ textDecoration: 'none' }} className="nav-item text-center">
                                             <a className="nav-link learn-more-btn" aria-current="page">Register</a>
                                         </Link>
                                     </ul>) : (<ul className='mt-2 text-center'>
@@ -147,7 +147,7 @@ const Navbar = () => {
                                     <Link to='/login' style={{ textDecoration: 'none' }} className="nav-item text-center">
                                         <a className="nav-link learn-more-btn btn-extra-header" aria-current="page">Login</a>
                                     </Link>
-                                    <Link to='/register' style={{ textDecoration: 'none' }} className="nav-item text-center">
+                                    <Link to='/patientregister' style={{ textDecoration: 'none' }} className="nav-item text-center">
                                         <a className="nav-link learn-more-btn" aria-current="page">Register</a>
                                     </Link>
                                 </ul>) : (<ul className='mt-2 text-center'>

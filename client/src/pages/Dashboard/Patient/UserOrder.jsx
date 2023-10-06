@@ -1,6 +1,4 @@
 import axios from "axios";
-
-import { Link } from "react-router-dom";
 import UserMenu from "./UserMenu";
 
 const UserOrder = () => {
@@ -11,10 +9,10 @@ const UserOrder = () => {
           <div className="col-md-3">
             <UserMenu />
           </div>
-          <div className="col-md-9 my-3">
+          <div className="col-md-9">
             <div className="col-md-12">
-              <h1 className="text-center">My Orders</h1>
               <div className="container-fluid">
+                <h1 className="text-start">My Orders</h1>
                 <div className="row">
                   <div className="col-md-9 ">
                     <div className="table-responsive">
@@ -39,9 +37,9 @@ const UserOrder = () => {
                             <td>10:00 AM</td>
                             <td>rs 120</td>
                             <td>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Bill details
-</button>
+                              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                Bill details
+                              </button>
                             </td>
                           </tr>
                         </tbody>
@@ -56,46 +54,32 @@ const UserOrder = () => {
       </div>
 
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body m-3">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">SR no.</th>
+                    <th scope="col">Medicine Name</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>3</td>
+                    <td>120</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p className="text-end">Total Price: 120</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="modal-body">
-        
-      <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">SR no.</th>
-      <th scope="col">Medicine Name</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Price</th>
-      
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>3</td>
-      <td>120</td>
-      .
-      
-    </tr>
-  </tbody>
-</table>
-<p className="text-end">Total Price: 120</p>
-
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
 
     </div>
   );
