@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const mydb = require('./db')
 require('dotenv').config();
 const authRoutes = require('./routes/auth.routes')
+const doctorRoutes = require('./routes/doctor.routes')
 
 
 app.use(express.json())
@@ -18,6 +19,7 @@ app.listen(4000, () => {
 
 
 
-app.use('/api/v1/auth', authRoutes)
+app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/doctor', doctorRoutes);
 
 
