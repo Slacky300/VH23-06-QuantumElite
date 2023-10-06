@@ -3,9 +3,11 @@ const {addAppointment,acceptOrRejectApt} = require("../controllers/appointment.c
 
 const express = require('express')
 const router = express.Router()
+const {verifyJWT} = require("../middlewares/verifyJWT");
 
-router.route('/add-appointment').post(addAppointment);
-router.route('/accept-or-reject-apt').put(acceptOrRejectApt);
+
+router.route('/add-appointment').post(verifyJWT,addAppointment);
+router.route('/accept-or-reject-apt').put(verifyJWT,acceptOrRejectApt);
 
 
 module.exports = router;
