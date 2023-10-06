@@ -47,6 +47,7 @@ const Login = () => {
                     user: res.data.vendor,
                     token: res.data.token
                 })
+
                 localStorage.setItem('auth', JSON.stringify(res.data.token))
                 navigate('/')
             }
