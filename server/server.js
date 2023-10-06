@@ -9,6 +9,7 @@ const doctorRoutes = require('./routes/doctor.routes')
 const patientRoutes = require('./routes/patient.routes')
 const appointmentRoutes = require('./routes/appointment.routes');
 const vendorRoutes = require('./routes/vendor.routes');
+const prescriptionRoutes = require('./routes/prescription.routes');
 
 
 app.use(express.json())
@@ -28,4 +29,4 @@ app.use('/api/v1/doctor', doctorRoutes);
 app.use('/api/v1/patient', patientRoutes);
 app.use('/api/v1/appointment', appointmentRoutes);
 app.use('/api/v1/vendor', vendorRoutes);
-
+app.use('/api/v1/prescription', prescriptionRoutes);

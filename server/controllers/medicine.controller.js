@@ -107,4 +107,19 @@ const addMedicine = async (req, res) => {
 
 
 
-module.exports = {getPurchasedMedicine, purchaseMedicine, addMedicine}
+const getAllMedicine  = async (req, res) => {
+    try{
+        const medicines = await Medicine.find({}).select("-vendorId -purchasedBypatient -_v -updatedAt");
+        if(!medicines){
+            res.status(404).json({message: "No medicines found"})
+        }
+        res.status(200).json(medicines)
+    }catch(e){
+        console.log(e);
+        res.status(500).json({message: "Internal Server Error"})
+    }
+}
+
+
+
+module.exports = {getPurchasedMedicine, purchaseMedicine, addMedicine , getAllMedicine}

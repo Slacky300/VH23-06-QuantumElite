@@ -1,12 +1,31 @@
 const {Prescription} = require('../models/prescription.model');
+const AWS = require('aws-sdk')
+
+
+
+AWS.config.update({
+    accessKeyId: process.env.AWS_ACCESS_KEY,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    region: 'ap-south-1'
+});
 
 const addPrescription = async (req, res) => {
 
     try{
-        const {patientId, doctorId, prescImg, description} = req.body;
+        const {patientId, description} = req.body;
+        let prescImg = req.file;
+        const params = {
+            Bucket: process.env.AWS_BUCKET_NAME,
+            Key: `${Date.now()}-${req.file.originalname}`,
+            Body: req.file.buffer,
+            ContentType: req.file.mimetype,
+
+        };
+        const data = await s3.upload(params).promise();
+        prescImg = data.Location;
         const newPrescription = await Prescription.create({
             patient: patientId,
-            doctor: doctorId,
+            doctor: req.user.id,
             prescImg: prescImg,
             description: description
         });
@@ -22,19 +41,12 @@ const getAssignedPrescriptions = async (req, res) => {
     try {
 
         const patientId = req.params.patientId;
-        const prescriptions = await Prescription.find({patient: patientId});
+        const prescriptions = await Prescription.find({patient: patientId}).populate('patient');
         if(!prescriptions){
             res.status(404).json({message: "No prescriptions found"})
         }
-        const data = [];
-        for(const presc of prescriptions){
-            data.push({
-                prescriptionId: presc._id,
-                prescImg: presc.prescImg,
-                description: presc.description
-            })
-        }
-        res.status(200).json(data)
+        
+        res.status(200).json(prescriptions)
         
     } catch (error) {
         console.log(error);
