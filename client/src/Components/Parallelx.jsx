@@ -10,12 +10,10 @@ const Parallelx = () => {
                     <div class="row">
                         <div class="col-xl-6 xol-lg-6 col-md-12 col-12  d-flex flex-column justify-content-center align-items-start ">
                             <h1 class="common-heading text-capitalize fw-bolder text-white">
-                                Your Safety Our priority
+                                AN APPLE A DAY KEEPS DOCTORS AWAY
                             </h1>
                             <p class="mt-3 mb-5 para-width text-white" style={{ textAlign: 'justify' }}>
-                                We at Safe Siren ensure that each and every person is secure and
-                                get help if required as soon as possible with help of locatiion
-                                sharing feature and Emergency Service available 24/7
+                               FHDGF FD KJF FKDSF  FDSKFHD    FDKJHF DS          FDKHF
                             </p>
                             <Link to='/contact' class="btn learn-more-btn">Contact Us</Link>
                         </div>

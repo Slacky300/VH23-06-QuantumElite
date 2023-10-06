@@ -17,7 +17,7 @@ const Vadmin = () => {
         task_id: '74f4c926-250c-43ca-9c53-453e87ceacd1',
         group_id: '8e16424a-58fc-4ba4-ab20-5bc8e7c3c41e',
         data: {
-          gstin: '27PGWPS7766E1Z1'
+          gstin: ''
         }
       }
     };
@@ -33,11 +33,11 @@ const Vadmin = () => {
 
 
   const handleVerify = () => {
-    checkGSTIN()
+    // checkGSTIN()
   }
 
 
-
+// 
   return (
     <div>
       <div className="abc" >
@@ -101,16 +101,16 @@ const Vadmin = () => {
               {
                 gstInData ? (
                   <>
-                    <p>{gstInData.result.source_output.trade_name}</p>
-                    <p>{gstInData.result.source_output.principal_place_of_business_fields.principal_place_of_business_address.door_number}</p>
-                    <p>{gstInData.result.source_output.principal_place_of_business_fields.principal_place_of_business_address.city || ''}</p>
-                    <p>{gstInData.result.source_output.principal_place_of_business_fields.principal_place_of_business_address.location || ''}</p>
-                    <p>{gstInData.result.source_output.principal_place_of_business_fields.principal_place_of_business_address.state_name || ''}</p>
-                    <p>{gstInData.result.source_output.principal_place_of_business_fields.principal_place_of_business_address.pincode || ''}</p>
+                    <p className='mt-5'>TRADE NAME: {gstInData.result.source_output.trade_name}</p>
+                    <p>Place:{gstInData.result.source_output.principal_place_of_business_fields.principal_place_of_business_address.door_number}</p>
+                    <p>City:{gstInData.result.source_output.principal_place_of_business_fields.principal_place_of_business_address.city || ''}</p>
+                    <p>Location:{gstInData.result.source_output.principal_place_of_business_fields.principal_place_of_business_address.location || ''}</p>
+                    <p>State Name{gstInData.result.source_output.principal_place_of_business_fields.principal_place_of_business_address.state_name || ''}</p>
+                    <p>Pincode:{gstInData.result.source_output.principal_place_of_business_fields.principal_place_of_business_address.pincode || ''}</p>
 
 
                   </>
-                ) : <p>NOT VERIFIED</p>
+                ) : <p>NO DATA AVAILABLE</p>
               }
             </div>
             <div class="modal-footer">
