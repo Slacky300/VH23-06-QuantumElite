@@ -98,7 +98,7 @@ const registerUser = async (req, res) => {
             }
             const newDoctor = new Doctor({
                 fullName, email, password: hashedPassword,
-                certification
+                certification, phone
             })
             await newDoctor.save()
             return res.status(200).json({ message: "Doctor registered successfully", user: newDoctor })
@@ -125,7 +125,7 @@ const registerUser = async (req, res) => {
             }
             const newVendor = new Vendor({
                 fullName, email, password: hashedPassword,
-                certification, gstNo
+                certification, gstNo, phone
             })
             await newVendor.save()
             return res.status(200).json({ message: "Vendor registered successfully", user: newVendor })

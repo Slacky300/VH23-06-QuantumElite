@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 import { useAuth } from '../context/auth'
@@ -9,22 +9,34 @@ import Footer from './Footer/Footer'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { addAppointment } from '../redux/Appointment/appointmentActions'
-import { useDispatch } from 'react-redux'
-const Appointment = () => {
+import { useDispatch, useSelector } from 'react-redux'
+
+const Appointment = ({ doctorID }) => {
 
   const dispatch = useDispatch();
 
   const currentDate = new Date();
   const [selectedDate, setSelectedDate] = useState(currentDate);
   const [patientId, setPatientId] = useState('');
-  const [doctorId, setDoctorId] = useState('');
+
   const [description, setDescription] = useState('');
   const [address, setAddress] = useState('');
+  const [time, setTime] = useState('')
+  const user = useSelector((state) => state?.auth?.user)
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  const handleSubmit = () => {
+    dispatch(addAppointment({
+      patientId: user._id,
+      doctorId: doctorID,
+      date: selectedDate,
+      description: description,
+      time: time
 
+    }))
   }
+
 
   return (
     <>
@@ -38,7 +50,7 @@ const Appointment = () => {
             >
               <div class="row align-items-center">
                 <div class="header-text mb-2">
-                  <h2>Appointment</h2>
+                  <h2>Appointment </h2>
                   <p>We us your Incident, we will take action against it !</p>
                 </div>
                 <label htmlFor="exampleFormControlSelect1">
@@ -62,12 +74,14 @@ const Appointment = () => {
                   <select
                     className="form-control border-dark"
                     id="exampleFormControlSelect1"
+                    value={time}
+                    onChange={(e) => setTime(e.target.value)}
                   >
-                    <option>10 AM</option>
-                    <option>11 AM</option>
-                    <option>2 PM</option>
-                    <option>4 PM</option>
-                    <option>5 PM</option>
+                    <option value='10'>10 AM</option>
+                    <option value='11'>11 AM</option>
+                    <option value='2'> 2 PM</option>
+                    <option value='4'>4 PM</option>
+                    <option value='5'>5 PM</option>
                   </select>
                 </div>
 
@@ -79,8 +93,8 @@ const Appointment = () => {
                     <textarea
                       rows={3}
                       type="text"
-                      value={address}
-                      onChange={(e) => setAddress(e.target.value)}
+
+                      onChange={(e) => setDescription(e.target.value)}
                       class="form-control form-control-lg border-dark fs-6"
                       placeholder="Describe the issue"
                       required

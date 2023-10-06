@@ -1,11 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-import { getDoctors } from './doctorActions'
+import { getDoctors, getDoctorById } from './doctorActions'
 
 
 const initialState = {
     doctors: [],
-    isLoading: false
+    isLoading: false,
+    doctorById: {}
 }
 
 
@@ -25,6 +26,19 @@ export const doctorSlice = createSlice({
             state.doctors = action.payload
         })
         builder.addCase(getDoctors.rejected, (state, action) => {
+            state.isLoading = false
+        })
+
+        builder.addCase(getDoctorById.pending, (state, action) => {
+            state.isLoading = true
+        })
+
+        builder.addCase(getDoctorById.fulfilled, (state, action) => {
+            state.isLoading = false
+            state.doctorById = action.payload
+        })
+
+        builder.addCase(getDoctorById.rejected, (state, action) => {
             state.isLoading = false
         })
 

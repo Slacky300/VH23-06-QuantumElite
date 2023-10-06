@@ -17,7 +17,7 @@ export const getDoctors = createAsyncThunk(
                     },
                 });
             if (response.status === 200) {
-                toast.success("Doctors Fetched Successfully")
+
                 return response.data;
             } else {
                 toast.error("Something went wrong")
@@ -35,14 +35,14 @@ export const getDoctorById = createAsyncThunk(
     'doctors/getDoctorsById',
     async (id, { rejectWithValue, dispatch }) => {
         try {
-            const response = await axios.get(`${host}/api/v1/doctor/${id}`,
+            const response = await axios.get(`${host}/api/v1/doctor/doctor-details/${id}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
                 });
             if (response.status === 200) {
-                toast.success("Doctor Fetched Successfully")
+
                 return response.data;
             } else {
                 toast.error("Something went wrong")
