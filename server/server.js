@@ -4,6 +4,7 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const mydb = require('./db')
 require('dotenv').config();
+const authRoutes = require('./routes/auth.routes')
 
 
 app.use(express.json())
@@ -15,5 +16,8 @@ app.listen(4000, () => {
     console.log("Server is running on port 4000")
 })
 
+
+
+app.use('/api/v1/auth', authRoutes)
 
 
