@@ -21,7 +21,6 @@ const Appointments = () => {
                 <th>Date</th>
                 <th>Time</th>
                 <th>Status</th>
-
                 <th>Actions</th>
                 <th>Details</th>
               </tr>
@@ -68,14 +67,11 @@ const Appointments = () => {
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
-
             <div class="modal-body">
               <h5>Patient Details: </h5>
               <p className="mt-5">Patient name:</p>
               <p className="mt-5">Problem:</p>
-
             </div>
-
           </div>
         </div>
       </div>
