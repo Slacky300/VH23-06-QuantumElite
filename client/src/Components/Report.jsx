@@ -8,42 +8,19 @@ import Navbar from './Navbar/Navbar'
 import Footer from './Footer/Footer'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import { addAppointment } from '../redux/Appointment/appointmentActions'
+import { useDispatch } from 'react-redux'
 const Report = () => {
-  const [report, setReport] = useState('')
-  const [pincodeOfIncident, setpincodeOfIncident] = useState('')
-  const [address, setAddress] = useState('')
 
-  const [selectedDate, setSelectedDate] = useState(null);
+  const dispatch = useDispatch();
 
   const currentDate = new Date();
+  const [selectedDate, setSelectedDate] = useState(currentDate);
+  const [patientId, setPatientId] = useState('');
+  const [doctorId, setDoctorId] = useState('');
+  const [description, setDescription] = useState('');
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
 
-    if (!report.trim()) {
-      toast.error('Report is Required !')
-      return false
-    }
-    if (!pincodeOfIncident.trim()) {
-      toast.error('PinCode is Required !')
-      return false
-    }
-    if (!address.trim()) {
-      toast.error('Address is Required !')
-      return false
-    }
-    try {
-      const res = await axios.post('https://womensecbackend.onrender.com/api/v1/incidents',
-        { report, pincodeOfIncident, address });
-
-      if (res.status === 201) {
-        toast.success('Incident Reported Successfully')
-      }
-    } catch (err) {
-      toast.error('Error in Sending Report')
-    }
-  }
   return (
     <>
       <>

@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import Report from '../Components/Report'
 import Navbar from '../Components/Navbar/Navbar'
+import { getDoctors } from '../redux/Doctors/doctorActions'
+import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 const host = 'https://telemedix-backend.onrender.com'
 
+
 const Doctor = () => {
 
-  const [doctor, setDoctor] = useState([])
+  const dispatch = useDispatch()
 
-  const getDoctors = async () => {
-    const { data } = await axios.get(`${host}/api/v1/doctor/all-doctors`)
-    setDoctor(data)
-  }
+  const doctors = useSelector((state) => state?.doctors?.doctors)
 
   useEffect(() => {
-    getDoctors()
+    dispatch(getDoctors())
   }, [])
 
   return (
@@ -25,7 +25,7 @@ const Doctor = () => {
           <div class="row text-center">
             <h5 className="text-center" style={{ color: '#3d86e8' }}>Our Doctors for your Safety</h5>
             <h1 className="text-center mb-5">Our Doctors</h1>
-            {doctor.map((c) => (
+            {doctors.map((c) => (
               <div class="col-xl-3 col-sm-6">
                 <div class="bg-white py-5 px-4 cardStyle">
                   <img data-bs-toggle="modal" data-bs-target="#exampleModal1" src="https://www.ankurahospitals.com/wp-content/uploads/2021/03/our-doctor-placeholder.jpg" alt="" width="100" class=" mb-3 img-thumbnail shadow-sm" />

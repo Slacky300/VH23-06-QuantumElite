@@ -23,7 +23,9 @@ const Navbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token')
+    window.location.reload()
     navigate('/login')
+    window.location.reload()
   }
 
   useEffect(() => {
@@ -64,43 +66,39 @@ const Navbar = () => {
                       <a className="nav-link " aria-current="page">Home</a>
                     </li>
                   </Link>
-                  <Link to='/about' style={{ textDecoration: 'none' }}>
-                    <li className="nav-item">
-                      <a className="nav-link " aria-current="page">Medicines</a>
-                    </li>
-                  </Link>
-                  <Link to='/contact' style={{ textDecoration: 'none' }}>
+                  <Link to='/doctor' style={{ textDecoration: 'none' }}>
                     <li className="nav-item">
                       <a className="nav-link " aria-current="page">Doctor</a>
                     </li>
                   </Link>
+                  <Link to='/video' style={{ textDecoration: 'none' }}>
+                    <li className="nav-item">
+                      <a className="nav-link " aria-current="page">Video</a>
+                    </li>
+                  </Link>
                 </ul>
+                {user ?
+                  (
+                    <ul className='mt-2 text-center'>
+                      <Link style={{ textDecoration: 'none' }} className="nav-item text-center">
+                        <a className="nav-link learn-more-btn" aria-current="page">Dashboard</a>
+                      </Link>
+                      <Link onClick={handleLogout} style={{ textDecoration: 'none' }} className="nav-item text-center">
+                        <a className="nav-link learn-more-btn-logout" aria-current="page" onClick={handleLogout}>Logout</a>
+                      </Link>
+                    </ul>)
 
+                  : (
+                    <ul className='mt-2 text-center'>
+                      <Link to='/login' style={{ textDecoration: 'none' }} className="nav-item text-center">
+                        <a className="nav-link learn-more-btn btn-extra-header" aria-current="page">Login</a>
+                      </Link>
+                      <Link to='/patientregister' style={{ textDecoration: 'none' }} className="nav-item text-center">
+                        <a className="nav-link learn-more-btn" aria-current="page">Register</a>
+                      </Link>
+                    </ul>
 
-                {
-                  user ?
-
-                    (
-                      <ul className='mt-2 text-center'>
-                        <Link style={{ textDecoration: 'none' }} className="nav-item text-center">
-                          <a className="nav-link learn-more-btn" aria-current="page">Dashboard</a>
-                        </Link>
-                        <Link onClick={handleLogout} style={{ textDecoration: 'none' }} className="nav-item text-center">
-                          <a className="nav-link learn-more-btn-logout" aria-current="page" onClick={handleLogout}>Logout</a>
-                        </Link>
-                      </ul>)
-
-                    : (
-                      <ul className='mt-2 text-center'>
-                        <Link to='/login' style={{ textDecoration: 'none' }} className="nav-item text-center">
-                          <a className="nav-link learn-more-btn btn-extra-header" aria-current="page">Login</a>
-                        </Link>
-                        <Link to='/patientregister' style={{ textDecoration: 'none' }} className="nav-item text-center">
-                          <a className="nav-link learn-more-btn" aria-current="page">Register</a>
-                        </Link>
-                      </ul>
-
-                    )
+                  )
                 }
 
               </div>
