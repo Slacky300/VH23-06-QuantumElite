@@ -12,9 +12,9 @@ import Pdash from './pages/Dashboard/Patient/Pdash';
 import UserOrder from './pages/Dashboard/Patient/UserOrder';
 import Appointment from './pages/Dashboard/Patient/Appointment';
 import Doctor from './pages/Doctor';
-import Register from './pages/Auth/DoctorRegister';
 import Admin from './pages/Admin';
 import Vadmin from './pages/Vadmin';
+import Video from './pages/Video';
 import { getLoggedinUser } from './redux/Auth/authActions';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -31,13 +31,13 @@ function App() {
 
   return (
     <Router>
+
       <Navbar />
+
       <Routes>
+      <Route path='/' element={<Home />} />
         <Route element={<PrivateRoutes />}>
-          <Route path='/' element={<Home />} />
-
           <Route path='/contact' element={<ContactUs />} />
-
           <Route path='/doctorregister' element={<DoctorRegister />} />
           <Route path='/patientregister' element={<PatientRegister />} />
           <Route path='/vendorregister' element={<VendorRegister />} />
@@ -45,6 +45,7 @@ function App() {
           <Route path='/patient/order' element={<UserOrder />} />
           <Route path='/patient/appointment' element={<Appointment />} />
           <Route path='/doctor' element={<Doctor />} />
+          <Route path='/video' element={<Video />} />
         </Route>
 
         <Route path='/doctorregister' element={<DoctorRegister />} />
@@ -59,10 +60,7 @@ function App() {
       </Routes>
       <Toaster />
     </Router>
-
-  )
-    ;
-
+  );
 }
 
 export default App;
