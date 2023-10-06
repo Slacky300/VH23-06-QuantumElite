@@ -97,8 +97,8 @@ const registerUser = async (req, res) => {
                 return res.status(400).json({ message: "User already exists" })
             }
             const newDoctor = new Doctor({
-                fullName, email, password: hashedPassword, phone,
-                certification
+                fullName, email, password: hashedPassword,
+                certification, phone
             })
             await newDoctor.save()
             return res.status(200).json({ message: "Doctor registered successfully", user: newDoctor })
@@ -124,8 +124,8 @@ const registerUser = async (req, res) => {
                 return res.status(400).json({ message: "User already exists" })
             }
             const newVendor = new Vendor({
-                fullName, email, password: hashedPassword,phone,
-                certification, gstNo
+                fullName, email, password: hashedPassword,
+                certification, gstNo, phone
             })
             await newVendor.save()
             return res.status(200).json({ message: "Vendor registered successfully", user: newVendor })

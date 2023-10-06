@@ -1,10 +1,10 @@
-const {Appointment} = require('../models/appointment.models');
-const {Doctor} = require('../models/doctor.models');
+const { Appointment } = require('../models/appointment.models');
+const { Doctor } = require('../models/doctor.models');
 
 const getAvailableAptTime = async (req, res) => {
     try {
         const doctorId = req.params.id;
-        
+
         const existingAppointments = await Appointment.find({ doctorId: doctorId });
         const doctor = await Doctor.findById(doctorId);
 
@@ -36,35 +36,35 @@ const addAppointment = async (req, res) => {
         description: description
     });
 
-    res.status(200).json({message: "Appointment added successfully", newAppointment});
+    res.status(200).json({ message: "Appointment added successfully", newAppointment });
 }
 
 
 const acceptOrRejectApt = async (req, res) => {
 
-    const {appointmentId, status} = req.body;
+    const { appointmentId, status } = req.body;
     const existing_appointment = await Appointment.findById(appointmentId);
-    if(!existing_appointment) return res.status(404).json({message: "Appointment not found"});
-    if(status === "accepted"){
+    if (!existing_appointment) return res.status(404).json({ message: "Appointment not found" });
+    if (status === "accepted") {
         existing_appointment.status = status;
         existing_appointment.videoCallId = existing_appointment._id;
         await existing_appointment.save();
         const doctor = await Doctor.findById(existing_appointment.doctorId);
         const patient = await Patient.findById(existing_appointment.patientId);
         doctor.appointments.push(existing_appointment._id);
-        doctor.patients.push({patient: existing_appointment.patientId});
+        doctor.patients.push({ patient: existing_appointment.patientId });
         patient.appointments.push(existing_appointment._id);
         await doctor.save();
         await patient.save();
-    }else{
+    } else {
         existing_appointment.status = status;
         await existing_appointment.save();
     }
 
-    res.status(200).json({message: "Appointment updated successfully", existing_appointment});
+    res.status(200).json({ message: "Appointment updated successfully", existing_appointment });
 
 }
 
 
 
-module.exports = {addAppointment, acceptOrRejectApt, getAvailableAptTime}
+module.exports = { addAppointment, acceptOrRejectApt, getAvailableAptTime }
