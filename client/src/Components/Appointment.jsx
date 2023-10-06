@@ -15,7 +15,6 @@ const Appointment = ({ doctorID }) => {
   const dispatch = useDispatch();
 
   const currentDate = new Date();
-  const [address,setAddress] = useState('');
   const [selectedDate, setSelectedDate] = useState(currentDate);
   const [patientId, setPatientId] = useState('');
 
@@ -107,7 +106,7 @@ const Appointment = ({ doctorID }) => {
                   <div class="form-outline flex-fill mb-0 ">
                     <button
                       className="btn text-white btn-lg btn-block"
-                     
+
                       style={{ width: "100%", backgroundColor: "#3d86e8" }}
                       type="submit"
                     >
