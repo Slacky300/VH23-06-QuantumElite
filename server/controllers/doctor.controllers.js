@@ -2,6 +2,7 @@ const { Patient } = require('../models/patient.models')
 const {Doctor} = require('../models/doctor.models')
 const {Appointment} = require('../models/appointment.models');
 const {Medicine} = require('../models/medicine.models');
+const AWS = require('aws-sdk')
 
 require('dotenv').config();
 
