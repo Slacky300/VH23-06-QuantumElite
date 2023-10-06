@@ -46,9 +46,6 @@ function App() {
       <Route path='/vendorregister' element={<VendorRegister/>} />
       <Route path='/admin' element={<Admin/>} />
 
-
-      
-
       </Routes>
       <Toaster />
     </Router>
