@@ -26,6 +26,7 @@ import DocDash from './pages/Dashboard/Doctor/DocDash';
 import CallHistory from './pages/Dashboard/Doctor/CallHistory';
 import MeetingPage from './Noti/MeetingPage';
 import VideoLibrary from './pages/VideoLibrary';
+import Room from './pages/Room';
 
 function App() {
   const dispatch = useDispatch()
@@ -48,6 +49,7 @@ function App() {
 
           <Route path='/patient/appointment' element={<Appointment />} />
           <Route path='/doctor' element={<Doctor />} />
+          <Route path='/room/:roomId' element={<Room />} />
           <Route path='/video' element={<Video />} />
           <Route path='/vdash' element={<Vdash />} />
           <Route path='/doctordash' element={<DocDash />} />
