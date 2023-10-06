@@ -83,7 +83,7 @@ const Login = () => {
                             </div>
                             <div class="d-flex flex-row align-items-center mt-4 ">
                                 <div class="form-outline flex-fill mb-0">
-                                    <button class="btn btn-lg  text-white" type="button" onClick={handleSubmit} style={{ backgroundColor: 'blueviolet', width: '100%' }} >Login</button>
+                                    <button class="btn btn-lg  text-white" type="button" onClick={handleSubmit} style={{ backgroundColor: '#3d86e8', width: '100%' }} >Login</button>
                                 </div>
                             </div>
                             <div class="d-flex flex-row align-items-center my-3 ">
