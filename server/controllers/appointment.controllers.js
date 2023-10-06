@@ -1,5 +1,7 @@
 const { Appointment } = require('../models/appointment.models');
 const { Doctor } = require('../models/doctor.models');
+const {Patient} = require('../models/patient.models');
+const {sendVideoLink} = require('../utils/email')
 
 const getAvailableAptTime = async (req, res) => {
     try {
@@ -45,7 +47,7 @@ const acceptOrRejectApt = async (req, res) => {
     const { appointmentId, status } = req.body;
     const existing_appointment = await Appointment.findById(appointmentId);
     if (!existing_appointment) return res.status(404).json({ message: "Appointment not found" });
-    if (status === "accepted") {
+    if (status === "approved") {
         existing_appointment.status = status;
         existing_appointment.videoCallId = existing_appointment._id;
         await existing_appointment.save();
@@ -56,12 +58,15 @@ const acceptOrRejectApt = async (req, res) => {
         patient.appointments.push(existing_appointment._id);
         await doctor.save();
         await patient.save();
+        await sendVideoLink(patient.email, existing_appointment.videoCallId, doctor.fullName, patient.fullName, existing_appointment.time, existing_appointment.date)
+        res.status(200).json({ message: "Appointment updated successfully", existing_appointment });
     } else {
         existing_appointment.status = status;
         await existing_appointment.save();
+        res.status(200).json({ message: "Appointment updated successfully", existing_appointment });
     }
 
-    res.status(200).json({ message: "Appointment updated successfully", existing_appointment });
+    
 
 }
 
