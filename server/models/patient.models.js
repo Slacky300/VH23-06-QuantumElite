@@ -47,6 +47,10 @@ const PatientSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Prescription'
     }],
+    role: {
+        type: String,
+        default: "patient"
+    },
 
 })
 
