@@ -1,7 +1,7 @@
 const { Appointment } = require('../models/appointment.models');
 const { Doctor } = require('../models/doctor.models');
-const {Patient} = require('../models/patient.models');
-const {sendVideoLink} = require('../utils/email')
+const { Patient } = require('../models/patient.models');
+const { sendVideoLink } = require('../utils/email')
 
 const getAvailableAptTime = async (req, res) => {
     try {
@@ -29,9 +29,10 @@ const getAvailableAptTime = async (req, res) => {
 
 const addAppointment = async (req, res) => {
 
-    const { patientId, doctorId, date, time, description } = req.body;
+    const { doctorId, date, time, description } = req.body;
+    const user = req.user.id;
     const newAppointment = await Appointment.create({
-        patientId: patientId,
+        patientId: user,
         doctorId: doctorId,
         date: date,
         time: time,
@@ -66,7 +67,7 @@ const acceptOrRejectApt = async (req, res) => {
         res.status(200).json({ message: "Appointment updated successfully", existing_appointment });
     }
 
-    
+
 
 }
 
