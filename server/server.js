@@ -11,6 +11,7 @@ const appointmentRoutes = require('./routes/appointment.routes')
 
 
 app.use(express.json())
+
 app.use(cors())
 
 mydb.myDb();

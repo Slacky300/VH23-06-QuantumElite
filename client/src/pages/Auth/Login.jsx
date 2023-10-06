@@ -50,7 +50,7 @@ const Login = () => {
                 console.log(res.data)
                 setAuth({
                     ...auth,
-                    user: res.data.vendor,
+                    user: res.data.user,
                     token: res.data.token
                 })
 

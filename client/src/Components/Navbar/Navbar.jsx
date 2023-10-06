@@ -20,6 +20,8 @@ const Navbar = () => {
         toast.success('Logged Out Successfully')
     }
 
+    
+
     const [color, setcolor] = useState(false)
 
     const changeColor = () => {
