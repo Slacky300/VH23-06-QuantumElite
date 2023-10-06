@@ -65,8 +65,8 @@ function App() {
         <Route path='/doctordash' element={<DocDash />} />
         <Route path='/vdash' element={<Vdash />} />
 
-        <Route path='/meeting' element={ <MeetingPage />}/>
-        <Route path='/videolibrary' element={ <VideoLibrary />}/>
+        <Route path='/meeting' element={<MeetingPage />} />
+        <Route path='/videolibrary' element={<VideoLibrary />} />
 
 
 
