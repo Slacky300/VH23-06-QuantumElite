@@ -22,6 +22,11 @@ const medicineSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Vendor'
     }],
+    medImg:{
+        type: {
+            url: String,
+        }
+    },
     purchasedBypatient:[{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Patient'
