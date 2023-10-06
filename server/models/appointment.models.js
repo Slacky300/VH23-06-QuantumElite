@@ -18,7 +18,7 @@ const AppointmentSchema = new mongoose.Schema({
         default: "pending"
     },
     date:{
-        type: Date,
+        type: String,
         required: true
     },
     time:{
@@ -31,7 +31,8 @@ const AppointmentSchema = new mongoose.Schema({
     videoCallId:{
         type: String,
         unique: true
-    }
+    },
+    
 }, {timestamps: true});
 
 const Appointment = mongoose.model("Appointment", AppointmentSchema);
