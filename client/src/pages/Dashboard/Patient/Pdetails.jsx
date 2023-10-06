@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom'
 
 
 const Pdetails = () => {
-  return (
-    <div>
-      <section >
-        <div className="container">
-          <h1 className="text-start">My Profile</h1>
+    return (
+        <div>
+            <section >
+                <div className="container">
+                    <h1 className="text-start">My Profile</h1>
 
           <div className="row">
             <div className="col-lg-4">
@@ -25,53 +25,53 @@ const Pdetails = () => {
               </div>
               <button type="button" class="btn btn-primary">EDIT PROFILE</button>
 
-            </div>
-            <div className="col-lg-8">
-              <div className="card mb-4">
-                <div className="card-body">
-                  <div className="row">
-                    <div className="col-sm-3">
-                      <p className="mb-0">Full Name</p>
-                    </div>
+                        </div>
+                        <div className="col-lg-8">
+                            <div className="card mb-4">
+                                <div className="card-body">
+                                    <div className="row">
+                                        <div className="col-sm-3">
+                                            <p className="mb-0">Full Name</p>
+                                        </div>
 
-                    <div className="col-sm-9">
-                      <input value="s" type="email"
-                        //  onChange={(e) => setuname(e.target.value)}
-                        id="form3Example1c" className="form-control text-muted mb-0" required />
-                    </div>
+                                        <div className="col-sm-9">
+                                            <input value="s" type="email"
+                                                //  onChange={(e) => setuname(e.target.value)}
+                                                id="form3Example1c" className="form-control text-muted mb-0" required />
+                                        </div>
 
-                  </div>
-                  <hr />
-                  <div className="row">
-                    <div className="col-sm-3">
-                      <p className="mb-0">Email</p>
-                    </div>
-                    <div className="col-sm-9">
-                      <input value="s" type="email" id="form3Example1c" className="form-control text-muted mb-0" required />
-                    </div>
-                  </div>
-                  <hr />
-                  <div className="row">
-                    <div className="col-sm-3">
-                      <p className="mb-0">Phone</p>
-                    </div>
-                    <div className="col-sm-9">
-                      <input value="s" type="email" id="form3Example1c" className="form-control text-muted mb-0" required />
-                    </div>
-                  </div>
-                  <hr />
+                                    </div>
+                                    <hr />
+                                    <div className="row">
+                                        <div className="col-sm-3">
+                                            <p className="mb-0">Email</p>
+                                        </div>
+                                        <div className="col-sm-9">
+                                            <input value="s" type="email" id="form3Example1c" className="form-control text-muted mb-0" required />
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div className="row">
+                                        <div className="col-sm-3">
+                                            <p className="mb-0">Phone</p>
+                                        </div>
+                                        <div className="col-sm-9">
+                                            <input value="s" type="email" id="form3Example1c" className="form-control text-muted mb-0" required />
+                                        </div>
+                                    </div>
+                                    <hr />
 
 
-                  <div className="row">
-                    <div className="col-sm-3">
-                      <p className="mb-0">Address</p>
-                    </div>
-                    <div className="col-sm-9">
-                      <input value="s" type="email" id="form3Example1c" className="form-control text-muted mb-0" required />
-                    </div>
-                  </div>
-                </div>
-              </div>
+                                    <div className="row">
+                                        <div className="col-sm-3">
+                                            <p className="mb-0">Address</p>
+                                        </div>
+                                        <div className="col-sm-9">
+                                            <input value="s" type="email" id="form3Example1c" className="form-control text-muted mb-0" required />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
 
             </div>

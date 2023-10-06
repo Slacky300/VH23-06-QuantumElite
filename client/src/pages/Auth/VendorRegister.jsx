@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import register from '../../images/vendor.png'
 import axios from 'axios'
 import toast from 'react-hot-toast';
+import { registerAsVendor } from '../../redux/Auth/authActions'
+import { useDispatch } from 'react-redux'
 
 // const host = process.env.REACT_APP_API_HOST
 
@@ -11,6 +13,7 @@ const host = 'https://telemedix-backend.onrender.com'
 
 
 const VendorRegister = () => {
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     const [fullName, setfullName] = useState('')
     const [email, setEmail] = useState('')
@@ -55,27 +58,9 @@ const VendorRegister = () => {
             toast.error('PinCode is required');
             return false;
         }
-        try {
-            const res = await axios.post(`${host}/api/v1/auth/register`,
 
-                { fullName, userType: 'vendor', email, phone, password, gstNo, pincode, certification }, {
-
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
-
-            if (res.status === 201) {
-                toast.success('Register Successfully')
-                navigate('/login')
-            }
-            if (res.status == 400) {
-                toast.error('Email Already Exist! Please Login')
-            }
-        } catch (err) {
-            toast.error("Error While Register");
-            console.log(err)
-        }
+        //use redux dispatch
+        dispatch(registerAsVendor({ fullName, userType: 'vendor', email, phone, password, pincode, gstNo, certification }))
     }
 
     useEffect(() => {

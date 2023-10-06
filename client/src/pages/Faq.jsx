@@ -1,6 +1,6 @@
 import React from 'react'
 import '../styles/faq.css'
-import faq from '../images/search.png'
+import faq from '../images/faq.png'
 
 const Faq = () => {
     return (
@@ -69,7 +69,7 @@ const Faq = () => {
                                     </h2>
                                     <div id="collapseFive" className="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
                                         <div className="accordion-body">
-                                           500 and counting
+                                            500 and counting
                                         </div>
                                     </div>
                                 </div>

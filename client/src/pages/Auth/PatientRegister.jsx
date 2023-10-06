@@ -4,9 +4,13 @@ import { Link, useNavigate } from 'react-router-dom'
 import register from '../../images/patient.png'
 import axios from 'axios'
 import toast from 'react-hot-toast';
+
+import { registerAsPatient } from '../../redux/Auth/authActions'
+import { useDispatch } from 'react-redux'
 const host = process.env.REACT_APP_API_HOST
 
 const PatientRegister = () => {
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     const [fullName, setfullName] = useState('')
     const [email, setEmail] = useState('')
@@ -45,22 +49,10 @@ const PatientRegister = () => {
             toast.error('PinCode is required');
             return false;
         }
-        try {
-            const res = await axios.post(`${host}/api/v1/auth/register`,
-                { fullName, userType: 'patient', email, phone, password, age });
 
-            console.log(res)
-            if (res.status === 200) {
-                toast.success('Register Successfully')
-                navigate('/login')
-            }
-            else {
-                toast.error(res.data.message)
-            }
-        } catch (err) {
-            toast.error(err?.response?.data?.message);
-            console.log(err.message)
-        }
+        //use redux dispatch
+        dispatch(registerAsPatient({ fullName, userType: 'patient', email, phone, password, age }))
+
     }
 
     useEffect(() => {
