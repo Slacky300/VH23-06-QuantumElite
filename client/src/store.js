@@ -10,7 +10,7 @@ const store = configureStore({
     reducer: {
         auth: authReducer,
 
-        doctors: doctorReducer
+        doctors: doctorReducer,
 
         appointment: appointmentReducer
 
