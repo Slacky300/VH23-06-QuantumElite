@@ -22,12 +22,12 @@ const getLoggedinUser = async (req, res) => {
         const user = req.user.id;
         let existing_user;
         existing_user = await Patient.findById(user);
-        if(!existing_user){
+        if (!existing_user) {
             existing_user = await Doctor.findById(user);
-            if(!existing_user){
+            if (!existing_user) {
                 existing_user = await Vendor.findById(user);
-                if(!existing_user){
-                    return res.status(404).json({message: "User not found"})
+                if (!existing_user) {
+                    return res.status(404).json({ message: "User not found" })
                 }
                 return res.status(200).json({ user: existing_user, message: "success" })
 
@@ -35,9 +35,9 @@ const getLoggedinUser = async (req, res) => {
             return res.status(200).json({ user: existing_user, message: "success" })
         }
 
-      
+
         return res.status(200).json({ user: existing_user, message: "success" })
-        
+
     } catch (error) {
         return res.status(500).json({ message: error.message })
     }
@@ -46,7 +46,7 @@ const getLoggedinUser = async (req, res) => {
 
 const registerUser = async (req, res) => {
     const { userType } = req.body;
-    const { fullName, email, password, age, phone, location, pincode,gstNo } = req.body
+    const { fullName, email, password, age, phone, location, pincode, gstNo } = req.body
     let certification;
     try {
 
