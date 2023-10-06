@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-import { addAppointment } from './appointmentActions'
+import { addAppointment,getAppointMents } from './appointmentActions'
 
 const initialState = {
     appointment: null,
@@ -25,9 +25,22 @@ const appointmentSlice = createSlice({
         builder.addCase(addAppointment.rejected, (state, action) => {
             state.isLoading = false
         })
+        builder.addCase(getAppointMents.pending, (state, action) => {
+            state.isLoading = true
+        })
+        builder.addCase(getAppointMents.fulfilled, (state, action) => {
+            state.isLoading = false
+            state.appointment = action.payload
+        })
+        builder.addCase(getAppointMents.rejected, (state, action) => {
+            state.isLoading = false
+        })
+        
 
     }
 });
+
+
 
 
 export default appointmentSlice.reducer;

@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-import { getDoctors, getDoctorById } from './doctorActions'
+import { getDoctors, getDoctorById} from './doctorActions'
 
 
 const initialState = {
