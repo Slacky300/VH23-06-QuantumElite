@@ -12,51 +12,55 @@ import Pdash from './pages/Dashboard/Patient/Pdash';
 import UserOrder from './pages/Dashboard/Patient/UserOrder';
 import Appointment from './pages/Dashboard/Patient/Appointment';
 import Doctor from './pages/Doctor';
-import Register from './pages/Auth/DoctorRegister';
 import Admin from './pages/Admin';
 import Vadmin from './pages/Vadmin';
+import Video from './pages/Video';
+import { getLoggedinUser } from './redux/Auth/authActions';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import PrivateRoutes from './utils/PrivateRoutes';
 import Navbar from './Components/Navbar/Navbar';
 
-
 function App() {
+  const dispatch = useDispatch()
 
+  useEffect(() => {
+    dispatch(getLoggedinUser())
+  }, [])
 
 
   return (
     <Router>
 
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/*' element={<NotFound />} />
-        <Route path='/contact' element={<ContactUs />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/doctorregister' element={<DoctorRegister />} />
-        <Route path='/patientregister' element={<PatientRegister />} />
-        <Route path='/vendorregister' element={<VendorRegister />} />
-        <Route path='/emergency' element={<Emergency />} />
-        <Route path='/incident' element={<Incident />} />
-        <Route path='/closedreport' element={<CloseFile />} />
-        <Route path='/chat' element={<ChatScreen />} />
-        <Route path='/patient' element={<Pdash />} />
-        <Route path='/patient/order' element={<UserOrder />} />
-        <Route path='/patient/appointment' element={<Appointment />} />
-        <Route path='/doctor' element={<Doctor />} />
-        <Route path='/doctorregister' element={<DoctorRegister />} />
-        <Route path='/patientregister' element={<PatientRegister />} />
-        <Route path='/vendorregister' element={<VendorRegister />} />
+      <Navbar />
 
+      <Routes>
+      <Route path='/' element={<Home />} />
+        <Route element={<PrivateRoutes />}>
+          <Route path='/contact' element={<ContactUs />} />
+          <Route path='/doctorregister' element={<DoctorRegister />} />
+          <Route path='/patientregister' element={<PatientRegister />} />
+          <Route path='/vendorregister' element={<VendorRegister />} />
+          <Route path='/patient' element={<Pdash />} />
+          <Route path='/patient/order' element={<UserOrder />} />
+          <Route path='/patient/appointment' element={<Appointment />} />
+          <Route path='/doctor' element={<Doctor />} />
+          <Route path='/video' element={<Video />} />
+        </Route>
+
+        <Route path='/doctorregister' element={<DoctorRegister />} />
+        <Route path='/patientregister' element={<PatientRegister />} />
+        <Route path='/vendorregister' element={<VendorRegister />} />
+        <Route path='/login' element={<Login />} />
         <Route path='/admin' element={<Admin />} />
         <Route path='/vadmin' element={<Vadmin />} />
-
+        <Route path='/*' element={<NotFound />} />
 
 
       </Routes>
       <Toaster />
     </Router>
-
-  )
-    ;
-
+  );
 }
 
 export default App;

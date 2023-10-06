@@ -7,7 +7,7 @@ import Features from './Features';
 import Footer from '../Components/Footer/Footer';
 import Counter from '../Components/Counter';
 import Faq from './Faq';
-import Doctors from '../Components/Doctors';
+import Doctor from './Doctor';
 
 const HomeMain = () => {
     return (
@@ -17,7 +17,7 @@ const HomeMain = () => {
             <Counter />
             <About />
             <Features />
-            <Doctors />
+            {/* <Doctor /> */}
             <Parallelx />
             <Faq />
             <Footer />

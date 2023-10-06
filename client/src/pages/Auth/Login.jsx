@@ -7,12 +7,7 @@ import toast from 'react-hot-toast';
 import { useState } from 'react'
 import { loginUser } from '../../redux/Auth/authActions'
 import { useDispatch } from 'react-redux'
-
-// <<<<<<< Aditya
-// const host = process.env.REACT_APP_API_HOST
-// =======
 const host = 'https://telemedix-backend.onrender.com'
-// >>>>>>> meet_dev
 
 const Login = () => {
     const dispatch = useDispatch()
@@ -48,7 +43,7 @@ const Login = () => {
         if (response.meta.requestStatus === "fulfilled") {
             navigate('/');
 
-    
+
 
         }
     }
