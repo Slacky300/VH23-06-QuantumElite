@@ -19,7 +19,7 @@ const s3 = new AWS.S3();
 
 const registerUser = async (req, res) => {
     const { userType } = req.body;
-    const { fullName, email, password, age, phone, location, pincode } = req.body
+    const { fullName, email, password, age, phone, location, pincode,gstNo } = req.body
     let certification;
     try {
 
@@ -97,7 +97,7 @@ const registerUser = async (req, res) => {
             }
             const newVendor = new Vendor({
                 fullName, email, password: hashedPassword,
-                certification
+                certification, gstNo
             })
             await newVendor.save()
             return res.status(200).json({ message: "Vendor registered successfully", vendor: newVendor })
