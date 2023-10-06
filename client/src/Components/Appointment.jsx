@@ -10,7 +10,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { addAppointment } from '../redux/Appointment/appointmentActions'
 import { useDispatch } from 'react-redux'
-const Report = () => {
+const Appointment = () => {
 
   const dispatch = useDispatch();
 
@@ -19,7 +19,12 @@ const Report = () => {
   const [patientId, setPatientId] = useState('');
   const [doctorId, setDoctorId] = useState('');
   const [description, setDescription] = useState('');
+  const [address, setAddress] = useState('');
 
+
+  const handleSubmit = () => {
+
+  }
 
   return (
     <>
@@ -105,4 +110,4 @@ const Report = () => {
   )
 }
 
-export default Report
+export default Appointment

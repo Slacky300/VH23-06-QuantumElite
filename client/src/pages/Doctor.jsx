@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Report from '../Components/Report'
+import Appointment from '../Components/Appointment'
 import Navbar from '../Components/Navbar/Navbar'
 import { getDoctors } from '../redux/Doctors/doctorActions'
 import { useDispatch, useSelector } from 'react-redux'
@@ -41,7 +41,7 @@ const Doctor = () => {
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
-            <Report />
+            <Appointment />
           </div>
         </div>
       </div>
