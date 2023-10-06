@@ -29,6 +29,24 @@ const vendorSchema = mongoose.Schema({
         type: String,
         default: "vendor"
     },
+    vendorVerified: {
+        type: Boolean,
+        default: false
+    },
+    verificationToken: {
+        type: String
+    },
+    isVendor: {
+        type: Boolean,
+        default: true
+    },
+    isVerified: {
+        type: Boolean,
+        default: false
+    },
+    certification: {
+        type: String
+    },
 
 
 
