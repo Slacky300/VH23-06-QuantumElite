@@ -75,6 +75,13 @@ function App() {
         <Route path='/medical' element={<MedicalStore />} />
         <Route path='/meeting' element={<MeetingPage />} />
         <Route path='/videolibrary' element={<VideoLibrary />} />
+
+
+
+
+
+
+
       </Routes>
       <Toaster />
     </Router>

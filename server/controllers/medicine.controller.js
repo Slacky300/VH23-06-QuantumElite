@@ -1,6 +1,6 @@
 const {Medicine} = require("../models/medicine.model");
 const {Patient} = require("../models/patient.model");
-
+const {Vendor} = require("../models/vendor.models");
 
 
 
@@ -57,12 +57,34 @@ const purchaseMedicine = async (req, res) => {
 const addMedicine = async (req, res) => {
 
     try{
-        const {medicineName, quantity, price} = req.body;
+        const {medicineName, quantity, price, description} = req.body;
+        let medImg = req.files
+       
+        const params = {
+            Bucket: process.env.AWS_BUCKET_NAME,
+            Key: `${Date.now()}-${req.file.originalname}`,
+            Body: req.file.buffer,
+            ContentType: req.file.mimetype,
+
+        };
+        const data = await s3.upload(params).promise();
+        medImg = data.Location;
         const newMedicine = await Medicine.create({
             medicineName: medicineName,
             quantity: quantity,
             price: price,
+            description: description,
+            medImg: medImg
         });
+        const vendorId = req.user.id;
+        newMedicine.vendorId = vendorId;
+        await newMedicine.save();
+        const vendor = await Vendor.findById(vendorId);
+        if(!vendor){
+            res.status(404).json({message: "Vendor not found"})
+        }
+        vendor.medicines.push(newMedicine._id);
+        await vendor.save();
         res.status(200).json({message: "Medicine added successfully", newMedicine})
     }catch(e){
         console.log(e);
