@@ -15,6 +15,7 @@ const Report = () => {
   const dispatch = useDispatch();
 
   const currentDate = new Date();
+  const [address,setAddress] = useState('');
   const [selectedDate, setSelectedDate] = useState(currentDate);
   const [patientId, setPatientId] = useState('');
   const [doctorId, setDoctorId] = useState('');
@@ -88,7 +89,7 @@ const Report = () => {
                   <div class="form-outline flex-fill mb-0 ">
                     <button
                       className="btn text-white btn-lg btn-block"
-                      onClick={handleSubmit}
+                     
                       style={{ width: "100%", backgroundColor: "#3d86e8" }}
                       type="submit"
                     >
