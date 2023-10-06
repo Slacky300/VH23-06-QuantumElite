@@ -151,8 +151,5 @@ h3 {
 }
 
 .cardStyle {
-  border-radius: 0px 110px 0px 110px;
-  -moz-border-radius: 0px 110px 0px 110px;
-  -webkit-border-radius: 0px 110px 0px 110px;
-  border: 14px outset #3d86e8;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
