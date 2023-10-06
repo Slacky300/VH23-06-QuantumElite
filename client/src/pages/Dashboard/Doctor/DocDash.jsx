@@ -14,9 +14,6 @@ const DocDash = () => {
           <div className="col-md-9">
             <Pdetails />
             <Appointments />
-
-
-
           </div>
         </div>
       </div>
