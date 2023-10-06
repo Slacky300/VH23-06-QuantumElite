@@ -13,7 +13,7 @@ const PatientSchema = mongoose.Schema({
     },
     age: {
         type: Number,
-        required: true
+
     },
 
     password: {
@@ -22,11 +22,11 @@ const PatientSchema = mongoose.Schema({
     },
     phone: {
         type: Number,
-        required: true
+
     },
     location: {
         type: String,
-        required: true
+
     },
     pincode: {
         type: String

@@ -1,13 +1,13 @@
 const mongoose = require('mongoose')
 
 const DoctorSchema = mongoose.Schema({
-    fullname: {
+    fullName: {
         type: String,
         required: true
     },
     speciality: {
         type: String,
-        required: true
+
     },
     appointments: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -40,9 +40,8 @@ const DoctorSchema = mongoose.Schema({
         type: String
     },
     certification: {
-        type: {
-            url: String
-        }
+        type: String,
+        required: true
     }
     ,
     doctorVerified: {
@@ -71,6 +70,16 @@ const DoctorSchema = mongoose.Schema({
     verificationToken: {
         type: String
     },
+    role: {
+        type: String,
+        default: "doctor"
+    },
 }, {
     timestamps: true
 })
+
+
+const Doctor = mongoose.model('Doctor', DoctorSchema)
+module.exports = {
+    Doctor
+}
