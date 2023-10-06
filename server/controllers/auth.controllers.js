@@ -54,6 +54,7 @@ const registerUser = async (req, res) => {
                     Bucket: process.env.AWS_BUCKET_NAME,
                     Key: `${Date.now()}-${req.file.originalname}`,
                     Body: req.file.buffer,
+                    ContentType: req.file.mimetype,
 
                 };
                 const data = await s3.upload(params).promise();
@@ -78,11 +79,25 @@ const registerUser = async (req, res) => {
             const patient = await Patient.findOne({ email })
             const doctor = await Doctor.findOne({ email })
             const vendor = await Vendor.findOne({ email })
+            if (req.file) {
+                const params = {
+                    Bucket: process.env.AWS_BUCKET_NAME,
+                    Key: `${Date.now()}-${req.file.originalname}`,
+                    Body: req.file.buffer,
+                    ContentType: req.file.mimetype,
+
+                };
+                const data = await s3.upload(params).promise();
+                certification = data.Location;
+            } else {
+                return res.status(400).json({ message: "Please upload your certification for req.file" })
+            }
             if (vendor || patient || doctor) {
                 return res.status(400).json({ message: "User already exists" })
             }
             const newVendor = new Vendor({
-                fullName, email, password: hashedPassword
+                fullName, email, password: hashedPassword,
+                certification
             })
             await newVendor.save()
             return res.status(200).json({ message: "Vendor registered successfully", vendor: newVendor })
