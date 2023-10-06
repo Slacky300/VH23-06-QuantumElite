@@ -51,6 +51,13 @@ const PatientSchema = mongoose.Schema({
         type: String,
         default: "patient"
     },
+    isVerified: {
+        type: Boolean,
+        default: false
+    },
+    verificationToken: {
+        type: String
+    },
 
 })
 
