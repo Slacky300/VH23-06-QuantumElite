@@ -1,5 +1,6 @@
 import React from 'react'
 import Sidebar from '../../Components/Sidebar/Sidebar'
+import Stats from "../../Components/Dash/Stats"
 
 const Vdash = () => {
   return (
@@ -9,7 +10,7 @@ const Vdash = () => {
           <Sidebar/>
         </div>
         <div className="col-md-9">
-          <h1>fdfds</h1>
+          <h1><Stats/></h1>
         </div>
       </div>
     </div>

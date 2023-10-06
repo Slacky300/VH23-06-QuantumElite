@@ -23,6 +23,7 @@ const Pdetails = () => {
                   <p className="text-muted mb-1">Full Stack Developer</p>
                 </div>
               </div>
+              <button type="button" class="btn btn-primary">EDIT PROFILE</button>
 
             </div>
             <div className="col-lg-8">
@@ -72,10 +73,8 @@ const Pdetails = () => {
                 </div>
               </div>
 
-              <button type="button" class="btn btn-primary">EDIT PROFILE</button>
 
             </div>
-            <h1 className="text-center mt-3">My Doctors</h1>
           </div>
         </div>
       </section>

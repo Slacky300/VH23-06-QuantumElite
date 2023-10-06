@@ -18,6 +18,8 @@ import Vadmin from './pages/Vadmin';
 import Navbar from './Components/Navbar/Navbar';
 import Vdash from './pages/VenderDash/Vdash';
 import { useState } from 'react';
+import DocDash from './pages/Dashboard/Doctor/DocDash';
+import CallHistory from './pages/Dashboard/Doctor/CallHistory';
 
 function App() {
 
@@ -42,6 +44,10 @@ function App() {
         <Route path='/vdash' element={<Vdash />} />
         <Route path='/admin' element={<Admin />} />
         <Route path='/vadmin' element={<Vadmin />} />
+        <Route path='/doctordash' element={<DocDash />} />
+        <Route path='/callhistory' element={<CallHistory />} />
+
+
       </Routes>
       <Toaster />
     </Router>
