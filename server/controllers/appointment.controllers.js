@@ -29,7 +29,7 @@ const getAvailableAptTime = async (req, res) => {
 
 const addAppointment = async (req, res) => {
 
-    const {patientId, doctorId, date, time, description} = req.body;
+    const { patientId, doctorId, date, time, description } = req.body;
     const newAppointment = await Appointment.create({
         patientId: patientId,
         doctorId: doctorId,

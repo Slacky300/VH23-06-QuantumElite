@@ -13,7 +13,7 @@ const DocDash = () => {
           </div>
           <div className="col-md-9">
             <Pdetails />
-            <Appointments/>
+            <Appointments />
 
 
 
