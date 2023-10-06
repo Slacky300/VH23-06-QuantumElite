@@ -57,13 +57,8 @@ const DoctorSchema = mongoose.Schema({
         type: String
     },
     hospital: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Hospital'
-    },
-    hospital: {
         type: String
     },
-
     isVerified: {
         type: Boolean,
         default: false

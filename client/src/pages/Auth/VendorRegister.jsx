@@ -5,15 +5,14 @@ import register from '../../images/register.png'
 import axios from 'axios'
 import toast from 'react-hot-toast';
 
-const Register = () => {
+const VendorRegister = () => {
     const navigate = useNavigate()
-    const [uname, setName] = useState('')
+    const [fullName, setfullName] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
     const [password, setPassword] = useState('')
-    const [emergencyNo, setEmrNumber] = useState('')
-    const [emergencyMail, setEmrEmail] = useState('')
     const [pincode, setPincode] = useState('')
+    const [certification, setcertification] = useState('')
 
     const validateEmail = (email) => {
         const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -22,7 +21,7 @@ const Register = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!uname.trim()) {
+        if (!fullName.trim()) {
             toast.error('Name is required');
             return false;
         }
@@ -42,29 +41,13 @@ const Register = () => {
             toast.error('Password is required');
             return false;
         }
-        if (!emergencyNo.trim()) {
-            toast.error('Emergence Number is required');
-            return false;
-        }
-        if (phone == emergencyNo) {
-            toast.error('Emergence Phone and Personal Phone must be different');
-            return false;
-        }
-        if (!emergencyMail.trim()) {
-            toast.error('Emergence Email is required');
-            return false;
-        }
-        if (email == emergencyMail) {
-            toast.error('Emergence Email and Personal Email must be different');
-            return false;
-        }
         if (!pincode.trim()) {
             toast.error('PinCode is required');
             return false;
         }
         try {
             const res = await axios.post('https://womensecbackend.onrender.com/api/v1/users/register',
-                { uname, email, phone, password, emergencyNo, emergencyMail, pincode });
+                { fullName, userType: 'vendor', email, phone, password, pincode });
 
             if (res.status === 201) {
                 toast.success('Register Successfully')
@@ -95,11 +78,11 @@ const Register = () => {
                         <div class="row align-items-center">
                             <div class="header-text mb-2">
                                 <h2>Welcome</h2>
-                                <p>We are happy to have you Here</p>
+                                <p>Are you a <span class="badge bg-primary"><Link to='/doctorregister' className='text-white' style={{ textDecoration: 'none' }}>Doctor</Link></span> |  <span class="badge bg-primary"><Link to='/patientregister' className='text-white' style={{ textDecoration: 'none' }}>Patient</Link></span></p>
                             </div>
                             <div class="input-group d-flex flex-row align-items-center mb-3">
                                 <div class="form-outline flex-fill mb-0">
-                                    <input value={uname} type="text" onChange={(e) => setName(e.target.value)} class="form-control form-control-lg border-dark fs-6" placeholder="Full Name" required />
+                                    <input value={fullName} type="text" onChange={(e) => setfullName(e.target.value)} class="form-control form-control-lg border-dark fs-6" placeholder="Full Name" required />
                                 </div>
                             </div>
                             <div class="input-group d-flex  align-items-center mb-3">
@@ -119,22 +102,17 @@ const Register = () => {
                             </div>
                             <div class="input-group d-flex flex-row align-items-center mb-3">
                                 <div class="form-outline flex-fill mb-0">
-                                    <input value={emergencyNo} type="number" onChange={(e) => setEmrNumber(e.target.value)} class="form-control form-control-lg border-dark fs-6" placeholder="Emergence Number" required />
+                                    <input value={certification} type="file" onChange={(e) => setcertification(e.target.value)} class="form-control form-control-lg border-dark fs-6" placeholder="Certifiacte" required />
                                 </div>
                             </div>
                             <div class="input-group d-flex flex-row align-items-center mb-3">
                                 <div class="form-outline flex-fill mb-0">
-                                    <input value={emergencyMail} type="email" onChange={(e) => setEmrEmail(e.target.value)} class="form-control form-control-lg border-dark fs-6" placeholder="Emergence Email" required />
-                                </div>
-                            </div>
-                            <div class="input-group d-flex flex-row align-items-center mb-3">
-                                <div class="form-outline flex-fill mb-0">
-                                    <input value={pincode} type="number" onChange={(e) => setPincode(e.target.value)} class="form-control form-control-lg border-dark fs-6" placeholder="Pincode" required />
+                                    <input type="number" value={pincode} onChange={(e) => setPincode(e.target.value)} class="form-control form-control-lg border-dark fs-6" placeholder="Pincode" required />
                                 </div>
                             </div>
                             <div class="d-flex flex-row align-items-center mt-4 ">
                                 <div class="form-outline flex-fill mb-0">
-                                    <button class="btn btn-lg  text-white" onClick={handleSubmit} type="button" style={{ backgroundColor: 'blueviolet', width: '100%' }} >Register</button>
+                                    <button class="btn btn-lg  text-white" onClick={handleSubmit} type="button" style={{ backgroundColor: '#3d86e8', width: '100%' }} >Register</button>
                                 </div>
                             </div>
                             <div class="d-flex flex-row align-items-center my-3 ">
@@ -150,4 +128,4 @@ const Register = () => {
     )
 }
 
-export default Register
+export default VendorRegister
