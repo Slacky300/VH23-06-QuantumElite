@@ -135,3 +135,10 @@ h3 {
 .modal-content {
   border-radius: 50px;
 }
+
+.cardStyle {
+  border-radius: 0px 110px 0px 110px;
+  -moz-border-radius: 0px 110px 0px 110px;
+  -webkit-border-radius: 0px 110px 0px 110px;
+  border: 14px outset #3d86e8;
+}

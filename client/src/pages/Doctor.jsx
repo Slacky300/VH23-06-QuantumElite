@@ -1,30 +1,40 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Report from '../Components/Report'
 import Navbar from '../Components/Navbar/Navbar'
+import axios from 'axios'
 
 const Doctor = () => {
+
+  const [doctor, setDoctor] = useState([])
+
+  const getDoctors = async () => {
+    const { data } = await axios.get('https://telemedix-backend.onrender.com/api/v1/doctor/all-doctors')
+    setDoctor(data)
+    console.log(data)
+  }
+
+  useEffect(() => {
+    getDoctors()
+  }, [])
+
   return (
     <div>
       <Navbar />
       <div className='marginStyle'>
         <div class="container">
           <div class="row text-center">
-            <h1 className="text-center">Our Doctors</h1>
-
-            <div class="col-xl-3 col-sm-6 mb-5" >
-              <div class="bg-white rounded shadow-sm py-5 px-4">
-                <img data-bs-toggle="modal" data-bs-target="#exampleModal1" src="https://www.ankurahospitals.com/wp-content/uploads/2021/03/our-doctor-placeholder.jpg" alt="" width="100" class=" mb-3 img-thumbnail shadow-sm" />
-                <h5 class="mb-0">Manuella Nevoresky</h5>
-                <h6 class="small text-uppercase text-muted my-3">ENT DOCTOR</h6>
-                <button data-bs-toggle="modal" data-bs-target="#exampleModal" className='btn text-white' style={{ backgroundColor: '#3d86e8' }}>Make Appointment</button>
+            <h5 className="text-center" style={{ color: '#3d86e8' }}>Our Doctors for your Safety</h5>
+            <h1 className="text-center mb-5">Our Doctors</h1>
+            {doctor.map((c) => (
+              <div class="col-xl-3 col-sm-6 mb-5">
+                <div class="bg-white py-5 px-4 cardStyle">
+                  <img data-bs-toggle="modal" data-bs-target="#exampleModal1" src="https://www.ankurahospitals.com/wp-content/uploads/2021/03/our-doctor-placeholder.jpg" alt="" width="100" class=" mb-3 img-thumbnail shadow-sm" />
+                  <h5 class="mb-0">{c.fullName}</h5>
+                  <h6 class="small text-uppercase text-muted my-3">{c.speciality}</h6>
+                  <button data-bs-toggle="modal" data-bs-target="#exampleModal" className='btn text-white' style={{ backgroundColor: '#3d86e8' }}>Make Appointment</button>
+                </div>
               </div>
-            </div>
-
-            <div class="col-xl-3 col-sm-6 mb-5">
-              <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://www.ankurahospitals.com/wp-content/uploads/2021/03/our-doctor-placeholder.jpg" alt="" width="100" class=" mb-3 img-thumbnail shadow-sm" />
-                <h5 class="mb-0">John Tarly</h5><span class="small text-uppercase text-muted">Pedetrisian</span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
@@ -35,7 +45,6 @@ const Doctor = () => {
           </div>
         </div>
       </div>
-
       <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true" >
         <div class="modal-dialog">
           <div class="modal-content">
@@ -55,7 +64,6 @@ const Doctor = () => {
           </div>
         </div>
       </div>
-
     </div>
   )
 }

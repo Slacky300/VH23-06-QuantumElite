@@ -16,7 +16,6 @@ const Report = () => {
 
   const [selectedDate, setSelectedDate] = useState(null);
 
-  // Calculate the current date
   const currentDate = new Date();
 
   const handleSubmit = async (e) => {
@@ -56,7 +55,7 @@ const Report = () => {
               class="col-md-12 right-box"
             >
               <div class="row align-items-center">
-                <div class="header-text mb-4">
+                <div class="header-text mb-2">
                   <h2>Appointment</h2>
                   <p>We us your Incident, we will take action against it !</p>
                 </div>

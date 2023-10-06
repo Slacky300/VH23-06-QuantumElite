@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../../styles/auth.css'
 import { Link, useNavigate } from 'react-router-dom'
-import register from '../../images/register.png'
+import register from '../../images/patient.png'
 import axios from 'axios'
 import toast from 'react-hot-toast';
 

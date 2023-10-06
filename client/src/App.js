@@ -3,7 +3,6 @@ import { Toaster } from 'react-hot-toast';
 import './App.css';
 import NotFound from './Components/Errors/404';
 import Home from './pages/Home'
-import Profile from './pages/Profile';
 import Login from './pages/Auth/Login';
 import DoctorRegister from './pages/Auth/DoctorRegister';
 import Emergency from './pages/Emergency';
