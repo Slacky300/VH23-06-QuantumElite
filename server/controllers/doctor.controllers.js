@@ -136,6 +136,7 @@ const getAllAppt = async(req, res) => {
         res.status(404).json({message: "No appointments found"})
     }
     for(const x of appointments){
+        console.log(x.patientId)
         const patient = await Patient.findById(x.patientId);
         if(!patient){
             res.status(404).json({message: "Patient not found"})
@@ -152,6 +153,7 @@ const getAllAppt = async(req, res) => {
             status: x.status
         })
     }
+    res.status(200).json(appts);
 }
 
 
