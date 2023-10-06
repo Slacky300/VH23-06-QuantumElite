@@ -9,6 +9,9 @@ const DoctorSchema = mongoose.Schema({
         type: String,
 
     },
+    photo:{
+        type: String
+    },
     appointments: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Appointment'

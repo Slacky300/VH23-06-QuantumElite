@@ -18,6 +18,9 @@ const vendorSchema = mongoose.Schema({
     phone: {
         type: String
     },
+    gstNo:{
+        type: String
+    },
     pincode: {
         type: String
     },
