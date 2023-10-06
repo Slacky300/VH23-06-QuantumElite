@@ -74,12 +74,12 @@ const Navbar = () => {
                                         </Link>
                                         <Link to='/about' style={{ textDecoration: 'none' }}>
                                             <li className="nav-item">
-                                                <a className="nav-link " aria-current="page">About Us</a>
+                                                <a className="nav-link " aria-current="page">Medicines</a>
                                             </li>
                                         </Link>
                                         <Link to='/contact' style={{ textDecoration: 'none' }}>
                                             <li className="nav-item">
-                                                <a className="nav-link " aria-current="page">Contact Us</a>
+                                                <a className="nav-link " aria-current="page">Doctor</a>
                                             </li>
                                         </Link>
                                     </ul>
@@ -128,17 +128,17 @@ const Navbar = () => {
                                     </Link>
                                     <Link to='/about' style={{ textDecoration: 'none' }}>
                                         <li className="nav-item">
-                                            <a className="nav-link " aria-current="page">About Us</a>
+                                            <a className="nav-link " aria-current="page">Medicine</a>
                                         </li>
                                     </Link>
-                                    <Link to='/contact' style={{ textDecoration: 'none' }}>
+                                    <Link to='/doctor' style={{ textDecoration: 'none' }}>
                                         <li className="nav-item">
-                                            <a className="nav-link " aria-current="page">Contact Us</a>
+                                            <a className="nav-link " aria-current="page">Doctors</a>
                                         </li>
                                     </Link>
                                     <Link to='/report' style={{ textDecoration: 'none' }}>
                                         <li className="nav-item">
-                                            <a className="nav-link " aria-current="page">Report Incident</a>
+                                            <a className="nav-link " aria-current="page">Cart</a>
                                         </li>
                                     </Link>
                                 </ul>

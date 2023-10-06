@@ -24,18 +24,18 @@ const Faq = () => {
                                     </h2>
                                     <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                         <div className="accordion-body">
-                                            Yes, you can Carwale, we make payment easy. Just navigate to our Cart  page and submit your information. Once our team receives it they will look it over and get back to you promptly.                                        </div>
+                                            Yes, you can , we make payment easy. Easily pay via UPI,Netbaking & Card.                                        </div>
                                     </div>
                                 </div>
                                 <div className="accordion-item">
                                     <h2 className="accordion-header" id="headingTwo">
                                         <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            2. Can I buy a car online?
+                                            2. Can I buy a Medicines online?
                                         </button>
                                     </h2>
                                     <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                         <div className="accordion-body">
-                                            Yes, you can. Carwale is pleased to offer online car buying! Start your vehicle search right here on our Inventory page. Without ever leaving home, you can shop for your next vehicle and get pre-approved all on our site. Contact us if you are interested in a vehicle, and we'll bring it to you for a test drive.                                        </div>
+                                            Yes, you can. TELEMEDIX is pleased to offer online car buying! Start your vehicle search right here on our Inventory page. Without ever leaving home, you can shop for your next vehicle and get pre-approved all on our site. Contact us if you are interested in a vehicle, and we'll bring it to you for a test drive.                                        </div>
                                     </div>
                                 </div>
                                 <div className="accordion-item">

@@ -4,12 +4,30 @@ const { Vendor } = require('../models/vendor.models')
 
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
+const AWS = require('aws-sdk')
+require('dotenv').config();
+
+
+AWS.config.update({
+    accessKeyId: process.env.AWS_ACCESS_KEY,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    region: 'ap-south-1'
+});
+
+const s3 = new AWS.S3();
 
 
 const registerUser = async (req, res) => {
     const { userType } = req.body;
-    const { fullName, email, password, age, phone, location, pincode, certification } = req.body
+    const { fullName, email, password, age, phone, location, pincode } = req.body
+    let certification;
     try {
+
+        if (req.file) {
+            certification = req.file;
+        }
+
+
         if (!userType || !email || !password) {
             return res.status(400).json({ message: "please add all the fields" })
         }
@@ -28,8 +46,20 @@ const registerUser = async (req, res) => {
             return res.status(200).json({ message: "Patient registered successfully", patient: newPatient })
         }
         else if (userType === "doctor") {
-            if (!certification) {
-                return res.status(400).json({ message: "Please upload your certification" })
+            // if (!certification) {
+            //     return res.status(400).json({ message: "Please upload your certification" })
+            // }
+            if (req.file) {
+                const params = {
+                    Bucket: process.env.AWS_BUCKET_NAME,
+                    Key: `${Date.now()}-${req.file.originalname}`,
+                    Body: req.file.buffer,
+
+                };
+                const data = await s3.upload(params).promise();
+                certification = data.Location;
+            } else {
+                return res.status(400).json({ message: "Please upload your certification for req.file" })
             }
             const patient = await Patient.findOne({ email })
             const doctor = await Doctor.findOne({ email })
