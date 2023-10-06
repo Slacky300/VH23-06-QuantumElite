@@ -33,10 +33,6 @@ function App() {
         <Route path='/doctorregister' element={<DoctorRegister />} />
         <Route path='/patientregister' element={<PatientRegister />} />
         <Route path='/vendorregister' element={<VendorRegister />} />
-        <Route path='/emergency' element={<Emergency />} />
-        <Route path='/incident' element={<Incident />} />
-        <Route path='/closedreport' element={<CloseFile />} />
-        <Route path='/chat' element={<ChatScreen />} />
         <Route path='/patient' element={<Pdash />} />
         <Route path='/patient/order' element={<UserOrder />} />
         <Route path='/patient/appointment' element={<Appointment />} />
