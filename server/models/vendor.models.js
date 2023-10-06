@@ -18,7 +18,7 @@ const vendorSchema = mongoose.Schema({
     phone: {
         type: String
     },
-    pincode:{
+    pincode: {
         type: String
     },
     medicines: [{
