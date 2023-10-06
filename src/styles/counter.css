@@ -1,0 +1,8 @@
+.counter-section {
+  background-color: #3d86e8;
+  padding: 2.5rem 0;
+}
+.counter-section p {
+  color: white;
+  text-transform: uppercase;
+}
