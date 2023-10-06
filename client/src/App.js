@@ -7,7 +7,6 @@ import Profile from './pages/Profile';
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
 import Emergency from './pages/Emergency';
-import Report from './pages/Report';
 import Incident from './pages/IncidentReport'
 import CloseFile from './pages/CloseFile'
 import ContactUs from './Components/ContactUs';
@@ -16,6 +15,7 @@ import Pdash from './pages/Dashboard/Patient/Pdash';
 import Navbar from './Components/Navbar/Navbar';
 import UserOrder from './pages/Dashboard/Patient/UserOrder';
 import Appointment from './pages/Dashboard/Patient/Appointment';
+import Doctor from './pages/Doctor';
 
 
 function App() {
@@ -28,7 +28,6 @@ function App() {
       <Route path='/contact' element={<ContactUs/>} />
       <Route path='/login' element={<Login/>} />
       <Route path='/register' element={<Register/>} />
-      <Route path='/report' element={<Report/>} />
       <Route path='/emergency' element={<Emergency/>} />
       <Route path='/incident' element={<Incident/>} />
       <Route path='/closedreport' element={<CloseFile/>} />
@@ -36,6 +35,8 @@ function App() {
       <Route path='/patient' element={<Pdash/>} />
       <Route path='/patient/order' element={<UserOrder/>} />
       <Route path='/patient/appointment' element={<Appointment/>} />
+      <Route path='/doctor' element={<Doctor/>} />
+
 
       
 
