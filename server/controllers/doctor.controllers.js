@@ -29,7 +29,38 @@ const getPatients = async (req, res) => {
         })
     }
 
+};
+
+
+const getAllDoctors = async (req, res) => {
+
+    try {
+        // const doctors = await Doctor.find({doctorVerified: true});
+        const doctors = await Doctor.find();
+        if(!doctors){
+            res.status(404).json({message: "No doctors found"})
+        }
+        const data = [];
+        for(const x of doctors){
+            data.push({
+                doctorId: x._id,
+                fullName: x.fullName,
+                email: x.email,
+                speciality: x.speciality,
+                phone: x.phone,
+                location: x.location,
+                pincode: x.pincode,
+                certification: x.certification,
+                doctorVerified: x.doctorVerified
+            })
+        }
+        res.status(200).json(data)
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({message: "Internal Server Error"})
+    }
+
 }
 
 
-module.exports = {getPatients}
+module.exports = {getPatients,getAllDoctors}

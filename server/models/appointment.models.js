@@ -25,9 +25,12 @@ const AppointmentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-
-    videoCallId:{
+    description:{
         type: String
+    },
+    videoCallId:{
+        type: String,
+        unique: true
     }
 }, {timestamps: true});
 
