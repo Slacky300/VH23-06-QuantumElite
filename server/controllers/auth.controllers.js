@@ -158,7 +158,7 @@ const loginUser = async (req, res) => {
                 return res.status(400).json({ message: "Invalid credentials" })
             }
             const token = jwt.sign({ id: patient._id }, process.env.JWT_SECRET)
-            return res.status(200).json({ message: "Patient logged in successfully", token, patient: patient })
+            return res.status(200).json({ message: "Patient logged in successfully", token, user: patient })
         }
         else if (doctor) {
             const isMatch = await bcrypt.compare(password, doctor.password)
@@ -166,7 +166,7 @@ const loginUser = async (req, res) => {
                 return res.status(400).json({ message: "Invalid credentials" })
             }
             const token = jwt.sign({ id: doctor._id }, process.env.JWT_SECRET)
-            return res.status(200).json({ message: "Doctor logged in successfully", token, doctor: doctor })
+            return res.status(200).json({ message: "Doctor logged in successfully", token, user: doctor })
         }
         else if (vendor) {
             const isMatch = await bcrypt.compare(password, vendor.password)
@@ -174,7 +174,7 @@ const loginUser = async (req, res) => {
                 return res.status(400).json({ message: "Invalid credentials" })
             }
             const token = jwt.sign({ id: vendor._id }, process.env.JWT_SECRET)
-            return res.status(200).json({ message: "Vendor logged in successfully", token, vendor: vendor })
+            return res.status(200).json({ message: "Vendor logged in successfully", token, user: vendor })
         }
         else {
             return res.status(400).json({ message: "Invalid credentials" })
