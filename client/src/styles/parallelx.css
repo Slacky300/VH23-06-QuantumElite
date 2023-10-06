@@ -3,7 +3,7 @@
       rgba(22, 22, 22, 0.8),
       rgba(22, 22, 22, 0.7)
     ),
-    url("https://s3-alpha.figma.com/hub/file/3359034693/00223210-8eea-4135-8e5b-6b093b26193e-cover.png");
+    url(../images//parallelx.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

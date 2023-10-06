@@ -3,13 +3,13 @@ import search from "../gifs/search.gif";
 import puzzle from "../gifs/puzzle.gif";
 import statis from "../gifs/statis.gif";
 import noti from "../gifs/noti.gif";
-import rock from "../gifs/rock.gif";
+import rock from "../gifs/features.gif";
 import proct from "../gifs/proct.gif";
 
 const Features = () => {
   return (
     <>
-      <section id="services" class="services_wrapper" style={{ marginTop: '150px' }}>
+      <section id="services" class="services_wrapper mb-5">
         <div class="container">
           <h5 className="text-center" style={{ color: '#3d86e8' }}>Best Features for your Safety</h5>
           <h1 className="text-center">Features</h1>

@@ -14,8 +14,8 @@ const HomeMain = () => {
         <>
             <Navbar />
             <Hero />
-            <About />
             <Counter />
+            <About />
             <Features />
             <Doctors />
             <Parallelx />
