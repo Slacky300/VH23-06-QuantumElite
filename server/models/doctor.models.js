@@ -18,8 +18,13 @@ const DoctorSchema = mongoose.Schema({
         ref: 'Prescription'
     }],
     patients: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Patient'
+        patient:{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Patient'
+        },
+        disease:{
+            type: String
+        }
     }],
     reports: [{
         type: mongoose.Schema.Types.ObjectId,
