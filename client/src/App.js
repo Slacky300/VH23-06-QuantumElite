@@ -24,6 +24,7 @@ import Vdash from './pages/VenderDash/Vdash';
 import { useState } from 'react';
 import DocDash from './pages/Dashboard/Doctor/DocDash';
 import CallHistory from './pages/Dashboard/Doctor/CallHistory';
+import VideoLibrary from './pages/VideoLibrary';
 
 function App() {
   const dispatch = useDispatch()
@@ -56,6 +57,7 @@ function App() {
         <Route path='/vendorregister' element={<VendorRegister />} />
         <Route path='/login' element={<Login />} />
         <Route path='/*' element={<NotFound />} />
+        <Route path='/videolibrary' element={<VideoLibrary />} />
       </Routes>
       <Toaster />
     </Router>
