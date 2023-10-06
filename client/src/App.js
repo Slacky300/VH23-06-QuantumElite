@@ -20,6 +20,7 @@ import Appointment from './pages/Dashboard/Patient/Appointment';
 import Doctor from './pages/Doctor';
 
 
+
 function App() {
   return (
     <Router>
@@ -38,6 +39,9 @@ function App() {
       <Route path='/patient/order' element={<UserOrder/>} />
       <Route path='/patient/appointment' element={<Appointment/>} />
       <Route path='/doctor' element={<Doctor/>} />
+      <Route path='/doctorregister' element={<DoctorRegister/>} />
+      <Route path='/patientregister' element={<PatientRegister/>} />
+      <Route path='/vendorregister' element={<VendorRegister/>} />
 
 
       
