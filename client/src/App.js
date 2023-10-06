@@ -15,11 +15,11 @@ import Doctor from './pages/Doctor';
 import Register from './pages/Auth/DoctorRegister';
 import Admin from './pages/Admin';
 import Vadmin from './pages/Vadmin';
-import Navbar from './Components/Navbar/Navbar';
 import { getLoggedinUser } from './redux/Auth/authActions';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import PrivateRoutes from './utils/PrivateRoutes';
+import Navbar from './Components/Navbar/Navbar';
 
 function App() {
   const dispatch = useDispatch()
@@ -31,7 +31,7 @@ function App() {
 
   return (
     <Router>
-
+      <Navbar />
       <Routes>
         <Route element={<PrivateRoutes />}>
           <Route path='/' element={<Home />} />
