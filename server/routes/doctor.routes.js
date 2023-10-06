@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { getAllDoctors, getPatients, editDoctorDetails, getDoc } = require('../controllers/doctor.controllers')
+const { getAllDoctors, getPatients, editDoctorDetails } = require('../controllers/doctor.controllers')
 const { verifyJWT } = require("../middlewares/verifyJWT");
 
 
