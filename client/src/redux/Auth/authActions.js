@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { toast } from 'react-toastify';
-const host = process.env.REACT_APP_API_HOST;
+import toast from 'react-hot-toast';
+const host = 'https://telemedix-backend.onrender.com';
 
 export const registerAsPatient = createAsyncThunk(
     'auth/registerAsPatient',

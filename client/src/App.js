@@ -15,20 +15,16 @@ import Doctor from './pages/Doctor';
 import Admin from './pages/Admin';
 import Vadmin from './pages/Vadmin';
 import Navbar from './Components/Navbar/Navbar';
-
-import Navbar from './Components/Navbar/Navbar';
+import Video from './pages/Video';
 
 function App() {
-
-
-
   return (
     <Router>
-
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/*' element={<NotFound />} />
         <Route path='/contact' element={<ContactUs />} />
+        <Route path='/videoCall' element={<Video />} />
         <Route path='/login' element={<Login />} />
         <Route path='/doctorregister' element={<DoctorRegister />} />
         <Route path='/patientregister' element={<PatientRegister />} />
@@ -40,19 +36,12 @@ function App() {
         <Route path='/doctorregister' element={<DoctorRegister />} />
         <Route path='/patientregister' element={<PatientRegister />} />
         <Route path='/vendorregister' element={<VendorRegister />} />
-
         <Route path='/admin' element={<Admin />} />
         <Route path='/vadmin' element={<Vadmin />} />
-
-
-
       </Routes>
       <Toaster />
     </Router>
-
-  )
-    ;
-
+  );
 }
 
 export default App;

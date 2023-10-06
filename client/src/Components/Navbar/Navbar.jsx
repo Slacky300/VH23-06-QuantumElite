@@ -1,11 +1,11 @@
 import React from 'react'
 
 const Navbar = () => {
-  return(
+  return (
     <>
-    Navbar
+
     </>
-    )
+  )
 }
 
 export default Navbar

@@ -17,7 +17,7 @@ const HomeMain = () => {
             <Counter />
             <About />
             <Features />
-            <Doctor />
+            {/* <Doctor /> */}
             <Parallelx />
             <Faq />
             <Footer />

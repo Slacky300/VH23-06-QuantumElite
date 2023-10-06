@@ -7,8 +7,6 @@ import toast from 'react-hot-toast';
 import { registerAsDoctor } from '../../redux/Auth/authActions'
 import { useDispatch } from 'react-redux'
 
-// const host = process.env.REACT_APP_API_HOST
-
 const host = 'https://telemedix-backend.onrender.com'
 
 
