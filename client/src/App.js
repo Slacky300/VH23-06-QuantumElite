@@ -18,6 +18,8 @@ import Navbar from './Components/Navbar/Navbar';
 import UserOrder from './pages/Dashboard/Patient/UserOrder';
 import Appointment from './pages/Dashboard/Patient/Appointment';
 import Doctor from './pages/Doctor';
+import Register from './pages/Auth/DoctorRegister';
+import Admin from './pages/Admin';
 
 
 
@@ -42,6 +44,7 @@ function App() {
       <Route path='/doctorregister' element={<DoctorRegister/>} />
       <Route path='/patientregister' element={<PatientRegister/>} />
       <Route path='/vendorregister' element={<VendorRegister/>} />
+      <Route path='/admin' element={<Admin/>} />
 
 
       
