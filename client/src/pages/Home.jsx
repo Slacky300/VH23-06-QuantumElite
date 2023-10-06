@@ -8,6 +8,7 @@ import Footer from '../Components/Footer/Footer';
 import Counter from '../Components/Counter';
 import Faq from './Faq';
 import Doctor from './Doctor';
+import HomeDoctor from './HomeDoctor';
 
 const HomeMain = () => {
     return (
@@ -17,7 +18,7 @@ const HomeMain = () => {
             <Counter />
             <About />
             <Features />
-            <Doctor />
+            <HomeDoctor />
             <Parallelx />
             <Faq />
             <Footer />
