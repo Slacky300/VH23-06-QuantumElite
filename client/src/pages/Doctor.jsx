@@ -53,7 +53,7 @@ const Doctor = () => {
               <div class="row border rounded-5 p-3 bg-white shadow box-area reverseCol">
                 <div class="row align-items-center my-3">
                   <div class="header-text mb-4">
-                    <h5>Dr. Kaka Description : </h5>
+                    <h5>Dr. NAME Description : </h5>
                   </div>
                   <p>Name : <span> kaka</span></p>
                   <p>Specialization : <span> kaka</span></p>
