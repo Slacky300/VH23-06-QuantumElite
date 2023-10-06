@@ -25,10 +25,11 @@ const Room = () => {
 
 
   return (
-
-    <div style={{ marginTop: '100px', width: '100%', backgroundColor: 'white', textAlign: 'center', padding: '20px' }}>
-      <div ref={Mymeeting} />
-    </div>
+    <center>
+      <div style={{ marginTop: '80px', width: '130vh', backgroundColor: 'white', textAlign: 'center', padding: '20px' }}>
+        <div ref={Mymeeting} />
+      </div>
+    </center>
 
   )
 }

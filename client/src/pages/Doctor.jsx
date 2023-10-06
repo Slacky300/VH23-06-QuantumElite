@@ -26,7 +26,6 @@ const Doctor = () => {
 
   return (
     <div>
-      <Navbar />
       <div className='marginStyle'>
         <div className="container">
           <div className="row text-center">
