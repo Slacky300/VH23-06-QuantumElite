@@ -31,16 +31,11 @@ function App() {
 
   return (
     <Router>
-
       <Navbar />
-
       <Routes>
       <Route path='/' element={<Home />} />
         <Route element={<PrivateRoutes />}>
           <Route path='/contact' element={<ContactUs />} />
-          <Route path='/doctorregister' element={<DoctorRegister />} />
-          <Route path='/patientregister' element={<PatientRegister />} />
-          <Route path='/vendorregister' element={<VendorRegister />} />
           <Route path='/patient' element={<Pdash />} />
           <Route path='/patient/order' element={<UserOrder />} />
           <Route path='/patient/appointment' element={<Appointment />} />
@@ -51,12 +46,11 @@ function App() {
         <Route path='/doctorregister' element={<DoctorRegister />} />
         <Route path='/patientregister' element={<PatientRegister />} />
         <Route path='/vendorregister' element={<VendorRegister />} />
+        
         <Route path='/login' element={<Login />} />
         <Route path='/admin' element={<Admin />} />
         <Route path='/vadmin' element={<Vadmin />} />
         <Route path='/*' element={<NotFound />} />
-
-
       </Routes>
       <Toaster />
     </Router>
