@@ -61,6 +61,8 @@ function App() {
         <Route path='/*' element={<NotFound />} />
         <Route path='/callhistory' element={<CallHistory />} />
         <Route path='/doctordash' element={<DocDash />} />
+        <Route path='/vdash' element={<Vdash />} />
+
 
 
 

@@ -6,20 +6,7 @@ import { useAuth } from "../../context/auth";
 import { RiAdminLine } from 'react-icons/ri'
 
 const Sidebar = () => {
-  const [auth, setAuth] = useAuth();
-  const navigate = useNavigate()
-
-  const handleSubmit = () => {
-    setAuth({
-      ...auth,
-      user: null,
-      token: "",
-    });
-    localStorage.removeItem("auth");
-    toast.success("Logged Out Successfully");
-    navigate('/login')
-  };
-
+  
   return (
     <div style={{ zIndex: '999' }}>
       <section className="sde">
@@ -81,7 +68,7 @@ const Sidebar = () => {
           <hr />
           <div className="dropdown">
             <div
-              onClick={handleSubmit}
+              
               to="/login"
               style={{ textDecoration: "none", cursor: 'pointer' }}
               className="nav-item text-center"
@@ -122,7 +109,7 @@ const Sidebar = () => {
 
           <a class="nav-linkt">
             <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            <span class="nav-text" onClick={handleSubmit}></span>
+            <span class="nav-text" ></span>
           </a>
         </nav>
       </section>
