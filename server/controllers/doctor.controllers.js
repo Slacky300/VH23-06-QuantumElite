@@ -3,6 +3,16 @@ const {Doctor} = require('../models/doctor.models')
 const {Appointment} = require('../models/appointment.models');
 const {Medicine} = require('../models/medicine.models');
 
+require('dotenv').config();
+
+
+AWS.config.update({
+    accessKeyId: process.env.AWS_ACCESS_KEY,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    region: 'ap-south-1'
+});
+
+const s3 = new AWS.S3();
 
 const getPatients = async (req, res) => {
 
@@ -62,5 +72,53 @@ const getAllDoctors = async (req, res) => {
 
 }
 
+const editDoctorDetails = async (req, res) => {
+    try{
+        const doctorId = req.params.doctorId;
+        const {fullName, phone, location, pincode} = req.body;
+        let photo;
+        photo = req.file;
+        const existing_doctor = await Doctor.findById(doctorId);
+        if(!existing_doctor){
+            res.status(404).json({message: "Doctor not found"})
+        }
+        existing_doctor.fullName = fullName;
+        existing_doctor.phone = phone;
+        existing_doctor.location = location;
+        existing_doctor.pincode = pincode;
+        if(req.file) {
+            const params = {
+                Bucket: process.env.AWS_BUCKET_NAME,
+                Key: `${Date.now()}-${req.file.originalname}`,
+                Body: req.file.buffer,
 
-module.exports = {getPatients,getAllDoctors}
+            };
+            const data = await s3.upload(params).promise();
+            existing_doctor.photo = data.Location;
+        }
+        await existing_doctor.save();
+        res.status(200).json({message: "Doctor details updated successfully"});
+    }catch(error){
+        console.log(error);
+        res.status(500).json({message: "Internal Server Error"})
+    }
+}
+
+const getDoctorDetails = async (req, res) => { 
+    try{
+        const doctorId = req.params.doctorId;
+        if(!doctorId){
+            res.status(404).json({message: "Doctor not found"})
+        }
+        const doctor = await Doctor.findById(doctorId);
+        if(!doctor){
+            res.status(404).json({message: "Doctor not found"})
+        }
+        res.status(200).json(doctor)
+    }catch(error){
+        console.log(error);
+        res.status(500).json({message: "Internal Server Error"})
+    }
+}
+
+module.exports = {getPatients,getAllDoctors,getDoctorDetails,editDoctorDetails}
