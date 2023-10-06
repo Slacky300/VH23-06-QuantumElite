@@ -6,7 +6,7 @@ import axios from 'axios'
 import toast from 'react-hot-toast';
 import { useState } from 'react'
 import { useAuth } from '../../context/auth'
-const host = process.env.REACT_APP_API_HOST
+const host = 'https://telemedix-backend.onrender.com'
 
 const Login = () => {
 
@@ -35,7 +35,7 @@ const Login = () => {
             return false;
         }
         try {
-            const res = await axios.post(`http://localhost:4000/api/v1/auth/login`, {
+            const res = await axios.post(`${host}/api/v1/auth/login`, {
                 email, password
             });
 

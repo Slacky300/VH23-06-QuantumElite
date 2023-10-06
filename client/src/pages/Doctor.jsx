@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react'
 import Report from '../Components/Report'
 import Navbar from '../Components/Navbar/Navbar'
 import axios from 'axios'
+const host = 'https://telemedix-backend.onrender.com'
 
 const Doctor = () => {
 
   const [doctor, setDoctor] = useState([])
 
   const getDoctors = async () => {
-    const { data } = await axios.get('https://telemedix-backend.onrender.com/api/v1/doctor/all-doctors')
+    const { data } = await axios.get(`${host}/api/v1/doctor/all-doctors`)
     setDoctor(data)
     console.log(data)
   }
