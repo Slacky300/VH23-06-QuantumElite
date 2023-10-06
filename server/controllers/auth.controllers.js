@@ -1,11 +1,11 @@
 const { Patient } = require('../models/patient.models')
 const { Doctor } = require('../models/doctor.models')
 const { Vendor } = require('../models/vendor.models')
-
+require('dotenv').config();
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const AWS = require('aws-sdk')
-require('dotenv').config();
+
 
 
 AWS.config.update({
