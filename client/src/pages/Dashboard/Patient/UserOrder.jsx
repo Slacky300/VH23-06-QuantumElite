@@ -80,7 +80,7 @@ const UserOrder = () => {
       <td>Mark</td>
       <td>3</td>
       <td>120</td>
-      
+      .
       
     </tr>
   </tbody>
