@@ -5,11 +5,7 @@ import NotFound from './Components/Errors/404';
 import Home from './pages/Home'
 import Login from './pages/Auth/Login';
 import DoctorRegister from './pages/Auth/DoctorRegister';
-import Emergency from './pages/Emergency';
-import Incident from './pages/IncidentReport'
-import CloseFile from './pages/CloseFile'
 import ContactUs from './Components/ContactUs';
-import ChatScreen from './pages/ChatScreen'
 import PatientRegister from './pages/Auth/PatientRegister';
 import VendorRegister from './pages/Auth/VendorRegister';
 import Pdash from './pages/Dashboard/Patient/Pdash';
@@ -19,6 +15,7 @@ import Doctor from './pages/Doctor';
 import Register from './pages/Auth/DoctorRegister';
 import Admin from './pages/Admin';
 import Vadmin from './pages/Vadmin';
+import Navbar from './Components/Navbar/Navbar';
 
 
 function App() {
@@ -27,6 +24,7 @@ function App() {
 
   return (
     <Router>
+
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/*' element={<NotFound />} />
