@@ -42,11 +42,13 @@ const Login = () => {
             return false;
         }
 
+
         //use redux dispatch
         const response = await dispatch(loginUser({ email, password }))
         if (response.meta.requestStatus === "fulfilled") {
             navigate('/');
-            // await dispatch(getLoggedInUser());
+
+    
 
         }
     }
