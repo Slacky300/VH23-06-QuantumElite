@@ -14,23 +14,21 @@ import ChatScreen from './pages/ChatScreen'
 import PatientRegister from './pages/Auth/PatientRegister';
 import VendorRegister from './pages/Auth/VendorRegister';
 import Pdash from './pages/Dashboard/Patient/Pdash';
-import Navbar from './Components/Navbar/Navbar';
 import UserOrder from './pages/Dashboard/Patient/UserOrder';
 import Appointment from './pages/Dashboard/Patient/Appointment';
 import Doctor from './pages/Doctor';
 
-
-
 function App() {
   return (
     <Router>
-      <Navbar/>
       <Routes> 
       <Route path='/' element={<Home />} />
       <Route path='/*' element={<NotFound/>} />
       <Route path='/contact' element={<ContactUs/>} />
       <Route path='/login' element={<Login/>} />
-      <Route path='/register' element={<Register/>} />
+      <Route path='/doctorregister' element={<DoctorRegister/>} />
+      <Route path='/patientregister' element={<PatientRegister/>} />
+      <Route path='/vendorregister' element={<VendorRegister/>} />
       <Route path='/emergency' element={<Emergency/>} />
       <Route path='/incident' element={<Incident/>} />
       <Route path='/closedreport' element={<CloseFile/>} />
@@ -42,7 +40,6 @@ function App() {
       <Route path='/doctorregister' element={<DoctorRegister/>} />
       <Route path='/patientregister' element={<PatientRegister/>} />
       <Route path='/vendorregister' element={<VendorRegister/>} />
-
       </Routes>
       <Toaster />
     </Router>
