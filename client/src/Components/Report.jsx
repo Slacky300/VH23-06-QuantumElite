@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
-import { useAuth } from '../context/auth'
 import toast from 'react-hot-toast'
 import reports from '../images/report.png'
 import Navbar from './Navbar/Navbar'

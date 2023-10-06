@@ -45,22 +45,17 @@ function App() {
           <Route path='/patient/appointment' element={<Appointment />} />
           <Route path='/doctor' element={<Doctor />} />
           <Route path='/video' element={<Video />} />
+          <Route path='/vdash' element={<Vdash />} />
+          <Route path='/doctordash' element={<DocDash />} />
+          <Route path='/admin' element={<Admin />} />
+          <Route path='/vadmin' element={<Vadmin />} />
+          <Route path='/callhistory' element={<CallHistory />} />
         </Route>
-
         <Route path='/doctorregister' element={<DoctorRegister />} />
         <Route path='/patientregister' element={<PatientRegister />} />
         <Route path='/vendorregister' element={<VendorRegister />} />
-        
         <Route path='/login' element={<Login />} />
-        <Route path='/admin' element={<Admin />} />
-        <Route path='/vadmin' element={<Vadmin />} />
         <Route path='/*' element={<NotFound />} />
-        <Route path='/callhistory' element={<CallHistory />} />
-        <Route path='/doctordash' element={<DocDash />} />
-
-
-
-
       </Routes>
       <Toaster />
     </Router>
