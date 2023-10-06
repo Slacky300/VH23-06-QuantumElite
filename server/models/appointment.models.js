@@ -17,8 +17,10 @@ const AppointmentSchema = new mongoose.Schema({
         enum: ["pending", "approved", "rejected"],
         default: "pending"
     },
-    date: {
-        type: Date,
+
+    date:{
+        type: String,
+
         required: true
     },
     time: {
@@ -31,8 +33,11 @@ const AppointmentSchema = new mongoose.Schema({
     videoCallId: {
         type: String,
         unique: true
-    }
-}, { timestamps: true });
+
+    },
+    
+}, {timestamps: true});
+
 
 const Appointment = mongoose.model("Appointment", AppointmentSchema);
 module.exports = { Appointment }
