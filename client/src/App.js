@@ -43,6 +43,8 @@ function App() {
           <Route path='/contact' element={<ContactUs />} />
           <Route path='/patient' element={<Pdash />} />
           <Route path='/patient/order' element={<UserOrder />} />
+          <Route path='/vendor' element={<Vdash />} />
+
           <Route path='/patient/appointment' element={<Appointment />} />
           <Route path='/doctor' element={<Doctor />} />
           <Route path='/video' element={<Video />} />

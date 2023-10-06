@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-import { addAppointment,getAppointMents } from './appointmentActions'
+import { addAppointment, getAppointMents } from './appointmentActions'
 
 const initialState = {
     appointment: null,
@@ -35,7 +35,7 @@ const appointmentSlice = createSlice({
         builder.addCase(getAppointMents.rejected, (state, action) => {
             state.isLoading = false
         })
-        
+
 
     }
 });
