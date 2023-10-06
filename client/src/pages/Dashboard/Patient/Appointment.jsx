@@ -10,9 +10,9 @@ const UserProfile = () => {
                     <div className='col-md-3'>
                         <UserMenu />
                     </div>
-                    <div className='col-md-9 my-3'>
+                    <div className='col-md-9 '>
                         <h3 className='text-center'>Appointment Details</h3>
-                        <div className='container marginStyle'>
+                        <div className='container '>
             <div className='container-fluid'>
                 <div className='row'>
                     

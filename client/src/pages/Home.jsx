@@ -7,7 +7,7 @@ import Navbar from '../Components/Navbar/Navbar';
 import Footer from '../Components/Footer/Footer';
 import Counter from '../Components/Counter';
 import Faq from './Faq';
-import Doctors from './Doctors';
+import Doctors from '../Components/Doctors';
 
 const HomeMain = () => {
     return (
