@@ -70,7 +70,7 @@ const registerUser = async (req, res) => {
                 fullName, email, password: hashedPassword
             })
             await newPatient.save()
-            return res.status(200).json({ message: "Patient registered successfully", patient: newPatient })
+            return res.status(200).json({ message: "Patient registered successfully", user: newPatient })
         }
         else if (userType === "doctor") {
             // if (!certification) {
@@ -100,7 +100,7 @@ const registerUser = async (req, res) => {
                 certification
             })
             await newDoctor.save()
-            return res.status(200).json({ message: "Doctor registered successfully", doctor: newDoctor })
+            return res.status(200).json({ message: "Doctor registered successfully", user: newDoctor })
         }
         else if (userType === "vendor") {
             const patient = await Patient.findOne({ email })
@@ -127,7 +127,7 @@ const registerUser = async (req, res) => {
                 certification, gstNo
             })
             await newVendor.save()
-            return res.status(200).json({ message: "Vendor registered successfully", vendor: newVendor })
+            return res.status(200).json({ message: "Vendor registered successfully", user: newVendor })
         }
         else {
             return res.status(400).json({ message: "Please select a valid user type" })
