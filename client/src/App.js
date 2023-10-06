@@ -26,6 +26,10 @@ import DocDash from './pages/Dashboard/Doctor/DocDash';
 import CallHistory from './pages/Dashboard/Doctor/CallHistory';
 import MeetingPage from './Noti/MeetingPage';
 import VideoLibrary from './pages/VideoLibrary';
+import Room from './pages/Room';
+import VenderOrder from './pages/VenderDash/VenderOrder';
+import VenderAddOrder from './pages/VenderDash/VenderAddOrder';
+import MedicalStore from './pages/MedicalStore';
 
 function App() {
   const dispatch = useDispatch()
@@ -40,34 +44,36 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
+
         <Route element={<PrivateRoutes />}>
           <Route path='/contact' element={<ContactUs />} />
           <Route path='/patient' element={<Pdash />} />
           <Route path='/patient/order' element={<UserOrder />} />
           <Route path='/vendor' element={<Vdash />} />
-
           <Route path='/patient/appointment' element={<Appointment />} />
-          <Route path='/doctor' element={<Doctor />} />
+          <Route path='/room/:roomId' element={<Room />} />
           <Route path='/video' element={<Video />} />
           <Route path='/vdash' element={<Vdash />} />
+          <Route path='/venderaddorder' element={<VenderAddOrder />} />
           <Route path='/doctordash' element={<DocDash />} />
           <Route path='/admin' element={<Admin />} />
           <Route path='/vadmin' element={<Vadmin />} />
+          <Route path='/venderorders' element={<VenderOrder />} />
           <Route path='/callhistory' element={<CallHistory />} />
+          <Route path='/doctordash' element={<DocDash />} />
+          <Route path='/vdash' element={<Vdash />} />
         </Route>
+
         <Route path='/doctorregister' element={<DoctorRegister />} />
         <Route path='/patientregister' element={<PatientRegister />} />
         <Route path='/vendorregister' element={<VendorRegister />} />
         <Route path='/login' element={<Login />} />
         <Route path='/*' element={<NotFound />} />
+        <Route path='/doctor' element={<Doctor />} />
+        <Route path='/medical' element={<MedicalStore />} />
 
-        <Route path='/callhistory' element={<CallHistory />} />
-        <Route path='/doctordash' element={<DocDash />} />
-        <Route path='/vdash' element={<Vdash />} />
-
-        <Route path='/meeting' element={ <MeetingPage />}/>
-        <Route path='/videolibrary' element={ <VideoLibrary />}/>
-
+        <Route path='/meeting' element={<MeetingPage />} />
+        <Route path='/videolibrary' element={<VideoLibrary />} />
 
 
 
