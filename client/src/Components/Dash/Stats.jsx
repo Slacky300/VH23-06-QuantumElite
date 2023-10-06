@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai'
 
 const Stats = () => {
@@ -47,6 +48,7 @@ const Stats = () => {
         </div>
       </div>
     </div>
+
   )
 }
 
