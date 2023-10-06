@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import register from '../../images/doctorLogin.png'
 import axios from 'axios'
 import toast from 'react-hot-toast';
+const host = process.env.REACT_APP_API_HOST
 
 const Register = () => {
     const navigate = useNavigate()
@@ -13,6 +14,7 @@ const Register = () => {
     const [password, setPassword] = useState('')
     const [pincode, setPincode] = useState('')
     const [certification, setcertification] = useState('')
+
 
     const validateEmail = (email) => {
         const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -46,27 +48,39 @@ const Register = () => {
             return false;
         }
         try {
-            const res = await axios.post('https://womensecbackend.onrender.com/api/v1/users/register',
-                { fullName, userType: 'doctor', email, phone, password, pincode });
+            const res = await axios.post(`${host}/api/v1/auth/register`,
+                { fullName, userType: 'doctor', email, phone, password, pincode, certification }, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
 
-            if (res.status === 201) {
+            if (res.status === 200) {
                 toast.success('Register Successfully')
                 navigate('/login')
             }
             if (res.status == 400) {
                 toast.error('Email Already Exist! Please Login')
             }
+            console.log(
+                fullName,
+                email,
+                phone,
+                password,
+                pincode,
+                certification
+
+            )
         } catch (err) {
             toast.error("Error While Register");
             console.log(err)
         }
     }
-
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
     return (
-        <div className='my-5'>
+        <div className='my-5 ' >
             <div class="container d-flex justify-content-center align-items-center ">
                 <div class="row border rounded-5 p-3 bg-white shadow box-area reverseCol">
                     <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box">
@@ -102,7 +116,7 @@ const Register = () => {
                             </div>
                             <div class="input-group d-flex flex-row align-items-center mb-3">
                                 <div class="form-outline flex-fill mb-0">
-                                    <input value={certification} type="file" onChange={(e) => setcertification(e.target.value)} class="form-control form-control-lg border-dark fs-6" placeholder="Certifiacte" required />
+                                    <input type="file" onChange={(e) => setcertification(e.target.files[0])} class="form-control form-control-lg border-dark fs-6" placeholder="Certifiacte" required />
                                 </div>
                             </div>
                             <div class="input-group d-flex flex-row align-items-center mb-3">

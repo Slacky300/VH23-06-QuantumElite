@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import register from '../../images/patient.png'
 import axios from 'axios'
 import toast from 'react-hot-toast';
+const host = process.env.REACT_APP_API_HOST
 
 const PatientRegister = () => {
     const navigate = useNavigate()
@@ -45,19 +46,20 @@ const PatientRegister = () => {
             return false;
         }
         try {
-            const res = await axios.post('https://womensecbackend.onrender.com/api/v1/users/register',
+            const res = await axios.post(`${host}/api/v1/auth/register`,
                 { fullName, userType: 'patient', email, phone, password, age });
 
-            if (res.status === 201) {
+            console.log(res)
+            if (res.status === 200) {
                 toast.success('Register Successfully')
                 navigate('/login')
             }
-            if (res.status == 400) {
-                toast.error('Email Already Exist! Please Login')
+            else {
+                toast.error(res.data.message)
             }
         } catch (err) {
-            toast.error("Error While Register");
-            console.log(err)
+            toast.error(err?.response?.data?.message);
+            console.log(err.message)
         }
     }
 
