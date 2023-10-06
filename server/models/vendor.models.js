@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 
 const vendorSchema = mongoose.Schema({
 
-    name: {
+    fullName: {
         type: String
     },
     email: {
@@ -18,13 +18,19 @@ const vendorSchema = mongoose.Schema({
     phone: {
         type: String
     },
-    pincode:{
+    pincode: {
         type: String
     },
     medicines: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Medicine'
     }],
+    role: {
+        type: String,
+        default: "vendor"
+    },
+
+
 
 }, { timestamps: true });
 
