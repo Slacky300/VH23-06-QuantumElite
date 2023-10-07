@@ -68,6 +68,8 @@ const Appointments = () => {
                 <th>Status</th>
                 <th>Actions</th>
                 <th>Details</th>
+                <th>PRESCRIPTION</th>
+
               </tr>
             </thead>
             {appointments?.map((appointment, index) => (
@@ -158,6 +160,15 @@ const Appointments = () => {
                         }
                       >
                         Patient details
+                      </button>
+                    </td>
+                    <td>
+                    <button
+                        type="button"
+                        className="btn btn-info text-white"
+                        
+                      >
+                        Add
                       </button>
                     </td>
                   </tr>
