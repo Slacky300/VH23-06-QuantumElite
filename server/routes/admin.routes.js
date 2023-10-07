@@ -1,10 +1,12 @@
-const {verifyDoctor,verifyVendor,getAllDoctors} = require("../controllers/admin.controllers");
+const { verifyDoctor, verifyVendor } = require('../controllers/admin.controllers')
 
 const Router = require("express");
 const router = Router();
-const {verifyJWT} = require("../middlewares/verifyJWT");
 
-router.get("/verifyDoctor",verifyJWT, verifyDoctor);
-router.get("/verifyVendor",verifyJWT, verifyVendor);
+
+
+router.get("/verifyDoctor/:id", verifyDoctor);
+router.get("/verifyVendor/:id", verifyVendor);
 
 module.exports = router;
+

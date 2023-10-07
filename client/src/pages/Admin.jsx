@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../styles/Admin.css"
 import axios from "axios";
 import toast from "react-hot-toast";
+import { verifyDoctor, verifyVendor } from "../redux/Admin/adminAction";
 
 const Admin = () => {
   const [FormData, setFormData] = useState({
@@ -18,7 +19,7 @@ const Admin = () => {
         request_id: requestID
       },
       headers: {
-        'X-RapidAPI-Key': '0720086d43msh946ebfa085a2a8bp1297aejsncd8140a193e1',
+        'X-RapidAPI-Key': '03efd5a285mshe7331c9d611b7f7p143fd2jsn5b7e913e6da3',
         'X-RapidAPI-Host': 'mci-nmc-doctor-verification.p.rapidapi.com'
       }
     };
@@ -36,13 +37,14 @@ const Admin = () => {
     }
   }
 
+
   const checkValidationOfCertification = async () => {
     const options = {
       method: 'POST',
       url: 'https://mci-nmc-doctor-verification.p.rapidapi.com/v3/tasks/async/verify_with_source/nmc_doctor',
       headers: {
         'content-type': 'application/json',
-        'X-RapidAPI-Key': '0720086d43msh946ebfa085a2a8bp1297aejsncd8140a193e1',
+        'X-RapidAPI-Key': '03efd5a285mshe7331c9d611b7f7p143fd2jsn5b7e913e6da3',
         'X-RapidAPI-Host': 'mci-nmc-doctor-verification.p.rapidapi.com'
       },
       data: {
@@ -81,42 +83,42 @@ const Admin = () => {
     <div className="abc" >
       <div>
 
-      <div class="row px-5 justify-content-center align-items-center">
-  <form onSubmit={handleSubmit} class="row g-3">
-    <div class="col-md-3">
-      <div class="form-outline">
-        <label class="form-label" for="form12">
-          Registration_number
-        </label>
-        <input type="text" id="form12" value={FormData.registration_number} class="form-control" name="registration_number" onChange={onChange} />
-      </div>
-    </div>
+        <div class="row px-5 justify-content-center align-items-center">
+          <form onSubmit={handleSubmit} class="row g-3">
+            <div class="col-md-3">
+              <div class="form-outline">
+                <label class="form-label" for="form12">
+                  Registration_number
+                </label>
+                <input type="text" id="form12" value={FormData.registration_number} class="form-control" name="registration_number" onChange={onChange} />
+              </div>
+            </div>
 
-    <div class="col-md-3">
-      <div class="form-outline">
-        <label class="form-label" for="form12">
-          year_of_registration
-        </label>
-        <input type="text" value={FormData.year_of_registration} id="form12" class="form-control" name="year_of_registration" onChange={onChange} />
-      </div>
-    </div>
-    
-    <div class="col-md-3">
-      <div class="form-outline">
-        <label class="form-label" for="form12">
-          council_name
-        </label>
-        <input type="text" id="form12" value={FormData.council_name} class="form-control" name="council_name" onChange={onChange} />
-      </div>
-    </div>
-    
-    <div class="col-md-3 d-flex align-items-end">
-      <button className="btn btn-primary" type="submit">VERIFY</button>
-    </div>
-  </form>
-</div>
+            <div class="col-md-3">
+              <div class="form-outline">
+                <label class="form-label" for="form12">
+                  year_of_registration
+                </label>
+                <input type="text" value={FormData.year_of_registration} id="form12" class="form-control" name="year_of_registration" onChange={onChange} />
+              </div>
+            </div>
 
-        
+            <div class="col-md-3">
+              <div class="form-outline">
+                <label class="form-label" for="form12">
+                  council_name
+                </label>
+                <input type="text" id="form12" value={FormData.council_name} class="form-control" name="council_name" onChange={onChange} />
+              </div>
+            </div>
+
+            <div class="col-md-3 d-flex align-items-end">
+              <button className="btn btn-primary" type="submit">VERIFY</button>
+            </div>
+          </form>
+        </div>
+
+
       </div>
 
 
