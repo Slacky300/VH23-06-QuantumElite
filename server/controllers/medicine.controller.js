@@ -81,7 +81,7 @@ const addMedicine = async (req, res) => {
         const data = await s3.upload(params).promise();
         medImg = data.Location;
         const newMedicine = await Medicine.create({
-            medicineName: medicineName,
+            name: medicineName,
             quantity: quantity,
             price: price,
             description: description,
