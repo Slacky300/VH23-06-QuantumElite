@@ -46,7 +46,7 @@ const getAssignedPrescriptions = async (req, res) => {
     try {
 
         const patientId = req.params.patientId;
-        const prescriptions = await Prescription.find({patient: patientId}).populate('patient');
+        const prescriptions = await Prescription.find({patient: patientId}).populate('patient').populate('doctor');
         if(!prescriptions){
             res.status(404).json({message: "No prescriptions found"})
         }

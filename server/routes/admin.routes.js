@@ -1,5 +1,5 @@
 const {verifyDoctor,verifyVendor,getAllDoctors, getAllVendors} = require("../controllers/admin.controllers");
-
+const {verifyJWT} = require("../middlewares/verifyJWT");
 const Router = require("express");
 const router = Router();
 
