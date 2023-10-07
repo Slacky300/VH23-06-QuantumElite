@@ -36,14 +36,14 @@ const VenderAddOrder = () => {
             <div className="container marginStyle">
                 <div className="container-fluid">
                     <div className="row">
-                        <div className="col-md-3">
+                        <div className="col-md-3 mb-2">
                             <Sidebar />
                         </div>
                         <div className="col-md-6">
-                            <h1 className='my-3 text-center'>Add Medicine</h1>
-                            <div className='mt-3'>
+                            <div>
                                 <div class="container d-flex justify-content-center align-items-center">
                                     <div class="row border rounded-5 p-3 bg-white shadow box-area reverseCol">
+                                        <h1 className='mt-2 text-center'>Add Medicine</h1>
                                         <div class="col-md-12 right-box">
                                             <form onSubmit={handleSubmit}>
                                                 <div class="row align-items-center">

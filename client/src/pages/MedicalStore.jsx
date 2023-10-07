@@ -64,7 +64,7 @@ const MedicalStore = () => {
     console.log("useEffect");
     dispatch(getAllMedicine())
 
-  },[])
+  }, [])
   const medicines = useSelector((state) => state?.medicine?.medicines)
   console.log(medicines);
   return (
@@ -99,30 +99,33 @@ const MedicalStore = () => {
                 </div>
               </div>
 
-              <div className="col-xl-3 col-sm-6 mt-5">
-                <div className="bg-white py-5 px-4 cardStyle">
-                  <img
-                    // onClick={() => handleFetchDoctorByID(c?.doctorId)}
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModal1"
-                    src="https://www.ankurahospitals.com/wp-content/uploads/2021/03/our-doctor-placeholder.jpg"
-                    alt=""
-                    width="100"
-                    className="mb-3 img-thumbnail shadow-sm"
-                  />
-                  <h5 className="mb-0">Meet</h5>
-                  <h6 className="small text-uppercase text-muted my-3">T.B</h6>
-                  <button
-                    className="btn text-white"
-                    // onClick={() => {
-                    //     setDoctorID(c.doctorId)
-                    // }}
-                    style={{ backgroundColor: "#3d86e8" }}
-                  >
-                    Buy Medicine
-                  </button>
+              {medicines.map((c) => (
+                <div className="col-xl-3 col-sm-6 mt-5">
+                  <div className="bg-white py-5 px-4 cardStyle">
+                    <img
+                      style={{ maxWidth: '100%', maxHeight: '150px', objectFit: 'contain' }}
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal1"
+                      src={c.medImg}
+                      alt={c.name}
+                      className="mb-3"
+                    />
+                    <h5 className="mb-0">{c.name}</h5>
+                    <p className="mb-0">{c.description.slice(0, 9)}</p>
+                    <div className="d-flex justify-content-between my-3">
+                      <h6 className='respBrand'>Stock : {c.quantity}</h6>
+                      <h6 className='respBrand'>Price : ₹ {c.price} </h6>
+                    </div>
+                    <button
+                      className="btn text-white"
+                      style={{ backgroundColor: "#3d86e8" }}
+                    >
+                      Buy Medicine
+                    </button>
+                  </div>
                 </div>
-              </div>
+
+              ))}
             </div>
           </div>
         </div>
