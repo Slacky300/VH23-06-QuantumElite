@@ -33,6 +33,7 @@ import MedicalStore from './pages/MedicalStore';
 import HomeDoctor from './pages/HomeDoctor';
 import Ai from './pages/Ai';
 import Prescription from './pages/Dashboard/Patient/Prescription';
+import AllData from './pages/AllData';
 
 function App() {
   const dispatch = useDispatch()
@@ -77,6 +78,8 @@ function App() {
         <Route path='/meeting' element={<MeetingPage />} />
         <Route path='/videolibrary' element={<VideoLibrary />} />
         <Route path='/ai' element={<Ai />} />
+        <Route path='/alldata' element={<AllData />} />
+
       </Routes>
       <Toaster />
     </Router>
