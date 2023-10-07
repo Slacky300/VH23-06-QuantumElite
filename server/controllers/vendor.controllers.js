@@ -20,4 +20,5 @@ const getAllMedicine = async (req, res) => {
     }
 }
 
+
 module.exports = {getAllMedicine};

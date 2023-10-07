@@ -85,12 +85,12 @@ const addMedicine = async (req, res) => {
             quantity: quantity,
             price: price,
             description: description,
+            medImg: medImg
             
         });
 
         const vendorId = req.user.id;
         newMedicine.vendorId = vendorId;
-        newMedicine.medImg.url = medImg;
         await newMedicine.save();
         const vendor = await Vendor.findById(vendorId);
         if(!vendor){
