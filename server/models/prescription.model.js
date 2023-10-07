@@ -11,9 +11,7 @@ const prescriptionSchema = mongoose.Schema({
         ref: 'Doctor'
     },
     prescImg:{
-        type: {
-            url: String,
-        }
+        type: String
     },
     description:{
         type: String

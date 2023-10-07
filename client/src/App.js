@@ -30,6 +30,7 @@ import Room from './pages/Room';
 import VenderOrder from './pages/VenderDash/VenderOrder';
 import VenderAddOrder from './pages/VenderDash/VenderAddOrder';
 import MedicalStore from './pages/MedicalStore';
+import HomeDoctor from './pages/HomeDoctor';
 
 function App() {
   const dispatch = useDispatch()
@@ -70,8 +71,8 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/*' element={<NotFound />} />
         <Route path='/doctor' element={<Doctor />} />
+        <Route path='/homedoctor' element={<HomeDoctor/>} />
         <Route path='/medical' element={<MedicalStore />} />
-
         <Route path='/meeting' element={<MeetingPage />} />
         <Route path='/videolibrary' element={<VideoLibrary />} />
 

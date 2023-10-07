@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import toast from 'react-hot-toast';
+import { useDispatch, useSelector } from "react-redux";
+import { getAllMedicine } from "../redux/Medicine/MedicineActions";
 
 
 const MedicalStore = () => {
@@ -7,53 +9,35 @@ const MedicalStore = () => {
 
   const [long, setLong] = useState("");
   const [lat, setLat] = useState("");
-
-  const fetchData = async () => {
-    const lat = 19.385591;
-    const lng = 72.829019;
-    const apiKey = 'e06abc40ab1a2cb7d082646670f051b7'; // Replace with your actual API key
-
+  const dispatch = useDispatch();
+  const handleSubmit = async (e) => {
     try {
-      const response = await fetch(`https://apis.mapmyindia.com/advancedmaps/v1/${apiKey}/rev_geocode?lat=${lat}&lng=${lng}`);
-      const data = await response.json();
-      setPincode(data.results[0].pincode);
-    } catch (error) {
-      console.error('Error fetching data:', error);
+      console.log(lat);
+      console.log(long);
+      const payload = {
+        // userId: auth?.user._id,
+        lat,
+        long,
+      };
+      console.log(payload);
+      const res = await fetch(
+        "https://womensecbackend.onrender.com/api/v1/emergency/emergencypressed",
+        {
+          method: "POST",
+          body: JSON.stringify(payload),
+          headers: { "Content-type": "application/json" },
+        }
+      );
+      if (res.status === 200) {
+        toast.success("SOS SENT SUCCESSFULLY");
+      } else {
+        toast.error("SOS FAILED");
+      }
+    } catch (e) {
+      console.log(e);
+      toast.error("Something went wrong");
     }
   };
-
-
-  // const handleSubmit = async (e) => {
-  //   try {
-  //     console.log(lat);
-  //     console.log(long);
-  //     const payload = {
-  //       // userId: auth?.user._id,
-  //       lat,
-  //       long,
-  //     };
-  //     console.log(payload);
-
-  //     // https://apis.mapmyindia.com/advancedmaps/v1/e06abc40ab1a2cb7d082646670f051b7/rev_geocode?lat=19.385591&lng=72.829019
-
-  //     const res = await fetch(
-  //       "https://womensecbackend.onrender.com/api/v1/emergency/emergencypressed",
-  //       {
-  //         method: "POST",
-  //         body: JSON.stringify(payload),
-  //         headers: { "Content-type": "application/json" },
-  //       }
-  //     );
-  //     if (res.status === 200) {
-  //       toast.success("Search SUCCESSFULL");
-  //     } else {
-  //       toast.error("Search Failed");
-  //     }
-  //   } catch (e) {
-  //     console.log(e);
-  //     toast.error("Something went wrong");
-  //   }
-  // };
   useEffect(() => getLocation(), []);
 
   const showPosition = async (position) => {
@@ -77,6 +61,14 @@ const MedicalStore = () => {
     window.scrollTo(0, 0);
   }, []);
 
+
+  useEffect(() => {
+    console.log("useEffect");
+    dispatch(getAllMedicine())
+
+  }, [])
+  const medicines = useSelector((state) => state?.medicine?.medicines)
+  console.log(medicines);
   return (
     <div>
       <div>
@@ -113,30 +105,33 @@ const MedicalStore = () => {
                 </div>
               </div>
 
-              <div className="col-xl-3 col-sm-6 mt-5">
-                <div className="bg-white py-5 px-4 cardStyle">
-                  <img
-                    // onClick={() => handleFetchDoctorByID(c?.doctorId)}
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModal1"
-                    src="https://www.ankurahospitals.com/wp-content/uploads/2021/03/our-doctor-placeholder.jpg"
-                    alt=""
-                    width="100"
-                    className="mb-3 img-thumbnail shadow-sm"
-                  />
-                  <h5 className="mb-0">Meet</h5>
-                  <h6 className="small text-uppercase text-muted my-3">T.B</h6>
-                  <button
-                    className="btn text-white"
-                    // onClick={() => {
-                    //     setDoctorID(c.doctorId)
-                    // }}
-                    style={{ backgroundColor: "#3d86e8" }}
-                  >
-                    Buy Medicine
-                  </button>
+              {medicines.map((c) => (
+                <div className="col-xl-3 col-sm-6 mt-5">
+                  <div className="bg-white py-5 px-4 cardStyle">
+                    <img
+                      style={{ maxWidth: '100%', maxHeight: '150px', objectFit: 'contain' }}
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal1"
+                      src={c.medImg}
+                      alt={c.name}
+                      className="mb-3"
+                    />
+                    <h5 className="mb-0">{c.name}</h5>
+                    <p className="mb-0">{c.description.slice(0, 9)}</p>
+                    <div className="d-flex justify-content-between my-3">
+                      <h6 className='respBrand'>Stock : {c.quantity}</h6>
+                      <h6 className='respBrand'>Price : ₹ {c.price} </h6>
+                    </div>
+                    <button
+                      className="btn text-white"
+                      style={{ backgroundColor: "#3d86e8" }}
+                    >
+                      Buy Medicine
+                    </button>
+                  </div>
                 </div>
-              </div>
+
+              ))}
             </div>
           </div>
         </div>

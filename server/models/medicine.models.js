@@ -18,14 +18,12 @@ const medicineSchema = mongoose.Schema({
         type: Boolean,
         default: true
     },
-    vendorId:[{
+    vendorId:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Vendor'
-    }],
+    },
     medImg:{
-        type: {
-            url: String,
-        }
+        type: String
     },
     purchasedBypatient:[{
         type: mongoose.Schema.Types.ObjectId,

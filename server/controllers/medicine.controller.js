@@ -1,8 +1,19 @@
-const {Medicine} = require("../models/medicine.model");
-const {Patient} = require("../models/patient.model");
+const {Medicine} = require("../models/medicine.models");
+const {Patient} = require("../models/patient.models");
+const {Vendor} = require("../models/vendor.models");
+
+
+const AWS = require('aws-sdk')
 
 
 
+AWS.config.update({
+    accessKeyId: process.env.AWS_ACCESS_KEY,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    region: 'ap-south-1'
+});
+
+const s3 = new AWS.S3();
 
 const getPurchasedMedicine = (req, res) => {
 
@@ -57,12 +68,36 @@ const purchaseMedicine = async (req, res) => {
 const addMedicine = async (req, res) => {
 
     try{
-        const {medicineName, quantity, price} = req.body;
+        const {medicineName, quantity, price, description} = req.body;
+        let medImg = req.files
+       
+        const params = {
+            Bucket: process.env.AWS_BUCKET_NAME,
+            Key: `${Date.now()}-${req.file.originalname}`,
+            Body: req.file.buffer,
+            ContentType: req.file.mimetype,
+
+        };
+        const data = await s3.upload(params).promise();
+        medImg = data.Location;
         const newMedicine = await Medicine.create({
-            medicineName: medicineName,
+            name: medicineName,
             quantity: quantity,
             price: price,
+            description: description,
+            medImg
+            
         });
+
+        const vendorId = req.user.id;
+        newMedicine.vendorId = vendorId;
+        await newMedicine.save();
+        const vendor = await Vendor.findById(vendorId);
+        if(!vendor){
+            res.status(404).json({message: "Vendor not found"})
+        }
+        vendor.medicines.push(newMedicine._id);
+        await vendor.save();
         res.status(200).json({message: "Medicine added successfully", newMedicine})
     }catch(e){
         console.log(e);
@@ -72,4 +107,19 @@ const addMedicine = async (req, res) => {
 
 
 
-module.exports = {getPurchasedMedicine, purchaseMedicine, addMedicine}
+const getAllMedicine  = async (req, res) => {
+    try{
+        const medicines = await Medicine.find({}).select("-vendorId -purchasedBypatient -_v -updatedAt");
+        if(!medicines){
+            res.status(404).json({message: "No medicines found"})
+        }
+        res.status(200).json(medicines)
+    }catch(e){
+        console.log(e);
+        res.status(500).json({message: "Internal Server Error"})
+    }
+}
+
+
+
+module.exports = {getPurchasedMedicine, purchaseMedicine, addMedicine , getAllMedicine}

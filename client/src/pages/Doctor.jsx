@@ -3,6 +3,8 @@ import Appointment from '../Components/Appointment';
 import Navbar from '../Components/Navbar/Navbar';
 import { getDoctors, getDoctorById } from '../redux/Doctors/doctorActions';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { FaUserDoctor } from 'react-icons/fa6'
 
 const Doctor = () => {
   const dispatch = useDispatch();
