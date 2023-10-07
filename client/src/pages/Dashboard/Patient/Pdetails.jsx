@@ -7,6 +7,8 @@ const Pdetails = () => {
 
     const user = useSelector(state => state.auth.user)
 
+    
+
     return (
         <div>
             <section >

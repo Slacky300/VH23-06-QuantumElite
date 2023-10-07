@@ -64,8 +64,11 @@ const UserProfile = () => {
                                                                     <button disabled={!c.videoCallId} className='btn btn-primary'>Connect</button>
                                                                 </td>
                                                                 
+                                                                
+
+                                            
                                                                 <td>
-                                                                    <button onClick={prescription} className='btn btn-primary'>VIEW</button>
+                                                                    <button  className='btn btn-primary'>VIEW</button>
                                                                 </td>
                                                             </tr>
 

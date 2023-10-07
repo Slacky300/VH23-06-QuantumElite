@@ -9,11 +9,15 @@ AWS.config.update({
     region: 'ap-south-1'
 });
 
+const s3 = new AWS.S3();
+
 const addPrescription = async (req, res) => {
 
     try{
         const {patientId, description} = req.body;
-        let prescImg = req.file;
+        let prescImg = null;
+        if(req.file){
+            prescImg = req.file;
         const params = {
             Bucket: process.env.AWS_BUCKET_NAME,
             Key: `${Date.now()}-${req.file.originalname}`,
@@ -23,6 +27,7 @@ const addPrescription = async (req, res) => {
         };
         const data = await s3.upload(params).promise();
         prescImg = data.Location;
+        }
         const newPrescription = await Prescription.create({
             patient: patientId,
             doctor: req.user.id,
