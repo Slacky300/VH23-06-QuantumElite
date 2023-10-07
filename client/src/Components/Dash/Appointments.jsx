@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { getAppointMents } from "../../redux/Appointment/appointmentActions";
+import { acceptOrRejectApt, getAppointMents } from "../../redux/Appointment/appointmentActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getLoggedinUser } from "../../redux/Auth/authActions";
@@ -13,16 +13,16 @@ const Appointments = () => {
     dispatch(getLoggedinUser());
   }, [dispatch]);
 
-  const handleAcceptAppointment = (id) => {
-    console.log("id", id);
+  const handleAcceptAppointment = (appointmentId) => {
+    dispatch(acceptOrRejectApt({ appointmentId, status: 'approved' }))
   };
 
-  const handleRejectAppointment = (id) => {
-    console.log("id", id);
+  const handleRejectAppointment = (appointmentId) => {
+    dispatch(acceptOrRejectApt({ appointmentId, status: 'rejected' }))
   };
 
   const handleConnect = (id) => {
-    console.log("id", id);
+    navigate(`/room/${id}`)
   };
 
   const handlePatientDetails = (id) => {
@@ -130,7 +130,7 @@ const Appointments = () => {
                           </p>
                         </>
                       )}
-                      {appointment?.status === "accepted" && (
+                      {appointment?.status === "approved" && (
                         <p className="fw-normal mb-1">Accepted</p>
                       )}
                       {appointment?.status === "rejected" && (
@@ -142,9 +142,8 @@ const Appointments = () => {
                       <button
                         type="button"
                         className="btn btn-primary"
-                        data-bs-toggle="modal"
-                        data-bs-target="#exampleModal"
-                        onClick={() => handleConnect(appointment?.patient?._id)}
+                        disabled={!appointment?.videoCallId}
+                        onClick={() => handleConnect(appointment?.videoCallId)}
                       >
                         Connect
                       </button>

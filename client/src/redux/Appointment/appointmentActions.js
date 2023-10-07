@@ -54,3 +54,53 @@ export const getAppointMents = createAsyncThunk(
         }
     }
 )
+
+
+
+export const getAppointMentsByUserId = createAsyncThunk(
+    'doctors/getAppointMentsByUserId',
+    async (_, { rejectWithValue, dispatch }) => {
+        try {
+            const response = await axios.get(`${host}/api/v1/patient/`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+            if (response.status === 200) {
+
+                return response.data;
+            } else {
+                toast.error("Something went wrong")
+            }
+        } catch (err) {
+            // toast.error(err?.response?.data?.message);
+            console.log(err.message)
+        }
+    }
+)
+
+
+export const acceptOrRejectApt = createAsyncThunk(
+    'doctors/acceptOrRejectApt',
+    async ({ appointmentId, status }, { rejectWithValue, dispatch }) => {
+        try {
+            const response = await axios.patch(`${host}/api/v1/appointment/accept-or-reject-apt`,
+                { appointmentId, status },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+            if (response.status === 200) {
+
+                return response.data;
+            } else {
+                toast.error("Something went wrong")
+            }
+        } catch (err) {
+            // toast.error(err?.response?.data?.message);
+            console.log(err.message)
+        }
+    }
+)

@@ -97,7 +97,7 @@ const Navbar = () => {
                 {user ?
                   (
                     <ul className='mt-2 text-center'>
-                      <Link to={`/${user?.role}`} style={{ textDecoration: 'none' }} className="nav-item text-center">
+                      <Link to={`/${user?.role === "doctor" ? "doctorDash" : user?.role === "patient" ? "pdash" : "vdash"}`} style={{ textDecoration: 'none' }} className="nav-item text-center">
                         <a className="nav-link learn-more-btn" aria-current="page">Dashboard</a>
                       </Link>
                       <Link onClick={handleLogout} style={{ textDecoration: 'none' }} className="nav-item text-center">
