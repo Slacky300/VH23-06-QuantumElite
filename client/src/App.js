@@ -31,6 +31,7 @@ import VenderOrder from './pages/VenderDash/VenderOrder';
 import VenderAddOrder from './pages/VenderDash/VenderAddOrder';
 import MedicalStore from './pages/MedicalStore';
 import HomeDoctor from './pages/HomeDoctor';
+import Ai from './pages/Ai';
 
 function App() {
   const dispatch = useDispatch()
@@ -45,7 +46,6 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
-
         <Route element={<PrivateRoutes />}>
           <Route path='/contact' element={<ContactUs />} />
           <Route path='/patient' element={<Pdash />} />
@@ -64,7 +64,6 @@ function App() {
           <Route path='/doctordash' element={<DocDash />} />
           <Route path='/vdash' element={<Vdash />} />
         </Route>
-
         <Route path='/doctorregister' element={<DoctorRegister />} />
         <Route path='/patientregister' element={<PatientRegister />} />
         <Route path='/vendorregister' element={<VendorRegister />} />
@@ -75,13 +74,7 @@ function App() {
         <Route path='/medical' element={<MedicalStore />} />
         <Route path='/meeting' element={<MeetingPage />} />
         <Route path='/videolibrary' element={<VideoLibrary />} />
-
-
-
-
-
-
-
+        <Route path='/ai' element={<Ai />} />
       </Routes>
       <Toaster />
     </Router>
