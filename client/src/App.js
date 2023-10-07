@@ -32,6 +32,7 @@ import VenderAddOrder from './pages/VenderDash/VenderAddOrder';
 import MedicalStore from './pages/MedicalStore';
 import HomeDoctor from './pages/HomeDoctor';
 import Ai from './pages/Ai';
+import Prescription from './pages/Dashboard/Patient/Prescription';
 
 function App() {
   const dispatch = useDispatch()
@@ -52,6 +53,7 @@ function App() {
           <Route path='/patient/order' element={<UserOrder />} />
           <Route path='/vendor' element={<Vdash />} />
           <Route path='/patient/appointment' element={<Appointment />} />
+          <Route path='/patient/prescription' element={<Prescription />} />
           <Route path='/room/:roomId' element={<Room />} />
           <Route path='/video' element={<Video />} />
           <Route path='/vendor' element={<Vdash />} />

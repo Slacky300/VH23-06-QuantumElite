@@ -57,7 +57,7 @@ export const getPrescriptionAction = createAsyncThunk(
 
 export const getAssignedPrescriptionsAction = createAsyncThunk(
     'prescription/getAssignedPrescriptionsAction',
-    async ( patientId, { rejectWithValue, dispatch }) => {
+async ( {patientId}, { rejectWithValue, dispatch }) => {
         try {
             const response = await axios.get(`${host}/api/v1/prescription/${patientId}`, {
                 headers: {
