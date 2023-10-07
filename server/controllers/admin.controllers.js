@@ -5,21 +5,7 @@ const getAllDoctors = async (req, res) => {
 
     try {
         const doctors = await Doctor.find();
-        const data = [];
-        for (const x of doctors) {
-            data.push({
-                id: x._id,
-                name: x.name,
-                email: x.email,
-                phone: x.phone,
-                specialization: x.specialization,
-                experience: x.experience,
-                rating: x.rating,
-                image: x.image,
-                description: x.description
-            });
-        }
-        res.status(200).json(data)
+        res.status(200).json(doctors)
 
     } catch (error) {
         console.log(error);
@@ -28,6 +14,15 @@ const getAllDoctors = async (req, res) => {
 
 }
 
+const getAllVendors = async (req, res) => { 
+    try {
+        const vendors = await Vendor.find();
+        res.status(200).json(vendors);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error });
+    }
+}
 
 const verifyDoctor = async (req, res) => {
 
@@ -59,4 +54,4 @@ const verifyVendor = async (req, res) => {
     }
 }
 
-module.exports = { getAllDoctors, verifyDoctor, verifyVendor }
+module.exports = { getAllDoctors, verifyDoctor, verifyVendor, getAllVendors  }
