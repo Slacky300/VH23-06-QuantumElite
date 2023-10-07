@@ -85,7 +85,7 @@ const addMedicine = async (req, res) => {
             quantity: quantity,
             price: price,
             description: description,
-            medImg: medImg
+            medImg
             
         });
 
