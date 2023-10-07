@@ -1,8 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import UserMenu from './UserMenu'
 import { GiCancel } from 'react-icons/gi'
+import { getAppointMentsByUserId } from '../../../redux/Appointment/appointmentActions'
+import { useDispatch, useSelector } from 'react-redux'
 
 const UserProfile = () => {
+    const dispatch = useDispatch()
+
+    const user = useSelector((state) => state?.auth?.user)
+    const appointments = useSelector((state) => state?.appointment?.appointmentsByUserId)
+
+    useEffect(() => {
+        dispatch(getAppointMentsByUserId())
+    }
+        , [dispatch])
+
 
     return (
         <div className='container marginStyle'>
@@ -28,27 +40,32 @@ const UserProfile = () => {
                                                         <th>Cancel</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody className='text-center'>
-                                                    <tr>
-                                                        <td>
+                                                {
+                                                    appointments?.map((c) => (
+                                                        <tbody className='text-center'>
+                                                            <tr>
+                                                                <td>
 
-                                                            1
-                                                        </td>
-                                                        <td>
-                                                            <p className="fw-normal mb-1">sadadada</p>
-                                                        </td>
-                                                        <td>
-                                                            12/12/24
-                                                        </td>
-                                                        <td>
-                                                            10:00 AM
-                                                        </td>
-                                                        <td>
-                                                            <button className='btn btn-danger'><GiCancel size={25} /></button>
-                                                        </td>
-                                                    </tr>
+                                                                    1
+                                                                </td>
+                                                                <td>
+                                                                    <p className="fw-normal mb-1">{c?.doctorId?.fullName}</p>
+                                                                </td>
+                                                                <td>
+                                                                    {c?.date}
+                                                                </td>
+                                                                <td>
+                                                                    {c?.time}
+                                                                </td>
+                                                                <td>
+                                                                    <button disabled={!c.videoCallId} className='btn btn-primary'>Connect</button>
+                                                                </td>
+                                                            </tr>
 
-                                                </tbody>
+                                                        </tbody>
+                                                    ))
+                                                }
+
                                             </table>
 
                                         </div>
