@@ -40,12 +40,15 @@ const verifyDoctor = async (req, res) => {
 
 }
 
+
+
 const verifyVendor = async (req, res) => {
     try {
         const vendorId = req.params.id;
         const vendor = await Vendor.findById(vendorId);
         if (!vendor) return res.status(404).json({ message: "Vendor not found" });
         vendor.verified = true;
+        vendor.vendorVerified = true;
         await vendor.save();
         res.status(200).json({ message: "Vendor verified successfully", vendor });
     } catch (error) {
@@ -53,5 +56,6 @@ const verifyVendor = async (req, res) => {
         res.status(500).json({ error });
     }
 }
+
 
 module.exports = { getAllDoctors, verifyDoctor, verifyVendor, getAllVendors  }
