@@ -1,5 +1,5 @@
 const {Vendor} = require("../models/vendor.models");
-const {Medicine} = require("../models/medicine.modesl");
+const {Medicine} = require("../models/medicine.models");
 
 
 const getAllMedicine = async (req, res) => {
