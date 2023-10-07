@@ -56,7 +56,7 @@ function App() {
           <Route path='/video' element={<Video />} />
           <Route path='/vendor' element={<Vdash />} />
           <Route path='/venderaddorder' element={<VenderAddOrder />} />
-          <Route path='/doctor' element={<DocDash />} />
+          <Route path='/doctorDash' element={<DocDash />} />
           <Route path='/admin' element={<Admin />} />
           <Route path='/vadmin' element={<Vadmin />} />
           <Route path='/venderorders' element={<VenderOrder />} />
@@ -71,7 +71,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/*' element={<NotFound />} />
         <Route path='/doctor' element={<Doctor />} />
-        <Route path='/homedoctor' element={<HomeDoctor/>} />
+        <Route path='/homedoctor' element={<HomeDoctor />} />
         <Route path='/medical' element={<MedicalStore />} />
         <Route path='/meeting' element={<MeetingPage />} />
         <Route path='/videolibrary' element={<VideoLibrary />} />
