@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { prescriptionAction, getPrescriptionAction } from './prescriptionAction'
+import { prescriptionAction, getPrescriptionAction, getAssignedPrescriptionsAction } from './prescriptionAction'
 
 const initialState = {
     isLoading: false,
@@ -41,6 +41,21 @@ export const prescriptionSlice = createSlice({
         builder.addCase(getPrescriptionAction.rejected, (state, action) => {
             state.isLoading = false
         })
+
+        builder.addCase(getAssignedPrescriptionsAction.pending, (state, action) => {
+            state.isLoading = true
+        })
+
+        builder.addCase(getAssignedPrescriptionsAction.fulfilled, (state, action) => {
+            state.isLoading = false
+            state.prescriptions = action.payload
+        })
+
+        builder.addCase(getAssignedPrescriptionsAction.rejected, (state, action) => {
+            state.isLoading = false
+        })
+
+        
 
     }
 })

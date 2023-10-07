@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import UserMenu from './UserMenu'
 import { GiCancel } from 'react-icons/gi'
 import { getAppointMentsByUserId } from '../../../redux/Appointment/appointmentActions'
+import { getPrescription } from '../../../redux/prescription/prescriptionAction'
 import { useDispatch, useSelector } from 'react-redux'
 
 const UserProfile = () => {
@@ -9,6 +10,7 @@ const UserProfile = () => {
 
     const user = useSelector((state) => state?.auth?.user)
     const appointments = useSelector((state) => state?.appointment?.appointmentsByUserId)
+    const prescription = useSelector((state) => state?.prescription?.prescription)
 
     useEffect(() => {
         dispatch(getAppointMentsByUserId())
@@ -37,7 +39,8 @@ const UserProfile = () => {
                                                         <th>Doctor Name</th>
                                                         <th>Date</th>
                                                         <th>TIme</th>
-                                                        <th>Cancel</th>
+                                                        <th>Connect</th>
+                                                        <th>presciption</th>
                                                     </tr>
                                                 </thead>
                                                 {
@@ -59,6 +62,10 @@ const UserProfile = () => {
                                                                 </td>
                                                                 <td>
                                                                     <button disabled={!c.videoCallId} className='btn btn-primary'>Connect</button>
+                                                                </td>
+                                                                
+                                                                <td>
+                                                                    <button onClick={prescription} className='btn btn-primary'>VIEW</button>
                                                                 </td>
                                                             </tr>
 

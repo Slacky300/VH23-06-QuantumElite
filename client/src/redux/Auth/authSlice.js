@@ -22,8 +22,8 @@ export const authSlice = createSlice({
         })
         builder.addCase(registerAsPatient.fulfilled, (state, action) => {
             state.isLoading = false
-            state.user = action.payload?.user
-            state.token = action.payload?.token
+            // state.user = action.payload?.user
+            // state.token = action.payload?.token
         })
         builder.addCase(registerAsPatient.rejected, (state, action) => {
             state.isLoading = false

@@ -1,8 +1,12 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 
 const Pdetails = () => {
+
+    const user = useSelector(state => state.auth.user)
+
     return (
         <div>
             <section >
@@ -19,8 +23,8 @@ const Pdetails = () => {
                                         className="rounded-circle img-fluid"
                                         style={{ width: 150 }}
                                     />
-                                    <h5 className="my-3">Patient Name</h5>
-                                    <p className="text-muted mb-1">Full Stack Developer</p>
+                                    <h5 className="my-3">{user?.role === "patient"?"Patient":user?.role==="doctor"?"Doctor":"Vendor"} Details</h5>
+                                    <p className="text-muted mb-1"></p>
                                 </div>
                             </div>
                             <button type="button" class="btn btn-primary">EDIT PROFILE</button>
@@ -35,7 +39,7 @@ const Pdetails = () => {
                                         </div>
 
                                         <div className="col-sm-9">
-                                            <input value="s" type="email"
+                                            <input value={user?.fullName} type="email"
                                                 //  onChange={(e) => setuname(e.target.value)}
                                                 id="form3Example1c" className="form-control text-muted mb-0" required />
                                         </div>
@@ -47,7 +51,7 @@ const Pdetails = () => {
                                             <p className="mb-0">Email</p>
                                         </div>
                                         <div className="col-sm-9">
-                                            <input value="s" type="email" id="form3Example1c" className="form-control text-muted mb-0" required />
+                                            <input value={user?.email} type="email" id="form3Example1c" className="form-control text-muted mb-0" required />
                                         </div>
                                     </div>
                                     <hr />
@@ -56,7 +60,7 @@ const Pdetails = () => {
                                             <p className="mb-0">Phone</p>
                                         </div>
                                         <div className="col-sm-9">
-                                            <input value="s" type="email" id="form3Example1c" className="form-control text-muted mb-0" required />
+                                            <input value={user?.phone}  type="email" id="form3Example1c" className="form-control text-muted mb-0" required />
                                         </div>
                                     </div>
                                     <hr />
@@ -67,9 +71,10 @@ const Pdetails = () => {
                                             <p className="mb-0">Address</p>
                                         </div>
                                         <div className="col-sm-9">
-                                            <input value="s" type="email" id="form3Example1c" className="form-control text-muted mb-0" required />
+                                            <input value={user?.location} type="email" id="form3Example1c" className="form-control text-muted mb-0" required />
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
 

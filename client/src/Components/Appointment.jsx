@@ -91,7 +91,7 @@ const Appointment = ({ doctorID }) => {
                     <textarea
                       rows={3}
                       type="text"
-
+                      value={description}
                       onChange={(e) => setDescription(e.target.value)}
                       class="form-control form-control-lg border-dark fs-6"
                       placeholder="Describe the issue"

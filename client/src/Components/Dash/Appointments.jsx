@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect , useState} from "react";
 import { acceptOrRejectApt, getAppointMents } from "../../redux/Appointment/appointmentActions";
+import { prescriptionAction } from "../../redux/prescription/prescriptionAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getLoggedinUser } from "../../redux/Auth/authActions";
@@ -15,10 +16,23 @@ const Appointments = () => {
 
   const handleAcceptAppointment = (appointmentId) => {
     dispatch(acceptOrRejectApt({ appointmentId, status: 'approved' }))
-  };
+    dispatch(getAppointMents(user?._id));
 
+  };
+  const [description, setDescription] = useState('');
+  const [file,setFile]=useState(null);
+  const handlePres = (patientId) => {
+    console.log("patientId", patientId , description,file);
+    dispatch(prescriptionAction({
+      patientId: patientId,
+      description: description,
+      prescImg:file
+    }))
+  }
   const handleRejectAppointment = (appointmentId) => {
     dispatch(acceptOrRejectApt({ appointmentId, status: 'rejected' }))
+    dispatch(getAppointMents(user?._id));
+
   };
 
   const handleConnect = (id) => {
@@ -103,7 +117,7 @@ const Appointments = () => {
                       </p>
                     </td>
                     <td>
-                      <p className="fw-normal mb-1">{appointment?.time}</p>
+                      <p className="fw-normal mb-1">{appointment?.time} PM</p>
                     </td>
                     <td>
                       {appointment?.status === "pending" && (
@@ -165,6 +179,7 @@ const Appointments = () => {
                     <button
                         type="button"
                         className="btn btn-info text-white"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal8"
                         
                       >
                         Add
@@ -189,6 +204,27 @@ const Appointments = () => {
                     </div>
                   </div>
                 </div>
+
+<div className="modal fade" id="exampleModal8" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div className="modal-dialog">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h1 className="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
+      </div>
+      <div className="modal-body">
+        <>
+        <form onSubmit={(e)=>{ e.preventDefault(); handlePres(appointment?.patientId?._id)}}>
+          <input type="text" value={description} onChange={(e) => setDescription(e.target.value)}></input>
+          <input type="file" onChange={(e) => setFile(e.target.files[0])}></input><br/>
+          <button type="submit" className="btn btn-primary">Submit</button>
+        </form>
+        </>
+      </div>
+    </div>
+  </div>
+</div>
+
               </>
             ))}
           </table>

@@ -3,6 +3,8 @@ import UserMenu from "./UserMenu";
 import Pdetails from "../Patient/Pdetails";
 import Appointments from '../../../Components/Dash/Appointments'
 
+
+
 const DocDash = () => {
   return (
     <div className="container marginStyle">
