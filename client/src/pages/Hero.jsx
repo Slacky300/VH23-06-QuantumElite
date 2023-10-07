@@ -16,7 +16,7 @@ const Hero = () => {
                             <p className="banner-subtitle">Health IS Wealth</p>
                             <h1 className="banner-title">Help us bring <span >Quality Medication</span> to Reality with us</h1>
                             <div className="learn-more-btn-section" >
-                                <Link to='/doctor' style={{ backgroundColor: "red" }} className="nav-link learn-more-btn btn-header" href="#car">Book An Appointment</Link>
+                                <Link to='/doctor' className="nav-link learn-more-btn btn-header" href="#car">Book An Appointment</Link>
                             </div>
                         </div>
                     </div>

@@ -17,15 +17,12 @@ const Features = () => {
             <div class="col-lg-4 col-md-6 col-12 mb-4">
               <div class="bg-transparent border-0">
                 <div class="card-body text-md-end">
-                  <h3>Optimize images <span style={{ color: '#3d86e8' }}>01 </span></h3>
-                  <p>Keywords play a major role in this formula. You want to include words people will search
-                    for throughout your content.</p>
-                  <h3>Use outbound links <span style={{ color: '#3d86e8' }}>02 </span></h3>
-                  <p>There are certain things you can do to increase the credibility of your website. You
-                    should also include internal links..</p>
-                  <h3>Add more than text <span style={{ color: '#3d86e8' }}>03 </span></h3>
-                  <p>There more you can add to improve your SEO ranking. Consider adding other multimedia
-                    elements such as videos,</p>
+                  <h3>Video Call<span style={{ color: '#3d86e8' }}> 01 </span></h3>
+                  <p>Doctor can easily connect with patients from anywhere and anytime</p>
+                  <h3>Online Medical Store<span style={{ color: '#3d86e8' }}> 02 </span></h3>
+                  <p>Vendors get a platform to sell there medicines and other drugs</p>
+                  <h3>FirstAid Guide <span style={{ color: '#3d86e8' }}>03 </span></h3>
+                  <p>TeleMedix has a separate page dedicated towards FirstAid to educate People and make awareness among people</p>
                 </div>
               </div>
             </div>
@@ -39,15 +36,12 @@ const Features = () => {
             <div class="col-lg-4 col-md-6 col-12 mb-4">
               <div class=" bg-transparent border-0">
                 <div class="card-body text-start">
-                  <h3><span style={{ color: '#3d86e8' }}>04 </span>Start blogging</h3>
-                  <p>If you are using authority websites for hyperlinks, you shouldn’t have to worry about the
-                    links breaking.</p>
-                  <h3><span style={{ color: '#3d86e8' }}>05 </span>Fix any broken links</h3>
-                  <p>There are certain things you can do to increase the credibility of your website. You
-                    should also include internal links..</p>
-                  <h3><span style={{ color: '#3d86e8' }}>06 </span>Click-worthy title</h3>
-                  <p>When it comes to writing titles for search engines, the thing you have to know is you
-                    only have 65 characters to write headline.</p>
+                  <h3><span style={{ color: '#3d86e8' }}>04 </span>Verified Doctors</h3>
+                  <p>Doctors need to provide valid certificate proof which will be checked and then doctor gets sccess</p>
+                  <h3><span style={{ color: '#3d86e8' }}>05 </span>Verified Vendors</h3>
+                  <p>Vendors need to verify there GSTIN to be eligible to list there shop on website</p>
+                  <h3><span style={{ color: '#3d86e8' }}>06 </span>AI Chat Assistant</h3>
+                  <p>An AI Chat Assistant always at your service 24/7 incase doctor is busy or patients have any queries regarding anything</p>
                 </div>
               </div>
             </div>

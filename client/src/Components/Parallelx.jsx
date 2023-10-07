@@ -10,12 +10,12 @@ const Parallelx = () => {
                     <div class="row">
                         <div class="col-xl-6 xol-lg-6 col-md-12 col-12  d-flex flex-column justify-content-center align-items-start ">
                             <h1 class="common-heading text-capitalize fw-bolder text-white">
-                                AN APPLE A DAY KEEPS DOCTORS AWAY
+                                Telehealth connect platform for doctors,patients and vendors ...
                             </h1>
                             <p class="mt-3 mb-5 para-width text-white" style={{ textAlign: 'justify' }}>
-                               FHDGF FD KJF FKDSF  FDSKFHD    FDKJHF DS          FDKHF
+                                Doctor Consulting for everyone and anywhere !
                             </p>
-                            <Link to='/contact' class="btn learn-more-btn">Contact Us</Link>
+                            <Link to='/ai' class="btn learn-more-btn">Contact Us</Link>
                         </div>
                     </div>
                 </section>

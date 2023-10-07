@@ -19,9 +19,9 @@ const Counter = () => {
         }
 
         counter("count1", 0, 100, 1000);
-        counter("count2", 100, 50, 1000);
-        counter("count3", 0, 500, 3000);
-        counter("count4", 0, 200, 1000);
+        counter("count2", 100, 500, 1000);
+        counter("count3", 0, 650, 3000);
+        counter("count4", 0, 900, 1000);
     }, []);
 
     return (
@@ -32,27 +32,27 @@ const Counter = () => {
                         <div className="row text-center text-white">
                             <div className="col-md-3 mb-lg-0 mb-md-0 mb-5">
                                 <h2>
-                                    <span id="count1"></span>+
-                                </h2>
-                                <p>Doctors</p>
-                            </div>
-                            <div className="col-md-3 mb-lg-0 mb-md-0 mb-5">
-                                <h2>
                                     <span id="count2"></span>+
                                 </h2>
                                 <p>Happy Patients</p>
                             </div>
                             <div className="col-md-3 mb-lg-0 mb-md-0 mb-5">
                                 <h2>
+                                    <span id="count1"></span>+
+                                </h2>
+                                <p>Total Doctors</p>
+                            </div>
+                            <div className="col-md-3 mb-lg-0 mb-md-0 mb-5">
+                                <h2>
                                     <span id="count4"></span>+
                                 </h2>
-                                <p>Clinic</p>
+                                <p>Available Clinic</p>
                             </div>
                             <div className="col-md-3 mb-lg-0 mb-md-0 mb-5">
                                 <h2>
                                     <span id="count3"></span>+
                                 </h2>
-                                <p>Medicine</p>
+                                <p>Total Medicine</p>
                             </div>
                         </div>
                     </div>

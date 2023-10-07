@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/about.css";
 import about2 from "../images/aboutUs.png";
+import { Link } from "react-router-dom";
 
 const About = () => {
   return (
@@ -15,16 +16,15 @@ const About = () => {
                 <img src={about2} class="img-fluid" />
               </div>
               <div class="col-lg-5 col-md-12 text-sec mb-lg-0 mb-5 mt-2">
-                <h2>We take everything Seriously with the best possible Service.</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et purus a odio finibus bibendum in sit
-                  amet leo. Mauris feugiat erat tellus.Far far away, behind the word mountains, far from the countries
-                  Vokalia and Consonantia, there live the blind texts.</p>
+                <h2>We take everything Seriously with the best possible Health Services.</h2>
+                <p>TeleMedix is the doctor and patient online consultant app where patient can interact with the doctor to get advice instead of travelling long distance. Also, we have a medical store for patient with home delivery of medicine ~ future update. Our team are with you 24/7 to provide best and secure doctor consulting.</p>
                 <ul class="list-unstyled py-3">
-                  <li>Video call.</li>
-                  <li>PRESCIPTION and chat</li>
-                  <li>Set up your store.</li>
+                  <li>One-to-one Video call</li>
+                  <li>Online Prescription</li>
+                  <li>Online Medical Store</li>
+                  <li>AI Chat Assistant 24/7 and more ...</li>
                 </ul>
-                <button class="learn-more-btn btn-header mt-4">Learn More</button>
+                <Link to='/doctor' className="nav-link learn-more-btn btn-header" >Make Appointment</Link>
               </div>
             </div>
           </div>
@@ -38,9 +38,8 @@ const About = () => {
               <div class="col-sm-12">
                 <div class="text-content">
                   <h2>Explore Our Professional Doctors</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et purus a odio
-                    finibus bibendum in sit amet leo. Mauris feugiat erat tellus.</p>
-                  <button class="learn-more-btn btn-header mt-3">Read More</button>
+                  <p>Professional and Exprienced Doctors with high level skills in their respective Domains. Best of Best !</p>
+                  <Link to='/doctor' className="nav-link learn-more-btn btn-header my-2" >View Doctors</Link>
                 </div>
               </div>
             </div>
