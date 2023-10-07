@@ -33,7 +33,6 @@ const MedicalStore = () => {
 
 
   useEffect(() => {
-    console.log("useEffect");
     dispatch(getAllMedicine())
 
   }, [])
@@ -52,7 +51,6 @@ const MedicalStore = () => {
               <div className="container">
                 <div className="row align-items-center">
                   <div className="col">
-                    {pincode && <p>Pincode: {pincode}</p>}
                     <input
                       className="form-control"
                       type="search" placeholder="🔎 Search your medicine..."
@@ -64,9 +62,10 @@ const MedicalStore = () => {
                       Find Shops Near Me
                     </button>
                   </div>
-                  <h5>Shop</h5>
                 </div>
               </div>
+              {pincode && <p>Pincode: {pincode}</p>}
+
 
               {medicines.filter((medicine) => {
                 return search.toString().toLowerCase() === '' ? medicine : medicine.name.toLowerCase().includes(search)
