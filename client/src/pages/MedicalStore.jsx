@@ -7,53 +7,25 @@ import { getAllMedicine } from "../redux/Medicine/MedicineActions";
 const MedicalStore = () => {
   const [long, setLong] = useState("");
   const [lat, setLat] = useState("");
+  const [search, setsearch] = useState('');
   const dispatch = useDispatch();
-  const handleSubmit = async (e) => {
+
+  const [pincode, setPincode] = useState(null);
+
+  const fetchData = async () => {
+    const lat = 19.385591;
+    const lng = 72.829019;
+    const apiKey = 'e06abc40ab1a2cb7d082646670f051b7'; // Replace with your actual API key
+
     try {
-      console.log(lat);
-      console.log(long);
-      const payload = {
-        // userId: auth?.user._id,
-        lat,
-        long,
-      };
-      console.log(payload);
-      const res = await fetch(
-        "https://womensecbackend.onrender.com/api/v1/emergency/emergencypressed",
-        {
-          method: "POST",
-          body: JSON.stringify(payload),
-          headers: { "Content-type": "application/json" },
-        }
-      );
-      if (res.status === 200) {
-        toast.success("SOS SENT SUCCESSFULLY");
-      } else {
-        toast.error("SOS FAILED");
-      }
-    } catch (e) {
-      console.log(e);
-      toast.error("Something went wrong");
+      const response = await fetch(`https://apis.mapmyindia.com/advancedmaps/v1/${apiKey}/rev_geocode?lat=${lat}&lng=${lng}`);
+      const data = await response.json();
+      setPincode(data.results[0].pincode);
+    } catch (error) {
+      console.error('Error fetching data:', error);
     }
   };
-  useEffect(() => getLocation(), []);
 
-  const showPosition = async (position) => {
-    let latitude = position.coords.latitude;
-    let longitude = position.coords.longitude;
-    setLat(latitude);
-    setLong(longitude);
-
-    // handleSubmit();
-  };
-
-  const getLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-      console.log("Error");
-    }
-  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -80,26 +52,25 @@ const MedicalStore = () => {
               <div className="container">
                 <div className="row align-items-center">
                   <div className="col">
+                    {pincode && <p>Pincode: {pincode}</p>}
                     <input
-                      type="text"
                       className="form-control"
-                      placeholder="Search..."
+                      type="search" placeholder="🔎 Search your medicine..."
+                      onChange={(e) => setsearch(e.target.value)}
                     />
                   </div>
                   <div className="col-auto">
-                    <button type="button" className="btn btn-primary">
-                      Search
-                    </button>
-                  </div>
-                  <div className="col-auto">
-                    <button type="button" onClick={handleSubmit} className="btn btn-success">
+                    <button type="button" onClick={fetchData} className="btn btn-success">
                       Find Shops Near Me
                     </button>
                   </div>
+                  <h5>Shop</h5>
                 </div>
               </div>
 
-              {medicines.map((c) => (
+              {medicines.filter((medicine) => {
+                return search.toString().toLowerCase() === '' ? medicine : medicine.name.toLowerCase().includes(search)
+              }).map((c) => (
                 <div className="col-xl-3 col-sm-6 mt-5">
                   <div className="bg-white py-5 px-4 cardStyle">
                     <img
@@ -111,7 +82,7 @@ const MedicalStore = () => {
                       className="mb-3"
                     />
                     <h5 className="mb-0">{c.name}</h5>
-                    <p className="mb-0">{c.description.slice(0, 9)}</p>
+                    <p className="my-2">Info : {c.description.slice(0, 40)}...</p>
                     <div className="d-flex justify-content-between my-3">
                       <h6 className='respBrand'>Stock : {c.quantity}</h6>
                       <h6 className='respBrand'>Price : ₹ {c.price} </h6>
