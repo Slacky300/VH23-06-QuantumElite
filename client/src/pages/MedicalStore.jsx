@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import toast from 'react-hot-toast';
+import { useDispatch, useSelector } from "react-redux";
+import { getAllMedicine } from "../redux/Medicine/MedicineActions";
 
 
 const MedicalStore = () => {
   const [long, setLong] = useState("");
   const [lat, setLat] = useState("");
-
+  const dispatch = useDispatch();
   const handleSubmit = async (e) => {
     try {
       console.log(lat);
@@ -57,6 +59,14 @@ const MedicalStore = () => {
     window.scrollTo(0, 0);
   }, []);
 
+
+  useEffect(() => {
+    console.log("useEffect");
+    dispatch(getAllMedicine())
+
+  },[])
+  const medicines = useSelector((state) => state?.medicine?.medicines)
+  console.log(medicines);
   return (
     <div>
       <div>
