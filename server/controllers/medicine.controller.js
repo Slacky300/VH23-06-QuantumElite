@@ -1,8 +1,19 @@
-const {Medicine} = require("../models/medicine.model");
-const {Patient} = require("../models/patient.model");
+const {Medicine} = require("../models/medicine.models");
+const {Patient} = require("../models/patient.models");
 const {Vendor} = require("../models/vendor.models");
 
 
+const AWS = require('aws-sdk')
+
+
+
+AWS.config.update({
+    accessKeyId: process.env.AWS_ACCESS_KEY,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    region: 'ap-south-1'
+});
+
+const s3 = new AWS.S3();
 
 const getPurchasedMedicine = (req, res) => {
 
@@ -74,8 +85,10 @@ const addMedicine = async (req, res) => {
             quantity: quantity,
             price: price,
             description: description,
-            medImg: medImg
+            medImg
+            
         });
+
         const vendorId = req.user.id;
         newMedicine.vendorId = vendorId;
         await newMedicine.save();
@@ -94,4 +107,19 @@ const addMedicine = async (req, res) => {
 
 
 
-module.exports = {getPurchasedMedicine, purchaseMedicine, addMedicine}
+const getAllMedicine  = async (req, res) => {
+    try{
+        const medicines = await Medicine.find({}).select("-vendorId -purchasedBypatient -_v -updatedAt");
+        if(!medicines){
+            res.status(404).json({message: "No medicines found"})
+        }
+        res.status(200).json(medicines)
+    }catch(e){
+        console.log(e);
+        res.status(500).json({message: "Internal Server Error"})
+    }
+}
+
+
+
+module.exports = {getPurchasedMedicine, purchaseMedicine, addMedicine , getAllMedicine}
