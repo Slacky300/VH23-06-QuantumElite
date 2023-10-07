@@ -65,7 +65,7 @@ const Register = () => {
         window.scrollTo(0, 0)
     }, [])
     return (
-        <div className='my-5 ' >
+        <div style={{ marginTop: '90px' }} >
             <div class="container d-flex justify-content-center align-items-center ">
                 <div class="row border rounded-5 p-3 bg-white shadow box-area reverseCol">
                     <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box">

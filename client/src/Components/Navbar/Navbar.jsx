@@ -88,6 +88,11 @@ const Navbar = () => {
                       <a className="nav-link " aria-current="page">FirstAid</a>
                     </li>
                   </Link>
+                  <Link to='/ai' style={{ textDecoration: 'none' }}>
+                    <li className="nav-item">
+                      <a className="nav-link " aria-current="page">Assistant</a>
+                    </li>
+                  </Link>
                 </ul>
                 {user ?
                   (
