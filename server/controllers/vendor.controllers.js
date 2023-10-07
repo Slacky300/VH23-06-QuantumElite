@@ -4,7 +4,7 @@ const {Medicine} = require("../models/medicine.models");
 
 const getAllMedicine = async (req, res) => {
     try{
-        const vendorId = req.params.id;
+        const vendorId = req.user.id;
         const vendor = await Vendor.findById(vendorId);
         if(!vendor){
             return res.status(404).json({message: "Vendor not found"});

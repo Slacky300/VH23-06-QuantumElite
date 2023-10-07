@@ -8,11 +8,11 @@ const token = localStorage.getItem('token')
 
 export const createMedicine = createAsyncThunk(
     'medicine/createMedicine',
-    async ({ name, price, quantity, description, image }, { rejectWithValue, dispatch }) => {
+    async ({ medicine, price, quantity, description, image }, { rejectWithValue, dispatch }) => {
         try {
             const response = await axios.post(`${host}/api/v1/vendor/add-medicine`,
                 {
-                    medicineName: name,
+                    medicineName: medicine,
                     quantity: quantity,
                     price: price,
                     description: description,
@@ -39,3 +39,26 @@ export const createMedicine = createAsyncThunk(
 
 )
 
+export const getAllMedicine = createAsyncThunk(
+    'medicine/getAllMedicine',
+    async (_, { rejectWithValue, dispatch }) => {
+        try {
+            const response = await axios.get(`${host}/api/v1/vendor`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            if (response.status === 200) {
+                toast.success("Medicine fetched Successfully")
+                return response.data;
+            } else {
+                toast.error("Something went wrong")
+
+            }
+        } catch (err) {
+            toast.error(err?.response?.data?.message);
+            console.log(err.message)
+        }
+    }
+)
