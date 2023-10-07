@@ -50,8 +50,7 @@ export const getAllMedicine = createAsyncThunk(
             });
 
             if (response.status === 200) {
-                toast.success("Medicine fetched Successfully")
-                return response.data;
+                return response.data.reverse();
             } else {
                 toast.error("Something went wrong")
 
