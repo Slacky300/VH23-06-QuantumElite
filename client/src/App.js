@@ -54,9 +54,9 @@ function App() {
           <Route path='/patient/appointment' element={<Appointment />} />
           <Route path='/room/:roomId' element={<Room />} />
           <Route path='/video' element={<Video />} />
-          <Route path='/vdash' element={<Vdash />} />
+          <Route path='/vendor' element={<Vdash />} />
           <Route path='/venderaddorder' element={<VenderAddOrder />} />
-          <Route path='/doctordash' element={<DocDash />} />
+          <Route path='/doctor' element={<DocDash />} />
           <Route path='/admin' element={<Admin />} />
           <Route path='/vadmin' element={<Vadmin />} />
           <Route path='/venderorders' element={<VenderOrder />} />
