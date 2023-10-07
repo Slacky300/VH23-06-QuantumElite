@@ -4,7 +4,7 @@ const {verifyJWT} = require("../middlewares/verifyJWT");
 const {getAllMedicine} = require("../controllers/vendor.controllers");
 const {addMedicine} = require('../controllers/medicine.controller')
 router.route('/').get(getAllMedicine);
-router.route('/add-medicine').post(upload.single('medImg'),addMedicine);
+router.route('/add-medicine').post(upload.single('medImg'),verifyJWT, addMedicine);
 
 
 module.exports = router;
