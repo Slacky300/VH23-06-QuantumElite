@@ -27,7 +27,7 @@ export const prescriptionAction = createAsyncThunk(
                 toast.error("Something went wrong")
             }
         } catch (err) {
-            toast.error(err?.response?.data?.message);
+            // toast.error(err?.response?.data?.message);
             console.log(err.message)
         }
     }
@@ -49,7 +49,7 @@ export const getPrescriptionAction = createAsyncThunk(
                 toast.error("Something went wrong")
             }
         } catch (err) {
-            toast.error(err?.response?.data?.message);
+            // toast.error(err?.response?.data?.message);
             console.log(err.message)
         }
     }
@@ -70,7 +70,7 @@ async ( {patientId}, { rejectWithValue, dispatch }) => {
                 toast.error("Something went wrong")
             }
         } catch (err) {
-            toast.error(err?.response?.data?.message);
+            // toast.error(err?.response?.data?.message);
             console.log(err.message)
         }
     }

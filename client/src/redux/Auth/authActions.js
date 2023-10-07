@@ -20,7 +20,7 @@ export const registerAsPatient = createAsyncThunk(
 
             }
         } catch (err) {
-            toast.error(err?.response?.data?.message);
+            // toast.error(err?.response?.data?.message);
             console.log(err.message)
         }
     }
@@ -46,7 +46,7 @@ export const registerAsDoctor = createAsyncThunk(
                 toast.error("Something went wrong")
             }
         } catch (err) {
-            toast.error(err?.response?.data?.message);
+            // toast.error(err?.response?.data?.message);
             console.log(err.message)
         }
     }
@@ -73,7 +73,7 @@ export const registerAsVendor = createAsyncThunk(
                 toast.error("Something went wrong")
             }
         } catch (err) {
-            toast.error(err?.response?.data?.message);
+            // toast.error(err?.response?.data?.message);
             console.log(err.message)
         }
     }
@@ -97,7 +97,7 @@ export const loginUser = createAsyncThunk(
 
             }
         } catch (err) {
-            toast.error(err?.response?.data?.message);
+            // toast.error(err?.response?.data?.message);
             console.log(err.message)
         }
     }
@@ -121,7 +121,7 @@ export const getLoggedinUser = createAsyncThunk(
                 return rejectWithValue('something went wrong')
             }
         } catch (err) {
-            toast.error(err?.response?.data?.message);
+            // toast.error(err?.response?.data?.message);
             console.log(err.message)
         }
     }
